@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Ant Renamer 2 Help</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<link rel="stylesheet" href="main.css" type="text/css" />
+</head>
+<body>
+<h1>What the program does...</h1>
+<p>This program is designed to rename files. So it will only touch the files' names, it will not modify their contents.</p>
+<p>It was made for renaming, but in the <a href="options_en.html">Options</a> you can ask it to copy the files instead of renaming them.</p>
+<p>It can <a href="batch_en.html">store a predefined list of actions</a> to reuse them later.
+<p>It supports unicode, which means that you can rename files that have characters in Greek, Japanese, Chinese, Arab or any other language. Since most of the
+  programs have problems with such names, it can be useful to be able to rename them to Latin (basic ASCII) characters for example.</p>
+<h1>... and what it does not</h1>
+<p>As I said, it won't modify the contents of the files.</p>
+<p>It will not either modify files' date & time.</p>
+<p>It will not modify the ID3 (tag) contained in MP3s; it only read this info for building a new file name.</p>
+<p>It does not read any info from files other than MP3s, and even for MP3s it only reads the v1 of the ID3, not the v2.</p>
+<p>It cannot be fully controlled from command line, though it supports some <a href="params_en.html">parameters</a>.</p>
+<p>Note that the contents of this list is not fixed. Except modifying the contents of the files, all the "does not" things may appear in future versions.</p>
+<h2>Known bugs and limitations:</h2>
+<ul>
+  <li>Unicode is supported only on NT systems (Windows NT4, 2000, XP, Vista, 7, 8.x).</li>
+  <li>Batch files cannot have unicode characters in their name and path.</li>
+  <li>Ditto for the folder where the program is located, and for the command-line when it is called with parameters.</li>
+  <li>Since version 2.04 the program does not start on some Windows 95 versions, it seems to be caused by a missing Unicode function on these system.</li>
+  <li>In the "Use date &amp; time" action, if you use a long date format (with day or month in letters, like "December" in English), it will fail for days
+    or months that have special characters in their name (like "Décembre" in French). This bug will be corrected soon, but I have to find how to do that.</li>
+</ul>
+</body>
+</html>

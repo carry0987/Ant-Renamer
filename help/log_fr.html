@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Aide pour Ant Renamer 2</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<link rel="stylesheet" href="main.css" type="text/css" />
+</head>
+<body>
+<h1>Page "Journal"</h1>
+<p>Cette page est remplie avec le résultat du processus de renommage.</p>
+<p>En plus de la barre d'outils Fichiers qui est toujours visible, une barre d'outils pour le journal est affichée :<br />
+<img src="img/logtoolbar.png" alt="Log toolbar" /></p>
+<p>Voici ses commandes :</p>
+<ul>
+  <li><img src="img/filter.png" alt="Filter" /> Le bouton "Filtrer" fera apparaître un menu permettant de spécifier quels types d'éléments vous voulez voir dans
+    le journal (en fonction de leur statut ; cf. paragraphe suivant).</li>
+  <li><img src="img/clear.png" alt="Clear" /> Le bouton "Vider" videra le journal.</li>
+  <li><img src="img/save.png" alt="Save" /> Le bouton "Sauver" ouvrir une fenêtre standard de sélection de fichier, vous permettant de choisir où sauver le contenu
+    du journal.</li>
+  <li><img src="img/copy.png" alt="copy" /> Le bouton "Copier" copiera le contenu du journal dans le presse-papiers de Windows.</li>
+</ul>
+<p>Lorsqu'un fichier est renommé avec succès, une ligne est ajoutée au journal, spécifiant l'ancien et le nouveau nom du fichier. Elle est écrite en vert.</p>
+<p>Dans le cas où le fichier n'a pas été renommé, soit un simple message (en bleu) ou une erreur (en rouge) est affiché.</p>
+<p>Le premier cas est causé par un nouveau nom identique à l'ancien (pas besoin de renommer le fichier) ou si le fichier ne contient pas d'info ID3 (pour le renommage
+  des mp3). Cela peut aussi arriver si le fichier source n'existe plus (par exemple si vous l'avez déplacé manuellement).</p>
+<p>Les erreurs peuvent être causées par pas mal de choses. Par exemple, si le nouveau nom est déjà utilisé par un autre fichier, si le nom contient des caractères
+  invalides ou si le fichier est bloqué par un programme. En général le message écrit est celui qui est retourné par Windows.</p>
+<p>Si vous obtenez un message "The operation completed successfuly" ("Opération terminée avec succès" ou quelque chose comme ça) indiqué comme une erreur, cela signifie
+  que le vrai message d'erreur s'est perdu ou que l'erreur n'a pas été bien détectée. Contactez-moi si vous arrivez à reproduire le problème.</p>
+<h2 id="save">Sauver automatique le journal dans un fichier</h2>
+<p>Cela peut être fait via l'option "Socker le journal" de la <a href="options_fr.html#processing">fenêtre des Options</a>.</p>
+<p>Si cette option est activée, après le processus de renommage le contenu du journal sera stocké dans un fichier texte (encodé en UTF-8).</p>
+<p>Ce fichier a deux colonnes (délimitées par un caractère de tabulation). La première contient un "v" pour une opération réussie et un "x" pour une erreur.
+  La seconde contient le message.</p>
+<p>Si l'option "Ajouter dans le fichier existant" est aussi activée, le fichier ne sera pas écrasé : les nouveaux éléments du journal seront ajoutés à la fin.</p>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Ant Renamer Help</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<link rel="stylesheet" href="main.css" type="text/css" />
+</head>
+<body>
+<h1>Historique des versions</h1>
+<p>Versions 2.x :</p>
+<ul>
+	<li>2.12 (04/07/2015)
+		<ul>
+			<li>Option (désactivée par défaut) pour considérer le dernier "." d'un dossier comme délimiteur d'extension. Les versions précédentes considéraient toujours qu'un dossier pouvait avoir une extension, mais ce n'est pas souvent utilisé comme tel.</li>
+			<li>Quand des dossiers sont renommés, le chemin vers les fichiers de la liste est mis à jour si nécessaire. Les versions précédentes généraient une erreur car les fichiers contenus dans des dossiers renommés n'étaient plus trouvés.</li>
+			<li>Option "Sensible à la casse" dans l'opération de remplacement de chaînes multiples.</li>
+			<li>Quelques bugs corrigés.</li>
+		</ul>
+	</li>
+	<li>2.11 (01/04/2015)
+		<ul>
+			<li>Par défaut, quand le programme est installé, les paramètres sont stockés dans le dossier des utilisateurs plutôt que celui des programmes, pour une meilleure compatibilité avec Windows Vista/7/8.</li>
+			<li>Quelques bugs/détails corrigés.</li>
+		</ul>
+	</li>
+  <li>2.10 (12/05/2008)
+    <ul>
+      <li>Remplacement du composant utilisé pour les champs numériques.</li>
+      <li>Ajout d'un tag %count%, et amélioration du tag %folder%.</li>
+    </ul>
+  </li>
+  <li>2.09 (09/09/2006)
+    <ul>
+      <li>Suppression de caractères : option pour pouvoir également supprimer des caractères devant une chaîne spécifiée.</li>
+      <li>Ajout d'une opération pour utiliser les données contenues dans les tags EXIF des fichiers JPEG.</li>
+      <li>Ajout d'une opération pour générer de nouveaux noms sur base d'une expression rationnelle.</li>
+      <li>Lorsque la touche "Maj" ou "Ctrl" est enfoncée lors d'un ajout de fichiers/dossiers par glisser-déposer, la fenêtre de choix fichiers/dossiers/sous-dossiers est affichée d'office.</li>
+      <li>Quelques bugs corrigés</li>
+    </ul>
+  </li>
+  <li>2.08 (15/10/2004)
+    <ul>
+      <li>Fichier d'aide</li>
+      <li>Ajout de quelques paramètres pour commander l'application depuis la ligne de commande, voir le fichier d'aide.</li>
+      <li>Système de formatage avancé pour quelques opérations, principalement pour les mp3.</li>
+      <li>Option pour utiliser la date de création à la place de la date de modification, dans l'opération Date et heure.</li>
+      <li>Option pour revenir à la valeur de départ lors du changement de dossier, dans l'opération Énumération.</li>
+      <li>Option pour stocker le journal dans un fichier, à la suite du fichier existant ou non.</li>
+      <li>Possibilité de filtrer les entrées du journal (succès, erreurs, fichiers non renommés).</li>
+      <li>Quelques bugs corrigés</li>
+    </ul>
+  </li>
+  <li>2.07 (06/02/2004)
+    <ul>
+      <li>Action "Déplacement de chaîne".</li>
+      <li>Quelques bugs corrigés, quelques options ajoutées dans les actions.</li>
+    </ul>
+  </li>
+  <li>2.06 (23/09/2003)
+    <ul>
+      <li>Modification du système des barres d'outils, passage de TBSkin à TBX (j'ai dû supprimer le thème "Windows XP" pour les systèmes autres que XP).</li>
+      <li>"Remplacement de chaînes multiples" permettant de remplacer un set de caractères par un autre, par ex. pour supprimer les accents des lettres.</li>
+      <li>Journal plus rapide (il était vraiment lent pour renommer des centaines de fichiers).</li>
+      <li>Correction d'un bug de la prévisualisation lors de l'utilisation d'une liste d'actions planifiées.</li>
+    </ul>
+  </li>
+  <li>2.05 (18/05/2003)
+    <ul>
+      <li>Colonnes optionnelles dans la liste de fichier : taille, date de création, date de modification, chemin complet, extension.</li>
+      <li>Les éléments des listes de fichiers et de jobs peuvent maintenant être déplacés par drag &amp; drop.</li>
+    </ul>
+  </li>
+  <li>2.04 (04/05/2003)
+    <ul>
+      <li>Possibilité de renommer des dossiers en plus des fichiers. Ceci a demandé quelques changements dans les fonctions d'ajout du contenu d'un dossier et
+          du Drag &amp; Drop.</li>
+      <li>Option pour déplacer les fichiers vers un autre chemin si leur nom commence par "x:\" (où x est n'importe quelle lettre) ou "\\".</li>
+      <li>Option pour spécifier le nombre maximal d'éléments à conserver dans les listes déroulantes.</li>
+      <li>Quelques autres petits changements, et correction d'un bug lors du drag &amp; drop de longs noms de fichiers sous NT/2000/XP.</li>
+    </ul>
+  </li>
+  <li>2.03 (13/04/2003)
+    <ul>
+      <li>Support de l'Unicode sous Windows NT4, 2000 et XP.</li>
+      <li>Les jobs (batch) peuvent être sauvés et chargés.</li>
+    </ul>
+  </li>
+  <li>2.02 (06/04/2003)
+    <ul>
+      <li>Option (activée par défaut) pour l'affichage des icones dans la liste des fichiers (se basant sur l'extension des fichiers).</li>
+      <li>Les positions des barres d'outiles et les paramètres des colonnes sont maintenant sauvés.</li>
+    </ul>
+  </li>
+  <li>2.01 (25/03/2003)
+    <ul>
+      <li>Ajout d'une traduction Française et d'un fichier de traduction en Anglais d'exemple permettant d'ajouter n'importe quelle traduction.</li>
+      <li>Correction d'un bug qui interrompait par moments le renommage.</li>
+    </ul>
+  </li>
+  <li>2.00 (16/03/2003)
+    <ul>
+      <li>Option pour copier les fichiers vers leur nouveau nom plutôt que de les renommer.</li>
+      <li>Ajout de quelques petits détails. Maintenant tout ce qui était dans la version 1.4 devrait être là (sauf le système de traduction).</li>
+    </ul>
+  </li>
+  <li>2.00 'Preview 1' (08/03/2003)
+    <ul>
+      <li>Réécriture complète du programme avec Borland Delphi 7 (à la place de C++Builder 5).</li>
+      <li>Possibilité de faire une liste d'actions à effectuer.</li>
+      <li>Correction de pas mal de bugs (mais probablement ajout de nouveaux bugs).</li>
+      <li>Nouvelle action : utilisation de noms provenants d'une liste ou d'un fichier.</li>
+    </ul>
+  </li>
+</ul>
+<hr />
+<ul>
+  <li>1.4.0 (08/09/2001)
+    <ul>
+      <li>"Preview" function that allows you to see what the names will look like without modifying anything on the disk.</li>
+      <li>"Undo" function that restores names before the renaming process (for files that are still in the list).</li>
+      <li>Contextual menu in the file list allowing to move items (if you want to change the order of the files before they are renamed).</li>
+      <li>Improved some small things, most of them are not visible but make the source code cleaner.</li>
+    </ul>
+  </li>
+  <li>1.3.1 (23/03/2001)
+    <ul>
+      <li>Corrected some small problems with the "Change extension" feature.</li>
+      <li>Corrected a bug when drag &amp; drop a folder on the program's window.</li>
+      <li>Now the program saves in its configuration file all the renaming options that where used last time.</li>
+    </ul>
+  </li>
+  <li>1.3.0 (14/02/2001)
+    <ul>
+      <li>Use of the track number for the mp3s (ID3v1.1).</li>
+      <li>Case change (uppercase, lowercase, first letter of each word in uppercase, ...).</li>
+      <li>Some small details.</li>
+    </ul>
+  </li>
+  <li>1.2.1 (20/10/2000)
+    <ul>
+      <li>Fixed a bug in the Options window.</li>
+      <li>Can replace invalid characters in filenames such as : &lt; &gt; * | &brvbar; / \ ? when they are in a mp3 tag.</li>
+    </ul>
+  </li>
+  <li>1.2.0 (07/10/2000)
+    <ul>
+      <li>Random names creation.</li>
+      <li>You can add files to the list by a drag &amp; drop from Windows' Explorer.</li>
+    </ul>
+  </li>
+  <li>1.1.1 (20/09/2000)
+    <ul>
+      <li>New extension replacement option : enumeration.</li>
+    </ul>
+  </li>
+  <li>1.1.0 (15/09/2000)
+    <ul>
+      <li>Easy translation by addition of two files (lng and txt).</li>
+    </ul>
+  </li>
+  <li>1.0.0 (13/09/2000)
+    <ul>
+      <li>First release.</li>
+    </ul>
+  </li>
+</ul>
+</body>
+</html>

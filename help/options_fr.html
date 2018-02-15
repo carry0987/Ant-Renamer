@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Aide pour Ant Renamer 2</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<link rel="stylesheet" href="main.css" type="text/css" />
+</head>
+<body>
+<h1>Fenêtre des options</h1>
+<p>Cette fenêtre est accessible via l'icône <img src="img/options.png" alt="Options" /> "Options" de la fenêtre principale. Elle est divisée en quatre pages :</p>
+<h2 id="display">Affichage</h2>
+<ul>
+	<li><span class="optname">Mise à jour en temps réel lors du traitement des fichiers</span> : Le contenu des listes est mis à jour à chaque fois qu'un fichier est
+		renommé. Ça peut être un peu lent si vous renommez des milliers de fichiers sur une machine lente.</li>
+	<li><span class="optname">Redimmensionnement automatique des colonnes de la liste de fichiers</span> : Lorsque cette option est activée, le programme va toujours
+		essayer de faire rentrer les colonnes de la liste des Fichiers (fenêtre principale) dans la largeur de la fenêtre.</li>
+	<li><span class="optname">Afficher les icônes (en fonction de l'extension) dans la liste de fichiers</span> : Affiche les icônes à gauche des éléments de
+		la liste des Fichiers. Cela peut ralentir un peu le défilement de la liste, et comme chaque fichier ".exe" a sa propre icône cela peut être assez lent pour
+		les fichiers provenant d'un disque réseau par exemple.</li>
+	<li><span class="optname">Forcer la police suivante pour l'affichage des caractères spéciaux</span> : Permet de spécifier la police à utiliser pour les champs
+		qui peuvent contenir des caractères unicode, incluant les listes Fichiers et Journal. Si disponible, la police "Arial Unicode MS" est utilisée par défaut.
+		<a href="fonts_fr.html">Cliquez ici pour plus d'informations</a>.</li>
+	<li><span class="optname">Nombre de valeurs à conserver dans l'historique</span> : Les listes déroulantes retiennent les dernières chaînes de caractères
+		que vous avez utilisées. Vous pouvez choisir ici combien doivent être conservées (0 = aucune).</li>
+	<li><span class="optname">Complétion automatique avec les valeurs de l'historique lors de la frappe</span> : Lorsque vous tapez le texte, s'il a le même début
+		qu'un élément existant dans l'historique, cet élément sera copié dans le champ (la partie que vous n'avez pas tapée sera sélectionnée, de manière à ce que vous
+		puissiez continer à taper pour l'écraser).</li>
+	<li><span class="optname">Set d'icônes</span> : Jeu d'icônes à utiliser pour les barres d'outils. Le programme inclut un set appelé "Scrows". Des fichiers additionnels
+		peuvent être placés dans le dossier "Toolbars". Une installation standard inclut deux sets additionnels : "Windows XP" et "Windows XP Large" (le second est le
+		même mais avec des icônes plus grandes).</li>
+</ul>
+<h2 id="files">Fichiers &amp; Dossiers</h2>
+<ul>
+	<li><span class="optname">Ne pas demander, toujours utiliser les options suivantes</span> : Empêche l'affichage d'une fenêtre à chaque fois que vous déposez
+		des fichiers sur la fenêtre d'Ant Renamer. Vous pouvez spécifier ici les options plutôt que d'avoir à les choisir à chaque fois. Ces options sont détaillées
+		dans le chapitre "<a href="addfiles_fr.html#dragdrop">Ajout de fichiers &amp; dossiers</a>".</li>
+	<li><span class="optname">Exécuter le fichier lors d'un double clic</span> : Si cette option est activée, lorsque vous double-cliquez sur un fichier de la liste
+		des Fichiers il sera ouvert comme si vous aviez double-cliqué dessus dans l'Explorateur Windows.</li>
+</ul>
+<h2 id="processing">Traitement</h2>
+<ul>
+	<li><span class="optname">Copier plutôt que renommer</span> : Bien que le programme ait été prévu pour renommer des fichiers, il peut parfois être utile
+	pour copier les fichiers sous un autre nom plutôt que de les renommer.</li>
+	<li><span class="optname">Générer un journal</span> : Si l'option est désactivée, la page "Journal" de la fenêtre principale ne sera pas remplie avec tous
+	les fichiers traités.</li>
+	<li><span class="optname">Forcer les dossiers</span> : Un caractère "\" n'est pas valide dans un nom de fichiers puisqu'il peut être utilisé comme délimiteur
+		de dossiers (par exemple c:\Program Files\Ant Renamer\Renamer.exe). Donc lorsqu'un "\" est trouvé dans un nom de fichier la partie avant le "\" est
+		considérée comme un dossier. Pour pouvoir déplacer le fichier vers ce dossier, il doit exister. Si cette option est activée, avant de renommer/déplacer chaque
+	fichier le programme vérifiera si le dossier existe, et le créera si ce n'est pas le cas.</li>
+	<li><span class="optname">Détecter les ":\" ou "\\" comme chemins absolus</span> : Lorsque cette option est activée, si le nouveau nom de fichier commence par
+		"x:\" (x = n'importe quelle lettre) ou par "\\", alors l'ancien chemin ne sera pas ajouté en début de nom. Cela permet de déplacer les fichiers n'importe où
+	en donnant le chemin complet comme nouveau nom de fichier.</li>
+	<li><span class="optname">Le dernier &#34;.&#34; d'un nom de dossier délimite l'extension, comme pour les fichiers</span> : Par défaut cette option est désactivée, car
+		la plupart du temps dans les environnements Windows modernes les dossies n'ont pas d'extension comme l'ont les fichiers ; dans ce cas, les noms de dossiers sont
+		traités comme des fichiers sans extension. Si l'option est activée, tout ce qui suit le dernier point dans un nom de dossier sera considéré comme une extension, comme
+		cela est fait sur les fichiers. Cela affecte le comportement des options "Inclure l'extension" et "Appliquer à l'extension plutôt qu'au nom" de plusieurs opérations.</li>
+	</ul>
+<h2 id="processing">Événements</h2>
+<ul>
+	<li><span class="optname">Au démarrage du renommage</span> : Permet de définir quoi faire avant de commencer à renommer les fichiers, lorsque vous cliquez le bouton "Démarrer".</li>
+	<li><span class="optname">À la fin du renommage</span> : Permet de définir quoi faire lorsque le traitement est terminé. L'option "Stocker le journal" permet de conserver
+		le contenu du journal dans un fichier. Consultez la rubrique de la <a href="log_fr.html#save">page "Journal"</a> pour plus d'informations.</li>
+</ul>
+<h2 id="languages">Langue</h2>
+<ul>
+	<li>Dans cette page vous pouvez sélectionner la langue à utiliser pour l'interface utilisateur.</li>
+	<li>À part pour l'anglais, les langues ne peuvent être affichées correctement que si votre PC est configuré pour utiliser le même jeu de caractères que
+		ce qu'utilise la langue choisie. Cela dépend des choix effectués dans les "Options régionales et linguistiques" du panneau de configuration de Windows.</li>
+</ul>
+</body>
+</html>

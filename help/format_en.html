@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Ant Renamer 2 Help</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<link rel="stylesheet" href="main.css" type="text/css" />
+</head>
+<body>
+
+<h1>Formatting strings</h1>
+
+<p>In some actions, you can use special tags that are delimited by "%" characters.</p>
+<p>Since the "%" is then used as a special character, so have a simple "%" in the file name you have to enter "%%".</p>
+<p>In each action that support special tags, the available tags are listed in the "Notes" text under the parameters of this action.</p>
+<p>For example, the <a href="actions_en.html#mp3">Use mp3</a> action supports ID3-related tags, like %author% and %title% in addition of %name% and %ext%. So a
+  typical mask for mp3 files would be something like <code>%author% - %title%%ext%</code> (%ext% includes the dot, so we do not need to put the dot in the mask
+  used here).</p>
+
+<hr />
+
+<p>A %folderN% tag is usually available. This tag allows you to use the name of the parent folders in the filename itself. This is a little difficult to explain,
+  so I'll give you some examples.</p>
+<p>If you have a file in "c:\data\images\movies\poster.jpg" and that you use the <a href="actions_en.html#stringinsert">String insertion</a> action:</p>
+<ul>
+  <li>With mask = <code>%folder1%&nbsp;-&nbsp;</code> the file will be renamed to "movies - poster.jpg"</li>
+  <li>With mask = <code>%folder2%&nbsp;-&nbsp;</code> the file will be renamed to "images - poster.jpg"</li>
+  <li>etc.</li>
+</ul>
+<p>You can also use a relative path, e.g. if you have several folders, each one having lots of files in it, and all of these files are not especially unique between
+  two different folders. You may want to insert folder name and then move all the files to the common parent folder. Here is an example; you have the following files:
+<ul>
+  <li>c:\data\images\movies\poster1.jpg</li>
+  <li>c:\data\images\games\poster1.jpg</li>
+  <li>c:\data\images\games\poster2.jpg</li>
+</ul>
+<p>If you rename them will String insertion action and a string like <code>../%folder1%&nbsp;</code> inserted at position 0 from beginning, you will get the following
+  in the "images" folder:</p>
+<ul>
+  <li>movies poster1.jpg</li>
+  <li>games poster1.jpg</li>
+  <li>games poster2.jpg</li>
+</ul>
+<p>Now you can delete the empty "movies" &amp; "games" folders.</p>
+<p>If you enter a negative number instead, the count will be done from the root rather than from the current folder. So still using "c:\data\images\movies\"
+  as folder:</p>
+<ul>
+  <li><code>%folder-1%</code> = "c"</li>
+  <li><code>%folder-2%</code> = "data"</li>
+  <li><code>%folder-3%</code> = "images"</li>
+  <li>etc.</li>
+</ul>
+<p>Using the %name% tag, you can also want to have the files placed in a folder that takes the file's name. For that, the
+  <a href="options_en.html#processing">"Force directories" option</a> has to be enabled. If you have the following files:</p>
+<ul>
+  <li>cars.doc</li>
+  <li>cars.xls</li>
+  <li>cars.jpg</li>
+  <li>houses.doc</li>
+  <li>houses.xls</li>
+  <li>houses.jpg</li>
+</ul>
+<p>Still with the String insertion action, using a string like <code>%name%\</code> inserted at position 0 from beginning, you will get the three "cars" files in
+  a "cars" folder, and the three "houses" files in a "houses" folder.</p>
+<p>When renaming folders, <code>%count%</code> and a few derivated tags are available:</p>
+<ul>
+  <li><code>%count%</code> = number of files and subfolders contained in renamed folder</li>
+  <li><code>%countr%</code> = same but also counts what is in subfolders (recursive)</li>
+  <li><code>%countfiles%</code> = counts only files</li>
+  <li><code>%countfilesr%</code> = same but includes files of subfolders (recursive)</li>
+  <li><code>%countfolders%</code> = counts only sub-folders</li>
+  <li><code>%countfoldersr%</code> = same but includes subfolders of subfolders (recursive)</li>
+</ul>
+<hr />
+
+<p>For the <a href="actions_en.html#mp3">Use mp3 tags</a> and <a href="actions_en.html#exif">Use EXIF info</a> actions, there is also a special tag: $if. It allows you to make conditional formatting. For example, when a
+  field is empty you may want to not display the " - " that follows it. Or to put a special value.</p>
+<p>The syntax is the following: $if(condition,value-if-true,value-if-false). If "condition" is not an empty string, value-if-true will be used. In the other case,
+  value-if-false will be used. Since you may need to use commas and parenthesis inside the $if function, you can put the values inside quotation marks ("...") to
+  prevent them from being analyzed. But be careful with them: they also prevent the %tag% from being analyzed.</p>
+<p>Here are some examples that will explain that better. In the files list there are two mp3 files that has a bad name (1.mp3 and 2.mp3) but that has the following
+  valid ID3 information:</p>
+<ul>
+  <li>1.mp3: Author = Blur, Title = Song 2, Album is emty, Track is empty</li>
+  <li>2.mp3: Author = Vivaldi, Title is empty, Album = Le Quattro Stagioni, Track = 1</li>
+</ul>
+<p>Here is the result using various masks:</p>
+<p><code>%author% - %title%%ext%</code><br />
+Simply take the author and title, separated by a dash. Here we are not using the if function, and the result is not really nice when there are empty fields.</p>
+<ul>
+  <li>Blur - Song 2.mp3</li>
+  <li>Vivaldi - .mp3</li>
+</ul>
+<p><code>%author%$if(%title%, - %title%,)%ext%</code><br />
+Take the author and, if the title is not empty, add a dash and the title.</p>
+<ul>
+  <li>Blur - Song 2.mp3</li>
+  <li>Vivaldi.mp3</li>
+</ul>
+<p><code>%author%$if(%album%," ("%album%")",)$if(%title%,", "%title%,)%ext%</code><br />
+Take the author, if it exists add the album name between parenthesis, then if it exists add the title separated by a comma. Here you see that parenthesis and comma
+  have to be put between quotes to not be taken as "end of if" or value separator.</p>
+<ul>
+  <li>Blur, Song2.mp3</li>
+  <li>Vivaldi (Le Quattro Stagioni)</li>
+</ul>
+<p><code>%author%$if(%album%," ("%album%")",)$if(%title%,", "%title%,$if(%track%, - %track%,))%ext%</code><br />
+Same as previous one, but inside the title's if we add another if to add the track number only in the case that the title is empty.</p>
+<ul>
+  <li>Blur, Song2.mp3</li>
+  <li>Vivaldi (Le Quattro Stagioni) - 1</li>
+</ul>
+
+</body>
+</html>

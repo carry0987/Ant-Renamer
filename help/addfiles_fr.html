@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Aide pour Ant Renamer 2</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<link rel="stylesheet" href="main.css" type="text/css" />
+</head>
+<body>
+<h1>Ajout de fichiers &amp; dossiers</h1>
+<p>Il y a plusieurs manières d'ajouter des fichiers à la liste :</p>
+<ul>
+  <li><a href="#addfiles">Bouton "Fichiers"</a> dans la fenêtre principale</li>
+  <li><a href="#addfolders">Bouton "Dossiers"</a> dans la fenêtre principale</li>
+  <li><a href="#dragdrop">Drag &amp; drop (glisser-déposer) de fichiers</a> depuis l'Explorateur Windows</li>
+</ul>
+<h2 id="addfiles">Bouton "Fichiers"</h2>
+<p>Lorsque vous cliquez sur le bouton <img src="img/addfiles.png" alt="Add files" /> "Fichiers" une fenêtre Windows classique de sélection de fichiers apparaît.
+  Cette fenêtre est contrôlée par Windows, donc elle fonctionne comme dans d'autres programmes.
+  Une chose à savoir est que l'ordre des fichiers qui seront renvoyés par cette fenêtre n'est pas spécialement l'ordre que vous voyez.
+  D'abord, Windows renvoie le fichier qui avait le focus (i.e. qui a un bord pointillé, c'est généralement le dernier fichier qui a été sélectionné).
+  Ensuite il envoie tous les fichiers qui le suivent. Lorsqu'il arrive à la fin, il revient au début et envoie le reste.</p>
+<p>Il peut également y avoir quelques problèmes de vitesse lorsque vous tentez d'ajouter des milliers de fichiers.
+  La fenêtre peut prendre une éternité à envoyer les noms de fichiers au programme.
+  Si c'est le cas, utilisez la fonction d'ajout de <a href="#addfolders">"Dossiers"</a> à la place.</p>
+<h2 id="addfolders">Bouton "Dossiers"</h2>
+<p>Lorsque vous cliquez sur le bouton <img src="img/addfolders.png" alt="Add folders" /> "Dossiers" une fenêtre apparaît, vous permettant de choisir un ou
+  plusieurs dossiers.
+  Cette fenêtre n'a pas été faite que pour ajouter des dossiers à la liste, mais aussi pour y ajouter leur contenu.</p>
+<p>Quelques options dans le bas de la fenêtre permettent de spécifier ce qui doit être ajouté à la liste :<br />
+  <img src="img/addfilesoptions.png" alt="Options for adding files" /></p>
+<p>La première spécifie si les fichiers contenus dans le(s) dossier(s) sélectionné(s) doivent être ajoutés ou non.
+  La seconde spécifie si les dossiers sélectionnés doivent être ajoutés ou non.
+  La troisième spécifie si le sous-dossiers des dossiers sélectionnés doivent être inclus ou non (cela s'applique à tous les sous-dossiers, pas juste au premier niveau).</p>
+<p>Pour le moment, la fenêtre n'affiche pas les éléments du réseau ou les périphériques spéciaux qui n'ont pas leur propre lettre de lecteur
+  (les disques réseaux auxquels on a attribué une lettre seront affichés dans la liste). Dans le futur cela pourra être amélioré (au moins pour les éléments réseau).
+  En attendant, un bouton "Réseau" permet de choisir un dossier sur un disque réseau.
+  Pour ajouter ces dossiers, le <a href="#dragdrop">drag &amp; drop</a> peut être plus facile que cette fenêtre.</p>
+<h2 id="dragdrop">Drag &amp; drop (glisser-déposer) de fichiers</h2>
+<p>Vous pouvez glisser des fichiers depuis l'Explorateur Windows (et autres programmes qui sont compatibles avec lui, comme Total Commander ou Servant Salamander)
+  directement vers la fenêtre principale d'Ant Renamer. Ceci est en général beaucoup plus facile pour ajouter des fichiers plutôt que de les sélectionner dans
+  la fenêtre d'ajout de fichiers.</p>
+<p>Par défaut, lorsque vous déposez des fichiers une fenêtre apparaît. Elle vous permet de choisir comment vous voulez ajouter ces fichiers.
+  Ces options sont les mêmes que celles qui sont disponibles dans la fenêtre d'ajout de <a href="#addfolders">Dossiers</a>.
+  Une option étiquetée "Ne pas demander..." permet de conserver les paramètres sélectionnées pour les prochains drag &amp; drop, pour ne pas que la fenêtre ne soit
+  à nouveau affichée. Si vous cochez cette option et désirez ensuite l'annuler (ou changer les paramètres), vous pouvez faire cela dans la page "Fichiers &amp; dossiers"
+  de la <a href="options_fr.html">fenêtre des Options</a>. Pour faire réapparaître cette fenêtre une seule fois sans changer son comportement par défaut, vous pouvez
+  maintenir enfoncée la touche Ctrl ou Shift lorsque vous déposez les fichiers. Cela permet, par exemple, d'ajouter un dossier à la liste alors que le comportement
+  par défaut consiste en l'ajout des fichiers uniquement.</p>
+<p>Les mêmes limitations que pour la fenêtre d'ajout de fichiers s'appliquent (ordre des fichiers et problèmes de vitesse avec de nombreux fichiers).</p>
+</body>
+</html>

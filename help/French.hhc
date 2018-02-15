@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<!-- Sitemap 1.0 -->
+</HEAD><BODY>
+<UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Index">
+		<param name="Local" value="index_fr.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Ce que fait le programme">
+		<param name="Local" value="what_fr.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Fenêtre principale">
+		<param name="Local" value="main_fr.html">
+		</OBJECT>
+	<UL>
+  	<LI> <OBJECT type="text/sitemap">
+  		<param name="Name" value="Fichiers">
+  		<param name="Local" value="files_fr.html">
+  		</OBJECT>
+  	<UL>
+    	<LI> <OBJECT type="text/sitemap">
+    		<param name="Name" value="Ajout de fichiers &amp; dossiers">
+    		<param name="Local" value="addfiles_fr.html">
+    		</OBJECT>
+    </UL>
+  	<LI> <OBJECT type="text/sitemap">
+  		<param name="Name" value="Actions">
+  		<param name="Local" value="actions_fr.html">
+  		</OBJECT>
+  	<UL>
+    	<LI> <OBJECT type="text/sitemap">
+    		<param name="Name" value="Listes prédéfinies (jobs)">
+    		<param name="Local" value="batch_fr.html">
+    		</OBJECT>
+    	<LI> <OBJECT type="text/sitemap">
+    		<param name="Name" value="Formatage de chaînes">
+    		<param name="Local" value="format_fr.html">
+    		</OBJECT>
+    	<LI> <OBJECT type="text/sitemap">
+    		<param name="Name" value="Expresions rationnelles">
+    		<param name="Local" value="regexp_fr.html">
+    		</OBJECT>
+    </UL>
+  	<LI> <OBJECT type="text/sitemap">
+  		<param name="Name" value="Journal">
+  		<param name="Local" value="log_fr.html">
+  		</OBJECT>
+  </UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Options">
+		<param name="Local" value="options_fr.html">
+		</OBJECT>
+	<UL>
+  	<LI> <OBJECT type="text/sitemap">
+  		<param name="Name" value="Polices de caractères">
+  		<param name="Local" value="fonts_fr.html">
+  		</OBJECT>
+  </UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Paramètres en ligne de commande">
+		<param name="Local" value="params_fr.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Historique des versions">
+		<param name="Local" value="history_fr.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="À propos de l'auteur, crédits &amp; liens">
+		<param name="Local" value="about_fr.html">
+		</OBJECT>
+</UL>
+</BODY></HTML>

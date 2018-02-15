@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Ant Renamer 2 Help</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<link rel="stylesheet" href="main.css" type="text/css" />
+</head>
+<body>
+<h1>Expressions rationnelles</h1>
+<p>Note: bien que la traduction officielle de "regular expressions" soit "expressions rationnelles", ou trouve souvent le terme "expressions
+  régulières".</p>
+<p>Ant Renamer utilise la bibliothèque TRegExpr. Vous pouvez trouver un <a onclick="window.open(this.href);return false;"
+  href="http://www.regexpstudio.com/TRegExpr/Help/RegExp_Syntax.html">guide de référence syntaxique sur le site dédié à cette
+  bibliothèque</a>. Ces expression sont assez complexes mais également assez "standard", je ne vais donc pas faire ici un guide détaillé sur leur
+  fonctionnement.</p>
+<p>Pour l'action "Expressions eationnelles", vous devez fournir deux informations :</p>
+<ul>
+  <li>Expression, contenant une expression rationnelle valide ;</li>
+  <li>Nouveau nom, contenant le nouveau nom du fichier, avec des références de type $<i>nn</i> (<i>nn</i> étant un nombre) pour indiquer où
+  doivent être insérées les chaînes trouvées. Note : ces références sont présentés avec "\" au lieu de "$" sur la page de syntaxe indiquée ci-dessus.</li>
+</ul>
+<p>Beaucoup de caractères non-alphanumériques ont une signification spéciale dans les expressions rationnelles. Pour les utiliser, le caractère
+  devant les précéder est le <i>backslash</i> ("\").
+  Ceci s'applique aussi au "$" qui a une signification spéciale dans le champ "nouveau nom". Si vous devez utiliser le backslash comme caractère
+  (par ex. comme délimiteur dans un chemin dans le nouveau nom) vous devez le doubler ("\\").</p>
+<h2>Exemples</h2>
+<p>Échanger le nom d'artiste et le titre des noms de fichiers mp3 :</p>
+<ul>
+  <li>Expression = <code>(.*) - (.*)\.mp3</code></li>
+  <li>Nouveau nom = <code>$2 - $1.mp3</code></li>
+</ul>
+<p>Extraire le numéro d'épisode et le titre de fichiers vidéo d'une série, avec numéros d'épisodes sous la forme S<i>nn</i>E<i>mm</i>, suivis du titre :</p>
+<ul>
+  <li>Expression = <code>Code\.Quantum\.S([0-9]{2})E([0-9]{2})\.(.*)\.FRENCH.XViD\.avi</code></li>
+  <li>Nouveau nom = <code>Code Quantum - $1$2 - $3.avi</code></li>
+</ul>
+</body>
+</html>

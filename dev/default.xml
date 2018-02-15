@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AntRenamer>
+ <LastValues>
+  <MultstrRepl>
+   <Sets>
+    <Set Name="Remove west-european accents">
+     <![CDATA[á	a
+à	a
+ä	a
+â	a
+ã	a
+Á	A
+À	A
+Ä	A
+Â	A
+Ã	A
+ç	c
+Ç	C
+é	e
+è	e
+ë	e
+ê	e
+É	E
+È	E
+Ë	E
+Ê	E
+í	i
+ì	i
+ï	i
+î	i
+Í	I
+Ì	I
+Ï	I
+Î	I
+ñ	n
+Ñ	N
+ó	o
+ò	o
+ö	o
+ô	o
+õ	o
+Ó	O
+Ò	O
+Ö	O
+Ô	O
+Õ	O
+ú	u
+ù	u
+ü	u
+û	u
+Ú	U
+Ù	U
+Ü	U
+Û	U
+ý	y
+ÿ	y
+Ý	Y
+]]>
+    </Set>
+   </Sets>
+  </MultstrRepl>
+ </LastValues>
+</AntRenamer>

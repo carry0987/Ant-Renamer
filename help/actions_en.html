@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Ant Renamer 2 Help</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<link rel="stylesheet" href="main.css" type="text/css" />
+</head>
+<body>
+<h1>Actions page</h1>
+<p>This page displays the actions that can be applied to the files.</p>
+<ul>
+  <li><a href="#changeext">Change extension</a></li>
+  <li><a href="#stringrepl">String replacement</a></li>
+  <li><a href="#multstrrepl">Multiple string remplacement</a></li>
+  <li><a href="#stringinsert">String insertion</a></li>
+  <li><a href="#movestring">Move string</a></li>
+  <li><a href="#chardel">Characters deletion</a></li>
+  <li><a href="#enum">Enumeration</a></li>
+  <li><a href="#mp3">Use mp3 tag info</a></li>
+  <li><a href="#datetime">Use date &amp; time</a></li>
+  <li><a href="#random">Random names</a></li>
+  <li><a href="#case">Change case</a></li>
+  <li><a href="#fromlist">Take names from list</a></li>
+  <li><a href="#regexp">Regular expression</a></li>
+  <li><a href="#exif">Use EXIF info</a></li>
+</ul>
+<p>This page has also commands to manage batch files. In addition to the Files toolbar which is always visible, a toolbar to manage these batch files is displayed.
+  For more information about bathes, see <a href="batch_en.html">this page</a>.</p>
+<p>At the bottom of the window, there are two panels:</p>
+<ul>
+  <li><span="optname">Preview of selected file</span>, which displays the current and future name of the selected file of the Files list (or first file if none
+    is selected). This preview is refreshed at each change in actions paramters, allowing you to directly see the results of what you change in these parameters.</li>
+  <li><span="optname">Batch contents</span> (hidden by default), which displays the planned actions. It is described on the <a href="batch_en.html">"Batch"</a> page.</li>
+</ul>
+<p>You can hide/show these panels using the checkbox at the left of their title.</p>
+
+<h2 id="changeext">Change extension</h2>
+<p>You can override the extension by a new one, or append the new one after existing one if you check the option for that.</p>
+<p>The dot will be added in front of your extension. To remove current extension, simply leave the field empty.</p>
+
+<h2 id="stringrepl">String replacement</h2>
+<p>You can replace a text by another in the filenames. If the "Replace all occurences" option is not checked, only the first occurence of the text in each filename
+  will be replaced.</p>
+<p>This action can be also used for inserting a string before or after an existing one (if you do not know the position where the new string has to be placed).
+  For example, if you want to insert "2" after all the "test" contained in names, replace "test" by "test2".
+<p>It can also be used for deleting a specified string: simply leave the second field empty for that.</p>
+
+<h2 id="multstrrepl">Multiple string replacement</h2>
+<p>You can enter here multiple strings to replace. The left column contain the strings to search in names, the right column contains the text to put instead
+  (which can be an empty string).</p>
+<p>At first it was added for multiple character replacement, like replacing all accentuated characters by their latin equivalent. But I added support for
+  strings instead of characters for some languages where one character may have to be translated to several latin characters, or vice versa.</p>
+<p>You can save the grid contents to retreive it later from the drop-down list. Type a name in this field and click "Save".</p>
+<p>To add a line in the grid, press "Ctrl" and "Plus" (+) keys. The new line will be added before the selected cell.</p>
+<p>In the same way, pressing "Ctrl" and "Minus" (-) keys will remove current line.</p>
+
+<h2 id="stringinsert">String insertion</h2>
+<p>You can insert a string at any position, counting from begin or end of the name. Zero means that the string will be inserted before the first existing character
+  or after the last one.</p>
+<p>The extension is not included when counting characters, so an option to apply this to extension instead of name is provided.</p>
+<p>This action supports the following tags :</p>
+  <li><code>%name%</code> : Put the original name of the file, without extension</li>
+  <li><code>%ext%</code> : Put the original extension of the file, including the dot</li>
+  <li><code>%folderN%</code> : Put the N-th parent folder</li>
+<p>See the <a href="format_en.html#folder">chapter consacred to folder tag on the "Formatting" page</a> for more information.</p>
+
+<h2 id="movestring">Move string</h2>
+<p>You can move a predefined number of characters from a place to another of the name. Like for <a href="#stringinsert">string insertion</a>, the "From" and "To"
+  position start at 0 (where 0 = before first character or after last one).</p>
+<p>The "To" position counts the characters in the remaining ones. It means that first the specified number of characters are deleted, then the program will try
+  to insert them again.</p>
+<p>For example, in "abcdef" string, if you move 1 character from position 2 (the "c") to position 4, it will not appear after the "d" but after the "e": since the
+  "c" has been removed, the "d" becomes the third character and the "e" the fourth.</p>
+
+<h2 id="chardel">Characters deletion</h2>
+<p>You can specify here a number of characters to cut, from a position (like for <a href="#stringinsert">string insertion</a>) or after a string.</p>
+
+<h2 id="enum">Enumeration</h2>
+<p>For this action, you have to specify a mask. This mask has to contain at least the %num% tag, to indicate to the program where to put the number that it will
+  generate.</p>
+<ul>
+  <li><code>%name%</code> : Put the original name of the file, without extension</li>
+  <li><code>%ext%</code> : Put the original extension of the file, including the dot</li>
+  <li><code>%num%</code> : Put the current number</li>
+</ul>
+<p>For example, if you want to call your images "File 0001.jpg", "File 0002.jpg", etc. you can enter <code>File %num%%ext%</code>. You can put ".jpg" instead of
+  "%ext%" if you do not want to keep original extension (or if all are the files are JPEG).</p>
+<p>See the <a href="format_en.html#folder">"Formatting"</a> page for more information about masks and tags.</p>
+<p>"Start at" is the number to give to the first file. "Number of digits" represent the minimum number of digits to write (if the current number as less digits,
+  zeroes will be added in front of it; put this field at 1 if you do not want to insert zeroes in front of numbers). "Increment" is the amount added for each file.</p>
+<p>If the files are grouped by folders (i.e. the primary sort is the folder name, so the folders' contents are not mixed in the list) you can use the option "Go
+  back to start value...". It will restart at the "Start at" value when the current file is in another folder than the previous one. This allows to make same kind
+    of enumeration in lots of folders without having to do the operation for each folder separately.</p>
+
+<h2 id="mp3">Use mp3 tag info</h2>
+<p>Here again you have to enter a mask. There are a few special tags recognized. See the <a href="format_en.html#folder">"Formatting"</a> page for more information.</p>
+<ul>
+  <li><code>%author%</code> : Author/Artist</li>
+  <li><code>%title%</code> : Title of the song</li>
+  <li><code>%album%</code> : Album name</li>
+  <li><code>%year%</code> : Year</li>
+  <li><code>%genre%</code> : Genre/Category</li>
+  <li><code>%comm%</code> : Comment</li>
+  <li><code>%track%</code> : Track number, which is only present since ID3v1.1 and which is stored instead of the last byte of Comment field.</li>
+</ul>
+<p>%name% and %ext% tags are also available.</p>
+<p>Since a mp3 tag can contain any character, an option allows to remplace forbidden characters. Quotation marks "..." will be replaced by
+  double apostrophes ''...'' (two ' together). Question mark will be replaced by a point (dot). Other characters will be replaced by a dash.</p>
+
+<h2 id="datetime">Use date &amp; time</h2>
+<p>This action uses a different mask system. The tags are simple letters:</p>
+<ul>
+  <li><code>f</code> : Original filename (without extension)</li>
+  <li><code>e</code> : Original extension (including dot)</li>
+  <li><code>c</code> : Date and time using the standard format in Windows</li>
+  <li><code>d</code> : Day without a leading zero (1-31)</li>
+  <li><code>dd</code> : Day with a leading zero (01-31)</li>
+  <li><code>ddd</code> : Day, short name (Sun-Sat)</li>
+  <li><code>dddd</code> : Day, full name (Sunday-Saturday)</li>
+  <li><code>ddddd</code> : Date using Windows' short date format</li>
+  <li><code>dddddd</code> : Date using Windows' long date format</li>
+  <li><code>m</code> : Month without a leading zero (1-12)</li>
+  <li><code>mm</code> : Month with a leading zero (01-12)</li>
+  <li><code>mmm</code> : Month, short name (Jan-Dec)</li>
+  <li><code>mmmm</code> : Month, full name (January-December)</li>
+  <li><code>yy</code> : Year, 2-digit number (00-99)</li>
+  <li><code>yyyy</code> : Year, 4-digit number (0000-9999)</li>
+  <li><code>h</code> : Hour without a leading zero (0-23)</li>
+  <li><code>hh</code> : Hour with a leading zero (00-23)</li>
+  <li><code>n</code> : Minute without a leading zero (0-59)</li>
+  <li><code>nn</code> : Minute with a leading zero (00-59)</li>
+  <li><code>s</code> : Second without a leading zero (0-59)</li>
+  <li><code>ss</code> : Second with a leading zero (00-59)</li>
+  <li><code>am/pm</code> : Uses the 12-hour clock for the preceding h or hh (can be in uppercase)</li>
+  <li><code>a/p</code> : Uses the 12-hour clock for the preceding h or hh (can be in uppercase)</li>
+</ul>
+<p>If m or mm immediately follows h or hh, minute rather than month is used</p>
+<p>Be careful with date and time formats, especially when using Windows' format. The "/" and ":" are often used as delimiters, but they cannot be used in a filename.
+  So if you use these as default delimiter, you have to insert manually other delimiter between quotes, as explained in next paragraphs.</p>
+<p>Here all the character that are not part of the mask have to be put inside quotes (single or double). I recommend to use double quotes (quotation marks "...")
+  instead of single (apostrophes '...') so you can put apostrophes inside the quotes.</p>
+<p>Here are few valid examples:</p>
+<ul>
+  <li><code>yyyy'-'mm'-'dde</code> : Uses yyyy-mm-dd date format, foces separator to be "-", and keeps original extension.</li>
+  <li><code>"a'b" yyyymmdd".txt"</code> : Here is an example of including an apostrophe inside a quote. A ".txt" extension is forced.</li>
+  <li><code>yy'-'mm'-'dd hh'-'nn'-'sse</code> : Also includes the time in the name, in 24-hour format.</li>
+  <li><code>yy'-'mm'-'dd hh'-'nn'-'ss am/pme</code> : Same, but using 12-hour format (with am/pm) instead of 24-hour. The am/pm is displayed after the whole time.</li>
+</ul>
+<p>Since multiple files can have the same date (or time), an option can be checked to add a suffix after the duplicate files. This suffix is a long number. In a
+  future version it will be possible to control this better.</p>
+<p>You can choice to use either creation date/time or last modification date/time. The first one is the date when the file was put on the disk, the second one is
+  the date when the file was modified. If you recently put an old file on a new disk, the creation date may be more recent than the modification date. Most of the
+  time it is the modification date that is used.</p>
+
+<h2 id="random">Random names</h2>
+<p>Using the same mask system than <a href="#enum">Enumeration</a> and <a href="#mp3">Use mp3</a>, you can generate here new names that will contain a random part.
+  Like in these two actions, %name% and %ext% tags are also available.</p>
+<p>The <code>%random%</code> tag will put a random number, generated according to one of these options:</p>
+<ul>
+  <li><span class="optname">Random number</span> : Generates 8 digits randomly.</li>
+  <li><span class="optname">Windows tick count</span> : This is not really a random number, it is Windows' tick count. It is the number of milliseconds since
+    Windows started (and returns to zero after about 49.7 days), so these numbers are sequencial.</li>
+  <li><span class="optname">GUID</span> : These special strings are very long identifiers, designed to be unique (generated using network address, date, time and
+    other similar data). You can be sure that you will never get two identical GUID. The only downside is that they do not look very good, e.g.
+    "{FC7F6B42-A25A-47B1-96A7-52A12BC36A02}".</li>
+</ul>
+
+<h2 id="case">Change case</h2>
+<p>With this action it's only the case (uppercase/lowercase) of the letters that will change, so the name will not really change since names are case-insensitive
+  on Windows systems.</p>
+<p>You can make different kinds of changes. The first one, "Upper first letter following...", is usually used to make mixed-case names (i.e. you have to put in
+  the field characters like space, dash, dot, etc.)</p>
+<p>Usually it is better to keep the option "Use Windows' locale..." checked. This will ask to Windows to change the case, so depending of the current language
+  settings the accentuated characters will be properly modified. If this option is not checked, only standard latin letters (a..z) are modified.</p>
+
+<h2 id="fromlist">Take names from list</h2>
+<p>For this action, you simply have to give a list of the new name. Ant Renamer will rename the files to these names.</p>
+<p>By default it takes each line as a full name, but if you do not want to override extensions (i.e. take the name without extension from the list and then
+  append original extension) you can check the option "Append original extension..."</p>
+<p>You can also simply give a list of extensions, and check the "Use items as extensions..." option. Then the names will not be modified.</p>
+<p>If the list is too short, the files that do not have a matching line from the list will not be renamed. Same when an empty line is found in the file.</p>
+
+<h2 id="regexp">Regular expression</h2>
+<p>If you are familiar with the syntax of these expressions, you will be able to quickly extract part of the file names to generate a new name in one step
+  rathing than having to combine several actions. You can even achieve some changes that could not be done with the classic move/insert/delete actions.</p>
+<p>You need to provide to the program a regular expression and a "new name" string that contains $<i>nn</i> tags (where <i>nn</i> is a number) indicating where to place the
+  characters found in the original file name.</a>
+<p>For more information about the syntax of the regular expression, see <a href="regexp_en.html">the page dedicated to this</a>.</p>
+
+<h2 id="exif">Use EXIF info</h2>
+<p>Using the same mask system than several actions described above, you can generate with this action a new file name based on EXIF data contained in JPEG pictures.
+  This can be, for example, very useful as replacement of the <a href="#datetime">Use date &amp; time</a> action if the dates of your photos are not kept when
+  you transfer them from your digital camera.</a>
+<p>See <a href="format_en.html#folder">"Formatting"</a> page for more information. Due to the very long list of existing EXIF tags, they are listed
+  <a href="exif_tags.txt">on a separate page</a> rather than being included here.</p>
+
+</body>
+</html>

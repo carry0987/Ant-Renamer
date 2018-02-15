@@ -1,0 +1,70 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=English.chm
+Contents file=English.hhc
+Default topic=index_en.html
+Display compile progress=Yes
+Error log file=compiler.log
+Index file=English.hhk
+Language=0x809 English (United Kingdom)
+Title=Ant Renamer 2 - Help
+
+
+[FILES]
+main.css
+about_en.html
+history_en.html
+index_en.html
+batch_en.html
+options_en.html
+fonts_en.html
+params_en.html
+what_en.html
+main_en.html
+addfiles_en.html
+files_en.html
+actions_en.html
+log_en.html
+format_en.html
+regexp_en.html
+img\tabs.png
+img\go.png
+img\undo.png
+img\options.png
+img\ontop.png
+img\addfiles.png
+img\addfolders.png
+img\removesel.png
+img\removeall.png
+img\removedead.png
+img\preview.png
+img\addfilesoptions.png
+img\filestoolbar.png
+img\logtoolbar.png
+img\batchtoolbar.png
+img\clear.png
+img\open.png
+img\batchdel.png
+img\batchadd.png
+img\copy.png
+img\save.png
+
+[ALIAS]
+about=about_en.html
+history=history_en.html
+index=index_en.html
+batch=batch_en.html
+options=options_en.html
+fonts=fonts_en.html
+params=params_en.html
+what=what_en.html
+main=main_en.html
+addfiles=addfiles_en.html
+format=format_en.html
+regexp=regexp_en.html
+
+[MAP]
+#include map.h
+
+[INFOTYPES]
+

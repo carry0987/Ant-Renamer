@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Ant Renamer 2 Help</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<link rel="stylesheet" href="main.css" type="text/css" />
+</head>
+<body>
+<h1>Options window</h1>
+<p>This window is accessible through the <img src="img/options.png" alt="Options" /> "Options" icon of the main window. It is divided in four pages:</p>
+<h2 id="display">Display</h2>
+<ul>
+	<li><span class="optname">Real-time update when renaming files</span> : The lists contents are updated each time a file is renamed. It is quite slower if you
+		rename thousands of files or on a slow machine.</li>
+	<li><span class="optname">Auto-resize columns of Files list</span> : When enabled, the program will always try to fit the columns of Files list (main window)
+		in the width of the window.</li>
+	<li><span class="optname">Show icons in files list, based on file extension</span> : Displays icons on the left of the items of the Files list. It may slow
+		down a little the scrolling of the list, and since each ".exe" file has its own icon it may be quite slow for files coming from a network drive for example.</li>
+	<li><span class="optname">Force the following font for controls that have to display special characters</span> : Allows to specify the font to use for the
+		fields that may contain unicode characters, including Files and Log lists. If available, the fond "Arial Unicode MS" is used by default.
+		<a href="fonts_en.html">Click here for more information</a>.</li>
+	<li><span class="optname">Number of values to keep in history</span> : The drop-down lists remember the last text strings that you used. You can specify here
+		how much strings have to be kept (0 = none).</li>
+	<li><span class="optname">Autocomplete with history values when typing</span> : When you type the text, if it has the same beginning than an existing item of
+		the history this item will be copied in the field (the part you did not type is selected, so you can continue to type to overwrite it).</li>
+	<li><span class="optname">Icon set</span> : Icon set to use for toolbars. The program includes a set called "Scrows". Additional files can be put in the "Toolbars"
+		folder. Default installation includes two additional sets: "Windows XP" and "Windows XP Large" (the second one is the same but it has larger icons).</li>
+</ul>
+<h2 id="files">Files &amp; Folders</h2>
+<ul>
+	<li><span class="optname">Do not ask what to do, always use the following options</span> : Prevents from displaying a window each time you drag & drop files to
+		Ant Renamer window. You can specify here the options instead of having to select them each time. These options are detailed in the
+		chapter "<a href="addfiles_en.html#dragdrop">Adding files &amp; folders</a>".</li>
+	<li><span class="optname">Launch file on double click</span> : If this option is enabled, when you double-click on a file from the Files list it will be
+		opened like if you double-clicked it in Windows Explorer.</li>
+</ul>
+<h2 id="processing">Processing</h2>
+<ul>
+	<li><span class="optname">Copy instead of Rename</span> : Though the program is designed for renaming file, it can sometimes be useful to copy the files to a new
+		name instead of rename them.</li>
+	<li><span class="optname">Generate log</span> : If this is disabled, the Log page of the main window will not be filled with all the files processed.</li>
+	<li><span class="optname">Force directories</span> : A "\" character is not valid in a file name since it is used as path delimited (e.g. c:\Program Files\Ant
+		Renamer\Renamer.exe). So when a "\" is found in a file name the part before the "\" is considered as a folder. To be able to move the file to this folder,
+	it must exist. If this option is checked, before renaming/moving each file the program will check that the folder exists, and will create it if it is not found.</li>
+	<li><span class="optname">Detect a ":\" or "\\" as an absolute path</span> : When this option is enabled, if the new file name begins by "x:\" (x = any letter)
+	or by "\\", then the old path will not be added in front on it. This allows to move the files anywhere by giving the full path as new file name.</li>
+	<li><span class="optname">Consider the last "." in a folder name as extension delimiter like for files</span> : By default this option is disabled, as usually in 
+	modern Windows environment the folders do not have extensions like files do; in such case, the folder names are treated like files that do not have an extension. 
+	If the option is enabled, all what follows the last dot in a folder name will be considered as an extension, as it is done on files. This affects the behaviour of the 
+	options "Include extension" and "Apply to extension instead of name in several actions.</li>
+</ul>
+<h2 id="processing">Events</h2>
+<ul>
+	<li><span class="optname">When renaming starts</span> : Allows to define what to do before starting to rename files, when you click the "Go" button.</li>
+	<li><span class="optname">When renaming ends</span> : Allows to define what to do when renaming process is complete. The "Save log to file" option allows to store the
+	log contents to a file. See "<a href="log_en.html#save">Log page</a>" for more information.</li>
+</ul>
+<h2 id="languages">Language</h2>
+<ul>
+	<li>In this page you can select the language to use in the user interface.</li>
+	<li>Except for English, the langages can only be displayed correctly if your PC is configured to use the same character set than the langage uses. This depends
+	of the settings defined in the "Regional and language options" of Windows' Control Panel.</li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Ant Renamer 2 Help</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<link rel="stylesheet" href="main.css" type="text/css" />
+</head>
+<body>
+<h1>Paramètres en ligne de commande</h1>
+<p>Le programme ne supporte pas (encore) beaucoup de paramètres. Il n'est pas vraiment possible de renommer des fichiers en spécifiant tous les paramètres
+  depuis la ligne de commande, mais ils peuvent être fournis à l'aide d'un <a href="batch_fr.html">job sauvegardé</a>.</p>
+<p>Voici la liste des paramètres supportés :</p>
+<ul>
+  <li><code>-b FileName.arb</code> : Charge le fichier batch nommé FileName.arb</li>
+  <li><code>-g</code> : Démarre le traitement après que les fichiers aient été ajoutés et que le fichier batch ait été chargé</li>
+  <li><code>-x</code> : Quitte le programme après le traitement</li>
+  <li><code>-a</code> : Change le mode d'ajout de fichiers, sur base des lettres suivant le paramètre "-a" :
+    <ul>
+      <li><code>f</code> : Ajouter les fichiers dont les noms/dossiers qui suivent</li>
+      <li><code>F</code> : Ajouter les dossiers dont les noms suivent, ou contenu dans les dossiers, cf. exemples</li>
+      <li><code>r</code> : Ajout récursif du contenu des dossiers</li>
+    </ul>
+  </li>
+</ul>
+<p>Les noms de fichiers et chemins peuvent être relatifs ou absolus, et peuvent contenir des jokers (* et ?).</p>
+<p>Voici quelques exemples :</p>
+<ul>
+  <li><code>Renamer.exe -b d:\test.arb -af c:\data\*.* -g -x</code><br />
+    Ceci chargera le fichier de job spécifié, et ajoutera tous les fichiers contenus dans le dossier c:\data, démarrera le traitement puis fermera le programme</li>
+  <li><code>Renamer.exe -af c:\data</code><br />
+    Ceci ajoutera le fichier appelé c:\data</li>
+  <li><code>Renamer.exe -afr c:\data</code><br />
+    Ceci ajoutera le fichier appelé c:\data. S'il s'agit d'un dossier, il ajoutera les fichiers qu'il contient (recherche récursive)</li>
+  <li><code>Renamer.exe -aF c:\data</code><br />
+    Ceci ajoutera le dossier "data"</li>
+  <li><code>Renamer.exe -aF c:\data\*.*</code><br />
+    Ceci ajoutera les dossiers contenus dans le dossier "data", mais pas les fichiers</li>
+  <li><code>Renamer.exe -af c:\data\*.* c:\images\*.jpg c:\test.txt -afr c:\mp3\*.*</code><br />
+    Vous pouvez combiner plusieurs chemins/noms, utiliser des masques, et utiliser différents paramètres "-a" dans une ligne de commande</li>
+</ul>
+<p>Si un nom est donné sans paramètre "-a", il sera analysé comme dans Ant Renamer 2.07 (et précédents) : si le fichier se termine par ".arb", il est
+  chargé comme un fichier de job ; si un dossier est donné, son contenu est ajouté récursivement (fichiers uniquement, ne supporte pas les jokers, requiert un nom
+  complet).</p>
+<p>Il est possible d'ajouter Ant Renamer dans la liste "Envoyer vers" (dans le menu qui apparaît lorsque vous cliquez avec le bouton droit sur un dossier dans
+  l'Explorateur Windows).
+  Ceci ajoute donc la possibilité d'envoyer un dossier à Ant Renamer depuis son menu contextuel, pour charger son contenu dans la liste de fichiers.
+  Pour faire cela, allez dans "Démarrer"  -&gt; "Exécuter" et tapez <code>sendto</code>. Une fenêtre de dossier devrait s'ouvrir ; placez là un raccourci vers
+  Ant Renamer.</p>
+</body>
+</html>

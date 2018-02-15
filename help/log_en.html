@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Ant Renamer 2 Help</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<link rel="stylesheet" href="main.css" type="text/css" />
+</head>
+<body>
+<h1>Log page</h1>
+<p>This page is filled with the results of the renaming process.</p>
+<p>In addition to the Files toolbar which is always visible, a toolbar for the log is displayed:<br />
+<img src="img/logtoolbar.png" alt="Log toolbar" /></p>
+<p>Here are the commands:</p>
+<ul>
+  <li><img src="img/filter.png" alt="Filter" /> "Filter" button will show a menu, which allows you to specify which kind of items you want to see in the log
+    (depending of their status; see next paragraph).</li>
+  <li><img src="img/clear.png" alt="Clear" /> "Clear" button will empty the log.</li>
+  <li><img src="img/save.png" alt="Save" /> "Save" button will open a standard file selection window, allowing you to choose where to save the log contents.</li>
+  <li><img src="img/copy.png" alt="copy" /> "Copy" button will copy the log contents to Windows' clipboard.</li>
+</ul>
+<p>When the renaming was fine, a line in the log is added specifying the old and new name of the file. It is written in green.</p>
+<p>In the case the file was not renamed, either an simple message (in blue) or an error (in red) is displayed.</p>
+<p>The first case is caused by identical destination name (no need to rename the file) or if the file does not contain ID3 info (for mp3 renaming). It can also
+  happen when the source file does not exist anymore (e.g. you moved it manually).</p>
+<p>The errors can be caused by lots of things. For example, if the new target name is already used by another file, if the name contains invalid characters or
+  if the file is locked by a program. Usually the message written is the one that Windows returns.</p>
+<p>If you get a message "The operation completed successfuly" listed as an error, it means that the real error message has been lost or that the error was not
+  properly detected. Please contact me if you can reproduce the problem.</p>
+<h2 id="save">Automatically save log to file</h2>
+<p>This can be done with the "Save log to file" option from the <a href="options_en.html#processing">Options window</a>.</p>
+<p>If the option is enabled, after the renaming operation the contents of the log will be stored in a text file (encoded in UTF-8).</p>
+<p>This file has two columns (delimited by a tab character). The first one contains a "v" for successful operations and a "x" for errors. The second one contains
+  the message.</p>
+<p>If the "Append" option is also enable, the file will not be overwritten: new log entries will be added at the end.</p>
+</body>
+</html>

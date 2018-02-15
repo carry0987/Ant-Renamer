@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Ant Renamer 2 Help</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<link rel="stylesheet" href="main.css" type="text/css" />
+</head>
+<body>
+<h1>Command-line parameters</h1>
+<p>The program does not (yet) support lots of parameters. It is not really possible to rename files by specifying all the rename parameters from the command
+  line, but they can be given through a <a href="batch_en.html">saved batch file</a>.</p>
+<p>Here is the list of supported parameters:</p>
+<ul>
+  <li><code>-b FileName.arb</code> : Loads the batch file called FileName.arb</li>
+  <li><code>-g</code> : Launches the renaming process after files have been added and batch file loaded</li>
+  <li><code>-x</code> : Quits the program after the renaming process</li>
+  <li><code>-a</code> : Change the file add mode, based on the letters following the "-a" parameter:
+    <ul>
+      <li><code>f</code> : Add files from filenames/paths that follow</li>
+      <li><code>F</code> : Add folders that follow, or contained in folders, see examples</li>
+      <li><code>r</code> : Recursive addition of folders' contents</li>
+    </ul>
+  </li>
+</ul>
+<p>The filenames and paths can be relative or absolute, and they can contain wildcards (* and ?).</p>
+<p>Here are some examples:</p>
+<ul>
+  <li><code>Renamer.exe -b d:\test.arb -af c:\data\*.* -g -x</code><br />
+    This will load the batch file specified, add all files contained in c:\data folder, start renaming and then exit</li>
+  <li><code>Renamer.exe -af c:\data</code><br />
+    This will add the file called c:\data</li>
+  <li><code>Renamer.exe -afr c:\data</code><br />
+    This will add the file called c:\data. If it is a folder, it will add the files that it contains (recursive search)</li>
+  <li><code>Renamer.exe -aF c:\data</code><br />
+    This will add the "data" folder</li>
+  <li><code>Renamer.exe -aF c:\data\*.*</code><br />
+    This will add the folders containted in the "data" folder, but not the files</li>
+  <li><code>Renamer.exe -af c:\data\*.* c:\images\*.jpg c:\test.txt -afr c:\mp3\*.*</code><br />
+    You can combine several paths/filenames, use masks, and use different "-a" parameters in one command line</li>
+</ul>
+<p>If a name is given without any "-a" parameter, it will be analyzed like in Ant Renamer 2.07 (and older) : if a filename ending by ".arb" is given,
+  it is loaded as batch file; if a folder is given, its contents is added recursively (files only, does not support wildcards, requires a full folder name).</p>
+<p>It is possible to add Ant Renamer in the "Send to" list (in the menu that appears when you click with right mouse button on a folder in Windows Explorer).
+  So this adds the possibility to send a folder to Ant Renamer from its contextual menu, to load its content in the files list.
+  To do that, go to "Start" -&gt; "Run" and type <code>sendto</code>. A folder window should open; place there a shortcut to Ant Renamer.</p>
+</body>
+</html>

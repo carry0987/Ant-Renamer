@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Aide pour Ant Renamer 2</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<link rel="stylesheet" href="main.css" type="text/css" />
+</head>
+<body>
+<h1>Page "Opérations"</h1>
+<p>Cette page affiche les opérations qui peuvent être effectuées sur les fichiers.</p>
+<ul>
+  <li><a href="#changeext">Changer l'extension</a></li>
+  <li><a href="#stringrepl">Remplacement de chaîne</a></li>
+  <li><a href="#multstrrepl">Remplacement de chaînes multiples</a></li>
+  <li><a href="#stringinsert">Insertion de chaîne</a></li>
+  <li><a href="#movestring">Déplacement d'une chaîne</a></li>
+  <li><a href="#chardel">Suppression de caractères</a></li>
+  <li><a href="#enum">Énumération</a></li>
+  <li><a href="#mp3">Infos des tags mp3</a></li>
+  <li><a href="#datetime">Date et heure</a></li>
+  <li><a href="#random">Noms aléatoires</a></li>
+  <li><a href="#case">Changement de casse</a></li>
+  <li><a href="#fromlist">Noms à partir d'une liste</a></li>
+  <li><a href="#regexp">Expressions rationnelles</a></li>
+  <li><a href="#exif">Infos EXIF</a></li>
+</ul>
+<p>Cette page possède également des fonctionnalités pour gérer des jobs. En plus de la barre d'outils Fichiers qui est toujours visible, une barre d'outils pour
+  gérer ces jobs est affichée. Pour plus d'informations à propos des jobs, consultez <a href="batch_fr.html">cette page</a>.</p>
+<p>En bas de la fenêtre, il y a deux cadres :</p>
+<ul>
+  <li><span="optname">Aperçu du fichier sélectionné</span>, qui affiche le nom actuel et le futur nom du fichier sélectionné dans la liste des Fichiers
+    (ou le premier fichier si aucun n'est sélectionné). Cet apreçu est rafraîchi à chaque changement des paramètres d'une opération, vous permettant de voir
+    directement l'impact de ce que vous changez dans ces paramètres.</li>
+  <li><span="optname">Contenu du job</span> (caché par défaut), qui affiche les opérations planifiées. Il est décri sur la page <a href="batch_fr.html">"Jobs"</a>.</li>
+</ul>
+<p>Vous pouvez cacher/afficher ces cadres en utilisant la case à cocher à gauche de leur titre.</p>
+
+<h2 id="changeext">Changer l'extension</h2>
+<p>Vous pouvez remplacer l'extension par une nouvelle, ou en ajouter une nouvelle après celle qui existe si vous activez l'option correspondante.</p>
+<p>Le point sera ajouté devant l'extension. Pour supprimer l'extension existante, laissez simplement le champ vide.</p>
+
+<h2 id="stringrepl">Remplacement de chaîne</h2>
+<p>Vous pouvez remplacer un texte par un autre dans les noms de fichiers. Si l'option "Remplacer toutes les occurences" n'est pas activée, seule la première
+  occurence du texte dans chaque nom de fichier sera remplacé.</p>
+<p>Cette opération peut aussi être utilisée pour insérer une chaîne devant un autre (si vous ne connaissez pas la position exacte où doit être mise la nouvelle chaîne).
+  Par exemple, si vous voulez insérer "2" après les "test" contenus dans les noms, remplacez "test" par "test2".
+<p>Elle peut également être utilisée pour supprimer une chaîne spécifiée : laissez simplement le second champ vide.</p>
+
+<h2 id="multstrrepl">Remplacement de chaînes multiples</h2>
+<p>Vous pouvez entrer ici plusieurs chaînes à remplacer. La colonne de gauche contient les chaînes à rechercher dans les noms, la colonne de droite contient le texte
+  à mettre à la place (qui peut être une chaîne vide).</p>
+<p>À l'origine cette opération a été ajoutée pour le remplacement de caractères multiples, comme remplacer les caractères accentués par leur équivalent latin. Mais
+  j'ai ajouté le suppose pour des chaînes plutôt que des caractères pour certaines langues où un caractère peut correspondre à plusieurs caractères latins, ou
+  l'inverse.</p>
+<p>Vous pouvez sauver le contenu de la grille pour le récupérer plus tard depuis la liste déroulante. Tapez un nom dans ce champ et cliquez "Sauver".</p>
+<p>Pour ajouter une ligne à la grille, pressez les touches "Ctrl" et "Plus" (+). La nouvelle ligne sera ajoutée avant la ligne sélectionnée.</p>
+<p>De la même manière, presser les touches "Ctrl" et "Moins" (-) supprimera la ligne courante.</p>
+
+<h2 id="stringinsert">Insertion de chaîne</h2>
+<p>Vous pouvez insérer une chaîne à n'importe quelle position, à partir du début ou de la fin. Zéro signifie que la chaîne sera insérée avant le premier caractère
+  existante ou après le dernier.</p>
+<p>L'extension n'est pas comprise dans le compte des caractère, d'où une option pour appliquer cela à l'extension plutôt qu'au nom.</p>
+<p>Cette opération supporte les tags suivants :</p>
+  <li><code>%name%</code> : Nom original du fichier, sans extension</li>
+  <li><code>%ext%</code> : Extension originale du fichier, incluant le point</li>
+  <li><code>%folderN%</code> : N-ième dossier parent</li>
+</ul>
+<p>Consultez le <a href="format_fr.html#folder">chapitre consacré au tag "folder" sur la page "Formatage de chaînes"</a> pour plus d'informations.</p>
+
+<h2 id="movestring">Déplacement d'une chaîne</h2>
+<p>Vous pouvez déplacer un nombre prédéfini de caractères d'un endroit à l'autre du fichier. Comme pour l'<a href="#stringinsert">insertion de chaîne</a>,
+  les champs "À partir de la position"  et "Vers la position" commencent à 0 (où 0 = avant le premier caractère ou après le dernier).</p>
+<p>La position "Vers" compte les caractères parmis ceux qui restent. Cela signifie que d'abord le nombre de caractères spécifiés est ôté de la chaîne,
+  ensuite le prorgramme va essayer de les réinsérer.</p>
+<p>Par exemple dans la chaîne "abcdef", si vous déplacez 1 caractère de la position 2 (le "c") à la position 4, il n'apparaîtra pas après le "d" mais après
+  le "e" : comme le "c" a été retiré, le "d" devient le troisième caractère et le "e" le quatrième.</p>
+
+<h2 id="chardel">Suppression de caractères</h2>
+<p>Vous pouvez spécifier ici un nombre de caractères à supprimer, depuis une position (comme pour l'<a href="#stringinsert">insertion de chaîne</a>)
+  ou après une chaîne.</p>
+
+<h2 id="enum">Énumération</h2>
+<p>Pour cette action, vous devez spécifier un masque. Ce masque doit contenir au moins le tag %num% pour indiquer au programme où placer le numéro qu'il générera.</p>
+<ul>
+  <li><code>%name%</code> : Nom original du fichier, sans extension</li>
+  <li><code>%ext%</code> : Extension originale du fichier, incluant le point</li>
+  <li><code>%num%</code> : Le numéro courant</li>
+</ul>
+<p>Par exemple, si vous voulez appeler vos images "Fichier 0001.jpg", "Fichier 0002.jpg", etc. vous pouvez entrer <code>Fichier %num%%ext%</code>. Vous pouvez
+  mettre simplement ".jpg" à la place de "%ext%" si vous ne désirez pas conserver l'extension originale (ou si tous les fichiers sont des JPEG).</p>
+<p>Consultez la page <a href="format_fr.html#folder">"Formatage"</a> pour plus d'informations au sujet des masques et tags.</p>
+<p>Le champ "Démarrer à" est le numéro à donner au premier fichier. "Nombre de chiffres" représente le nombre minimal de chiffres à écrire (si le nombre courant
+  possède moins de chiffres, des zéros seront ajoutés devant ; laissez le champ à 1 si vous ne voulez pas insérer de zéros devant les nombres).
+  "Incrémenter de" est le nombre à additionner pour chaque fichier.</p>
+<p>Si les fichiers sont groupés par dossier (c'est-à-dire que le tri principal est sur le nom de dossier, donc que les contenus des dossiers ne sont pas mélangés
+  dans la liste) vous pouvez utiliser l'option "Retour à la valeur de démarrage...". Cela provoquera un retour à la valeur "Démarrer à" quand le fichier courant
+  est dans un autre dossier que le précédent. Ceci permet de faire le même genre d'énumération dans un grand nombre de dossiers sans avoir à répéter l'opération
+  pour chaque dossier séparément.</p>
+
+<h2 id="mp3">Infos des tags mp3</h2>
+<p>Ici encore vous avez à entrer un masque. Il y a quelques tags spéciaux qui sont reconnus. Consultez la page <a href="format_fr.html#folder">"Formatage"</a>
+  pour plus d'informations.</p>
+<ul>
+  <li><code>%author%</code> : Auteur/Artiste</li>
+  <li><code>%title%</code> : Titre de la chanson</li>
+  <li><code>%album%</code> : Nom de l'album</li>
+  <li><code>%year%</code> : Année</li>
+  <li><code>%genre%</code> : Genre/Catégorie</li>
+  <li><code>%comm%</code> : Commentaire</li>
+  <li><code>%track%</code> : Numéro de piste, qui n'est présent que depuis ID3v1.1 et qui est stocké dans le dernier octet du champ Commentaire.</li>
+</ul>
+<p>Les tags %name% and %ext% sont aussi disponibles.</p>
+<p>Comme un tag mp3 pour contenir n'importe quel caractère, une option permet de remplacer les caractères interdits. Les quillemets "..."
+  seront remplacés par des doubles apostrophes ''...'' (deux ' ensemble). Les points d'interrogation seront remplacés par un point. Les autres caractères seront
+  remplacés par un tiret.</p>
+
+<h2 id="datetime">Date et heure</h2>
+<p>Cette action utilise un système de masque différent. Les tags sont de simples lettres :</p>
+<ul>
+  <li><code>f</code> : Nom de fichier d'origine (sans extension)</li>
+  <li><code>e</code> : Extension d'origine (incluant le point)</li>
+  <li><code>c</code> : Date et heure au format standard défini dans Windows</li>
+  <li><code>d</code> : Jour sans zéro frontal (1-31)</li>
+  <li><code>dd</code> : Jour avec zéro frontal (01-31)</li>
+  <li><code>ddd</code> : Jour, nom court (Dim-Sam)</li>
+  <li><code>dddd</code> : Jour, nom long (Dimanche-Samedi)</li>
+  <li><code>ddddd</code> : Date au format court défini dans Windows</li>
+  <li><code>dddddd</code> : Date au format long défini dans Windows</li>
+  <li><code>m</code> : Mois sans un zéro frontal (1-12)</li>
+  <li><code>mm</code> : Mois avec un zéro frontal (01-12)</li>
+  <li><code>mmm</code> : Mois, nom court (Jan-Déc)</li>
+  <li><code>mmmm</code> : Mois, nom long (Janvier-Décembre)</li>
+  <li><code>yy</code> : Année sur 2 chiffres (00-99)</li>
+  <li><code>yyyy</code> : Année sur 4 chiffres (0000-9999)</li>
+  <li><code>h</code> : Heure sans zéro frontal (0-23)</li>
+  <li><code>hh</code> : Heure avec zéro frontal (00-23)</li>
+  <li><code>n</code> : Minutes sans zéro frontal (0-59)</li>
+  <li><code>nn</code> : Minutes avec zéro frontal (00-59)</li>
+  <li><code>s</code> : Secondes sans zéro frontal (0-59)</li>
+  <li><code>ss</code> : Secondes avez zéro frontal (00-59)</li>
+  <li><code>am/pm</code> : Utilise le format sur 12 heures pour le h ou hh précédent</li>
+  <li><code>a/p</code> : Utilise le format sur 12 heures pour le h ou hh précédent</li>
+</ul>
+<p>Si m ou mm suit h ou hh, il est interprété comme minutes plutôt que mois</p>
+<p>Soyez prudent avec les formats de date et heure, surtout en utilisant le format de Windows. Les "/" et ":" sont souvent utilisés comme délimiteurs, mais ils ne
+  peuvent pas être utilisés dans un nom de fichier. Donc si vous le avez comme délimiteurs par défaut, vous avez à manuellement insérer d'autres délimiteurs entre
+  quillemets, comme expliqué dans les paragraphes suivantes.</p>
+<p>Ici tous les caractères qui ne font pas partie du masque doivent être mis entre quillemets ou apostrophes. Je recommande d'utiliser les guillemets "..." plutôt
+  que les apostrophes '...' comme cela vous pouvez utiliser des apostrophes à l'intérieur des guillemets.</p>
+<p>Voici quelques exemples valides :</p>
+<ul>
+  <li><code>yyyy'-'mm'-'dde</code> : Utilise le format de date yyyy-mm-dd, en forçant le séparateur à être "-", et conserve l'extension originale.</li>
+  <li><code>"a'b" yyyymmdd".txt"</code> : Voici un exemple d'inclusion d'apostrophes dans des guillemets. Une extension ".txt" est forcée.</li>
+  <li><code>yy'-'mm'-'dd hh'-'nn'-'sse</code> : Inclut aussi l'heure dans le nom, au format 24h.</li>
+  <li><code>yy'-'mm'-'dd hh'-'nn'-'ss am/pme</code> : Idem, mais en utilisant le format 12h (avec am/pm) à la place de 24h. Le symbole am ou pm est affiché après
+    l'heure complète.</li>
+</ul>
+<p>Étant donné que plusieurs fichiers peuvent avoir la même date (ou heure), une option peut être activée pour ajouter un suffixe aux doublons. Ce suffixe est un
+  long numéro. Dans une future version il sera possible de contrôler cela de manière plus efficace.</p>
+<p>Vous pouvez choisir soit la date de création soit la date de dernière modification. La première est la date à laquelle le fichier a été placé sur le disque,
+  la seconde est la date à laquelle le fichier a été modifié. Si vous avez récemment placé un vieux fichier sur un nouveau disque, la date de création peut être
+  postérieure à la date de modification. La plupart du temps on utilise la date de modifications.</p>
+
+<h2 id="random">Noms aléatoires</h2>
+<p>En utilisant le même système de masque que l'<a href="#enum">énumeration</a> et les <a href="#mp3">tags mp3</a>, vous pouvez générer ici de nouveaux noms qui
+  contiendront une partie aléatoire. Comme dans ces deux opérations, les tags %name% et %ext% sont aussi disponibles.</p>
+<p>Le tag <code>%random%</code> insèrera un nombre aléatoire, généré selon l'option choisie :</p>
+<ul>
+  <li><span class="optname">Nombre aléatoire</span> : Génère 8 chiffres aléatoires.</li>
+  <li><span class="optname">Compteur Windows</span> : Il ne s'agit pas réellement d'un nombre aléatoire. il s'agit du compteur de Windows (tick count). C'est le
+    nombre de millisecondes écoulées depuis le démarrage de Windows (qui revient à zéro après environ 49,7 jours), donc ces nombres sont séquentiels.</li>
+  <li><span class="optname">GUID</span> : Il s'agit de chaînes spéciales qui sont de très longs identifiants, destinés à être uniques (générés à partir de l'adresse
+    réseau, la date, l'heure et autres données similaires). Vous pouvez être sûr que vous n'obtiendrai jamais deux GUID identiques. Le seul désavantage est que ça n'a pas un très bel aspect : "{FC7F6B42-A25A-47B1-96A7-52A12BC36A02}" par exemple.</li>
+</ul>
+
+<h2 id="case">Changement de casse</h2>
+<p>Avec cette opération ce n'est que la casse (majuscule/minuscule) des lettres qui change, donc le nom ne changera pas vraiment vu que les noms ne sont pas
+  sensibles à la casse sous Windows.</p>
+<p>Vous pouvez faire différents types de changements. Le premier, "Mettre en majuscule la première lettre suivant...", est généralement utilisé pour faire des
+  noms à casse mixte (vous devez mettre dans le champ des caractères tels que l'espace, le tiret, le point, etc.)</p>
+<p>Il est en général conseillé de garder l'option "Utiliser les options régionales..." activée. De cette manière il sera demandé à Windows de changer la casse,
+  donc la modification des caractères accentués se fera en fonction des paramétres de langue définis dans Windows. Si cette option n'est pas activée, seuls les
+    caractères latins standard (a..z) seront modifiés.</p>
+
+<h2 id="fromlist">Noms à partir d'une liste</h2>
+<p>Pour cette opération vous avez juste à fournir une liste des nouveaux noms. Ant Renamer renommera les fichiers avec ces noms.</p>
+<p>Par défaut il prend chaque ligne comme un nom complet, mais si vous ne voulez pas écraser les extensions (c'est-à-dire prendre le nom sans extension de la
+  liste et y ajouter l'extension originale) vous pouvez cocher l'option "Ajouter l'extension originale..."</p>
+<p>Vous pouvez aussi simplement fournir une liste d'extensions, et cocher l'option "Utiliser les éléments comme extensions...". Les noms ne seront alors pas modifiés.</p>
+<p>Si la liste est trop courte, les fichiers qui n'ont pas une ligne correspondante ne seront pas renommés. Idem quand une ligne vide est trouvée dans le fichier.</p>
+
+<h2 id="regexp">Expressions rationnelles</h2>
+<p>Si la syntaxe de ces expressions vous est familière, vous pourrez rapidement extraire des parties des noms de fichiers pour générer un nouveau nom en une opération
+  plutôt que d'avoir à combiner plusieurs actions. Vous pourrez même obtenir certaines transformations qui n'auraient pas été possibles via les actions classiques
+  de déplacement/insertion/suppression.</p>
+<p>Vous aurez à fournir au programme une expression rationnelle et une chaîne servant de "nouveau nom", contenant des tags $nn (où nn est un nombre) indiquant où
+  doivent venir se placer les caractères trouvés dans le nom de fichier original.</a>
+<p>Pour plus d'informations sur la syntaxe des expressions rationnelles, consultez <a href="regexp_fr.html">la page qui leur est consacrée</a>.</p>
+
+<h2 id="exif">Infos EXIF</h2>
+<p>En utilisant le même système de masque que plusieurs des actions décrites ci-dessus, vous pouvez générer un nouveau nom de fichier sur base des données EXIF
+  contenues dans les images JPEG. Ceci peut, par exemple, être un bon moyen de remplacer l'action <a href="#datetime">Date et heure</a> si les dates de vos photos
+  ne sont pas conservées lors de leur transfert depuis votre appareil photo numérique.</a>
+<p>Consultez la page <a href="format_fr.html#folder">"Formatage"</a> pour plus d'informations. Étant donné la très longue liste de tags EXIF existant, celle-ci est
+  disponible <a href="exif_tags.txt">sur une page séparée</a> plutôt que d'être directement présentée ici.</p>
+
+</body>
+</html>

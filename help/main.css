@@ -1,0 +1,85 @@
+body
+{
+  background: #FFFFFF;
+}
+
+img
+{
+  border: none;
+  vertical-align: text-bottom;
+}
+
+p, ul, ol, li, dl, dt, dd, td
+{
+  font-size: 10pt;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  color: black;
+  background: white;
+}
+
+ul
+{
+  list-style-type: disc;
+}
+
+p.centered
+{
+  text-align: center;
+}
+
+p.version
+{
+  font-style: italic;
+  text-align: center;
+}
+
+h1
+{
+  font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+  font-size: 15pt;
+  text-align: center;
+  font-weight: bold;
+}
+
+h2
+{
+  font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: bold;
+}
+
+code, pre
+{
+  font-size: 10pt;
+  font-family: Courier New, Courier, monospace;
+  color: black;
+  background: #EEEEEE;
+}
+
+hr
+{
+  border-color: black;
+  border-style: solid;
+}
+
+a:link, a:visited
+{
+  color: #003399;
+  background: white;
+}
+
+a:hover, a:active
+{
+  color: #CC0000;
+  background: white;
+}
+
+span.optname
+{
+  font-weight: bold;
+}
+
+table.langlist td
+{
+  padding-left: 1.5em;
+}

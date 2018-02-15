@@ -1,0 +1,70 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=French.chm
+Contents file=French.hhc
+Default topic=index_fr.html
+Display compile progress=Yes
+Error log file=compiler.log
+Index file=French.hhk
+Language=0x40c French (France)
+Title=Ant Renamer 2 - Aide
+
+
+[FILES]
+main.css
+about_fr.html
+history_fr.html
+index_fr.html
+batch_fr.html
+options_fr.html
+fonts_fr.html
+params_fr.html
+what_fr.html
+main_fr.html
+addfiles_fr.html
+files_fr.html
+actions_fr.html
+log_fr.html
+format_fr.html
+regexp_fr.html
+img\tabs.png
+img\go.png
+img\undo.png
+img\options.png
+img\ontop.png
+img\addfiles.png
+img\addfolders.png
+img\removesel.png
+img\removeall.png
+img\removedead.png
+img\preview.png
+img\addfilesoptions.png
+img\filestoolbar.png
+img\logtoolbar.png
+img\batchtoolbar.png
+img\clear.png
+img\open.png
+img\batchdel.png
+img\batchadd.png
+img\copy.png
+img\save.png
+
+[ALIAS]
+about=about_fr.html
+history=history_fr.html
+index=index_fr.html
+batch=batch_fr.html
+options=options_fr.html
+fonts=fonts_fr.html
+params=params_fr.html
+what=what_fr.html
+main=main_fr.html
+addfiles=addfiles_fr.html
+format=format_fr.html
+regexp=regexp_fr.html
+
+[MAP]
+#include map.h
+
+[INFOTYPES]
+

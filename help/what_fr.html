@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Aide pour Ant Renamer 2</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<link rel="stylesheet" href="main.css" type="text/css" />
+</head>
+<body>
+<h1>Ce que le programme fait...</h1>
+<p>Ce programme est fait pour renommer des fichiers. Il se contentera donc de toucher aux noms des fichiers, il ne modifiera pas leur contenu.</p>
+<p>Il a été fait pour renommer, mais dans les <a href="options_fr.html">Options</a> vous pouvez demander qu'il copie les fichiers au lieu de les renommer.</p>
+<p>Il peut <a href="batch_fr.html">stocker une liste prédéfinie d'opérations</a> pour les réutiliser plus tard.
+<p>Il supporte l'unicode, ce qui signifie que vous pouvez renommer des fichiers qui ont des caractères grecs, japonais, chinois, arabes ou n'importe quelle autre
+  langue. Comme la plupart des programmes ont des problèmes avec ce genre de noms, il peut être utile de les renommer vers des caractères latins (ASCII de base) par
+  exemple.</p>
+<h1>... et ce qu'il ne fait pas</h1>
+<p>Comme je l'ai dit, il ne modifiera pas le contenu des fichiers.</p>
+<p>Il ne va pas non plus modifier la date et l'heure des fichiers.</p>
+<p>Il ne modifie pas les tags ID3 contenus dans les mp3 ; il va seulement lire ces infos pour construire un nouveau nom de fichier.</p>
+<p>Il ne lit aucune info de fichiers autres que les mp3, et même pour les mp3 il ne lit que la version 1 de l'ID3, pas la version 2.</p>
+<p>Il ne peut pas être entièrement contrôlé depuis la ligne de commande, mais il supporte quelques <a href="params_fr.html">paramètres</a>.</p>
+<p>Notez que le contenu de cette ligne n'est pas définitif. À part pour ce qui est de la modification du contenu des fichiers, toutes les choses qu'il ne fait
+  pas peuvent apparaître dans les versions futures.</p>
+<h2>Bugs connus et limitations :</h2>
+<ul>
+  <li>L'unicode n'est supporté que sur les systèmes NT (Windows NT4, 2000, XP, Vista, 7, 8.x).</li>
+  <li>Les fichiers de job ne peuvent pas avoir de caractères unicode dans leur nom et chemin.</li>
+  <li>Idem pour le dossier où se trouve le programme, et pour la ligne de commande lorsqu'il est appelé avec des paramètres.</li>
+  <li>Depuis la version 2.04 le programme ne démarre pas sur certaines versions de Windows 95, cela semble causé par une fonction Unicode manquante sur
+    ces systèmes.</li>
+  <li>Dans l'action "Date et heure", si vous utilisez un format de date long (avec le jour ou le mois en toutes lettres, comme "Vendredi"), cela échouera
+    pour les jours ou mois qui ont des caractères spéciaux dans leur nom (comme "Décembre"). Ce bug sera corrigé prochainement, mais je dois trouver
+    comment faire cela.</li>
+</ul>
+</body>
+</html>

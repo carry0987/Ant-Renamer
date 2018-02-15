@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Ant Renamer 2 Help</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<link rel="stylesheet" href="main.css" type="text/css" />
+</head>
+<body>
+<h1>Adding files &amp; folders</h1>
+<p>There are several ways to add files to the list:</p>
+<ul>
+  <li><a href="#addfiles">"Add files" button</a> in main window</li>
+  <li><a href="#addfolders">"Add folders" button</a> in main window</li>
+  <li><a href="#dragdrop">Drag &amp; drop files</a> from Windows Explorer</li>
+</ul>
+<h2 id="addfiles">"Add files" button</h2>
+<p>When you click the <img src="img/addfiles.png" alt="Add files" /> "Add files" button a standard Windows file selection appears. This window is controlled by
+  Windows, so it works like in other programs. One thing to know is that the order of the files that will be returned by this window is not especially the order
+  that you see. First, Windows sends the file that is focused (i.e. it has a small dotted border, it is usually the last file that you selected). Then it sends
+  all the files that follow it. When it reaches the end, it jumps to the top to send remaining files.</p>
+<p>There may also be some speed problems when trying to add thousands of files. The window may take an eternity to send the filenames to the program. If this
+  is the case, use the <a href="#addfolders">"Add folders"</a> function instead.</p>
+<h2 id="addfolders">"Add folders" button</h2>
+<p>When you click the <img src="img/addfolders.png" alt="Add folders" /> "Add folders" button a window appears, allowing you to select one or several folders.
+  This window was not only designed to add folders to the list, but also their contents.</p>
+<p>A few options at the bottom of the window allow to specify what should be added to the list:<br /><img src="img/addfilesoptions.png" alt="Options for adding files" /></p>
+<p>The first one specifies if the files contained in selected folder(s) should be added or not. The second one specifies if the selected folder(s) should be added
+  or not. The third one specifies if the sub-folders of selected folder(s) have to be included too (this applies to all sub-levels, not only the first one).</p>
+<p>Currently, this window does not display network items or special devices that do not have their own drive letter (network drives that are mapped to a drive letter
+  will be displayed in the list). In the future this may be improved (at least for network items). Until then, a "Network" button allows to choose a folder from a
+  network drive. To add these, the <a href="#dragdrop">drag &amp; drop</a> may be easier than this window.</p>
+<h2 id="dragdrop">Drag &amp; drop files</h2>
+<p>You can drag &amp; drop files from Windows Explorer (and other program that are compatible with it, like Total Commander or Servant Salamander) directly to the
+  main window of Ant Renamer. This is usually a much easier way to add files than selecting them in the "Add files" window.</p>
+<p>By default, when you drop the files a window appears. It allows you to choose how you want to add the files. These options are the same than those
+  available in the <a href="#addfolders">"Add folders" window</a>. An option labelled "Do not ask again" allows to keep the select options for future drag &amp; drop,
+  so the window is not displayed again. If you check this option and want to discard it (or change the options), you can do that in the "Files &amp; Folders" page
+  of the <a href="options_en.html">Options window</a>. To bring back this window one time without changing its default behaviour, you can hold down the Ctrl or Shift key while dropping the files. This allows, for example,
+  to add a folder to the list when the default behaviour that you select is to only add files.</p>
+<p>The same limitations than for the "Add files" window apply (files order and speed problems with lots of files).</p>
+</body>
+</html>

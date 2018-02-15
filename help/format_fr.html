@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Ant Renamer 2 Help</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<link rel="stylesheet" href="main.css" type="text/css" />
+</head>
+<body>
+
+<h1>Formatage de chaînes</h1>
+
+<p>Pour certaines opérations, vous pouvez utiliser des tags spéciaux qui sont délimités par des caractères "%".</p>
+<p>Étant donné que le "%" est utilisé comme caractère spécial, pour obtenir un simple "%" dans le nom de fichier vous devez entrer alors "%%".</p>
+<p>Dans chaque opération qui supporte des tags spéciaux, les tags disponibles sont listés dans la zone "Notes" en dessous des paramètres de cette opération.</p>
+<p>Par exemple, l'opération d'<a href="actions_fr.html#mp3">Infos des tags mp3</a> supporte des tags relatifs à l'ID3, comme %author% et %title% en plus de %name% et
+  %ext%. Donc un masque typique pour les fichiers mp3 serait quelque chose comme <code>%author% - %title%%ext%</code> (%ext% inclut le point, donc nous ne
+  devons pas en mettre un dans le masque utilisé ici).</p>
+
+<hr />
+
+<p>Un tag %folderN% est souvent disponible. Ce tag vous permet d'utiliser le nom des dossiers parents dans le nom de fichier lui-même. C'est un peu compliqué à expliquer,
+  je vais donc vous donner quelques exemples.</p>
+<p>Si vous avez un fichier dans "c:\data\images\movies\poster.jpg" et que vous utilisez l'opération <a href="actions_fr.html#stringinsert">Insertion de chaîne</a> :</p>
+<ul>
+  <li>Si masque = <code>%folder1%&nbsp;-&nbsp;</code>, le fichier sera renommé en "movies - poster.jpg"</li>
+  <li>Si masque = <code>%folder2%&nbsp;-&nbsp;</code>, le fichier sera renommé en "images - poster.jpg"</li>
+  <li>etc.</li>
+</ul>
+<p>Vous pouvez aussi utiliser un chemin relatif, par exemple si vous avez plusieurs dossiers, contenant chacun beaucoup de fichiers, et que tous ces fichiers ne sont pas
+  spécialement uniques entre deux dossiers différents. Vous pouvez vouloir insérer le nom de dossier et ensuite déplacer tous les fichiers vers le dossier parent commun.
+  Voici un exemple ; vous avez les fichiers suivants :
+<ul>
+  <li>c:\data\images\movies\poster1.jpg</li>
+  <li>c:\data\images\games\poster1.jpg</li>
+  <li>c:\data\images\games\poster2.jpg</li>
+</ul>
+<p>Si vous les renommez avec l'Insertion de chaîne et que vous insérez une chaîne comme <code>../%folder1%&nbsp;</code> en position 0 à partir du début, vous obtiendrez
+  ceci dans le dossier "images" :</p>
+<ul>
+  <li>movies poster1.jpg</li>
+  <li>games poster1.jpg</li>
+  <li>games poster2.jpg</li>
+</ul>
+<p>Maintenant vous pouvez supprimer les dossiers vides "movies" &amp; "games".</p>
+<p>Si vous entrez un nombre négatif à la place, le compte sera fait à partir de la racine plutôt qu'à partir du dossier courant. Donc en utilisant toujours
+  "c:\data\images\movies\" comme dossier :</p>
+<ul>
+  <li><code>%folder-1%</code> = "c"</li>
+  <li><code>%folder-2%</code> = "data"</li>
+  <li><code>%folder-3%</code> = "images"</li>
+  <li>etc.</li>
+</ul>
+<p>En utilisant le tag %name%, vous pouvez aussi vouloir placer les fichiers dans un dossier qui pend le nom du fichier. Pour cela,
+  <a href="options_fr.html#processing">l'option "Forcer les dossiers"</a> doit être activée. Si vous avez les fichiers suivants :</p>
+<ul>
+  <li>cars.doc</li>
+  <li>cars.xls</li>
+  <li>cars.jpg</li>
+  <li>houses.doc</li>
+  <li>houses.xls</li>
+  <li>houses.jpg</li>
+</ul>
+<p>Toujours en utilisant l'opération d'Insertion de chaîne, en insérant une chaîne comme <code>%name%\</code> en position 0 à partir du début, vous aurez les trois
+  fichiers "cars" dans un dossier "cars", et les trois fichiers "houses" dans un dossier "houses".</p>
+<p>Lorsque l'on traite des dossiers, <code>%count%</code> et quelques dérivés sont disponibles :</p>
+<ul>
+  <li><code>%count%</code> = nombre de fichiers et sous-dossiers contenus dans le dossier traité</li>
+  <li><code>%countr%</code> = idem, mais prend aussi en compte ce qui est dans les sous-dossiers (récursif)</li>
+  <li><code>%countfiles%</code> = ne prend en compte que les fichiers</li>
+  <li><code>%countfilesr%</code> = idem, mais recherche aussi les fichiers dans les sous-dossiers (récursif)</li>
+  <li><code>%countfolders%</code> = ne prend en compte que les sous-dossiers</li>
+  <li><code>%countfoldersr%</code> = idem, mais recherche aussi les sous-dossiers dans les sous-dossiers (récursif)</li>
+</ul>
+
+<hr />
+
+<p>Pour les actions <a href="actions_fr.html#mp3">Infos des tags mp3</a> et <a href="actions_fr.html#exif">Infos EXIF</a>, il y a aussi un tag spécial : $if. Il
+  permet de faire un formatage conditionel. Par exemple, quand un champ est vide il se peut que vous ne vouliez pas afficher le " - " qui le suit. Ou mettre
+  une valeur spéciale.</p>
+<p>La syntaxe est la suivante : $if(condition,valeur-si-vrai,valeur-si-faux). Si "condition" n'est pas une chaîne vide, valeur-si-vrai sera utilisé. Dans le cas
+  constraire, valeur-si-faux sera utilisé. Comme vous pouvez avoir besoin des virgules et parenthèses dans la fonction $if, vous pouvez placer les valeurs entre
+  guillemets ("...") pour éviter qu'elles ne soient analysées. Soyez prudent avec cela : ils empêchent aussi les %tag% d'être analysés.</p>
+<p>Voici quelques exemples qui vous expliqueront ça mieux. Dans la liste de fichierd il y a deux fichiers mp3 qui ont un mauvais nom (1.mp3 et 2.mp3) mais qui ont
+  les tags ID3 valides suivants :</p>
+<ul>
+  <li>1.mp3: Auteur = Blur, Titre = Song 2, Album est vide, Piste est vide</li>
+  <li>2.mp3: Auteur = Vivaldi, Titre est vide, Album = Le Quattro Stagioni, Piste = 1</li>
+</ul>
+<p>Voici le résultat avec divers masques :</p>
+<p><code>%author% - %title%%ext%</code><br />
+Prend simplement l'auteur et le titre, séparés par un tiret. Ici nous n'utilisons pas la fonction if, et le résultat n'est pas terrible lorsque des chams sont vides.</p>
+<ul>
+  <li>Blur - Song 2.mp3</li>
+  <li>Vivaldi - .mp3</li>
+</ul>
+<p><code>%author%$if(%title%, - %title%,)%ext%</code><br />
+Prend l'auteur et, si le titre n'est pas vide, ajoute un tiret et le titre.</p>
+<ul>
+  <li>Blur - Song 2.mp3</li>
+  <li>Vivaldi.mp3</li>
+</ul>
+<p><code>%author%$if(%album%," ("%album%")",)$if(%title%,", "%title%,)%ext%</code><br />
+Prend l'auteur, si il existe et ajoute le nom de l'album entre parenthèses, ensuite s'il existe ajoute le titre séparé par une virgule.
+Ici vous pouvez voir que les parenthèses et la virgule doivent être placées entre guillemets pour ne pas être prises comme une marque de fin de fonction ou un
+  séparateur de valeurs.</p>
+<ul>
+  <li>Blur, Song2.mp3</li>
+  <li>Vivaldi (Le Quattro Stagioni)</li>
+</ul>
+<p><code>%author%$if(%album%," ("%album%")",)$if(%title%,", "%title%,$if(%track%, - %track%,))%ext%</code><br />
+Comme le précédent, mais dans le if du titre nous ajoutons un autre if pour ajouter le numéro de piste seulement dans le cas où le titre est vide.</p>
+<ul>
+  <li>Blur, Song2.mp3</li>
+  <li>Vivaldi (Le Quattro Stagioni) - 1</li>
+</ul>
+
+</body>
+</html>
