@@ -1,0 +1,19 @@
+
+CorelButton v1.0
+Copyright (c) 1998 Peter Theill, ConquerWare
+
+------------------------------------------------------------------------------
+A standard TButton which mimic the buttons used in the new Corel products
+(e.g. WordPerfect Suite and Corel Photopaint).
+
+------------------------------------------------------------------------------
+
+Only tested under Delphi 3.0
+
+[antp] (c) 2003 Antoine Potten, BuyPin Software. Tested under Delphi 6 & 7.
+
+------------------------------------------------------------------------------
+Revision History
+------------------------------------------------------------------------------
+ 1.0	+ First public release.
+ 1.1  + [antp] Uses Windows XP theme if available instead of Corel style

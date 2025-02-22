@@ -1,0 +1,27 @@
+These components are those that I use in my projects and that
+I do not want to keep in separate packages :
+- Components that I made
+- CorelButton from http://www.theill.com/delphi.asp
+- Some components from JVCL http://jvcl.sourceforge.net/
+  (renamed to AntJv***) so I do not have to install this huge package
+
+*******************************************************************************
+
+(c) 2002-2004 Antoine Potten, and the creators of the components
+(credits kept in the .pas file of the components)
+
+software@antp.be
+htt://www.antp.be/software/
+
+The contents of this file are subject to the Mozilla Public License
+Version 1.1 (the "License"); you may not use this file except in compliance
+with the License. You may obtain a copy of the License at
+http://www.mozilla.org/MPL/MPL-1.1.html
+
+CorelButton is not covered by this licence. See AntCorelButton.pas and
+AntCorelButton.txt for more info
+
+Software distributed under the License is distributed on an "AS IS" basis,
+WITHOUT WARRANTY OF ANY KIND, either expressed or implied. See the License for
+the specific language governing rights and limitations under the License.
+
