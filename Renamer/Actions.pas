@@ -1,7 +1,7 @@
 (************************************************************************
  *                                                                      *
  *   Ant Renamer 2.x                                                    *
- *   (C) 2003-2015 Antoine Potten                                       *
+ *   (C) 2003-2024 Antoine Potten                                       *
  *   http://www.antp.be/software                                        *
  *                                                                      *
  ************************************************************************
@@ -228,6 +228,7 @@ type
       Mask:       WideString;
       AddSuffix:  Boolean;
       WhichDate:  Integer;
+      Offset:     Integer;
     end;
     function    Description: WideString; override;
   end;
@@ -303,6 +304,7 @@ type
   TRenActionExif = class(TRenAction)
   private
     FImgData:   TImgData;
+    FRegexp: TRegExpr;
   protected
     function    GetTagValue(const ATag: WideString; out AValue: WideString): Boolean; override;
     function    MakeNewName(const AFileName: WideString; IsFolder: Boolean): WideString; override;
@@ -312,7 +314,8 @@ type
     procedure   Finish; override;
   public
     Settings:   record
-      Mask:         WideString;
+      Mask:       WideString;
+      Offset:     Integer;
     end;
     function    Description: WideString; override;
   end;
@@ -364,7 +367,7 @@ uses
   TntWideStrUtils,
 
   thread, Global, VarMessages, ConstValues,
-  functions_files, functions_str, functions_strformat, dIPTC;
+  functions_files, functions_str, functions_strformat, dIPTC, DateUtils;
 
 {-------------------------------------------------------------------------------
   TRenActions
@@ -598,7 +601,7 @@ end;
 function TRenAction.GetTagValue(const ATag: WideString; out AValue: WideString): Boolean;
 var
   N: Integer;
-  CurPath: WideString;
+  NStr, CurPath: WideString;
 begin
   AValue := '';
   Result := False;
@@ -620,7 +623,11 @@ begin
   if StartsStr('folder', ATag) then
   begin
     CurPath := FFileName;
-    N := StrToIntDef(Copy(ATag, Length('folder') + 1, MaxInt), 0);
+    NStr := Copy(ATag, Length('folder') + 1, MaxInt);
+    if NStr = 'N' then
+      N := 1
+    else
+      N := StrToIntDef(NStr, 0);
     if N < 0 then
     begin
       if StartsStr('\\', CurPath) then
@@ -832,7 +839,7 @@ begin
     OldName := Copy(WideExtractFileExt(AFileName), 2, MaxInt);
   end else
   begin
-    if Settings.InclExt or (IsFolder and not GlobalSettings.FolderExt)  then
+    if Settings.InclExt or (IsFolder and not GlobalSettings.FolderExt) then
       OldName := WideExtractFileName(AFileName)
     else
       OldName := WideChangeFileExt(WideExtractFileName(AFileName), '');
@@ -841,7 +848,7 @@ begin
   if Settings.OnlyExt then
     Result := WideChangeFileExt(WideExtractFileName(AFileName), '.' + Result)
   else
-    if not Settings.InclExt then
+    if not Settings.InclExt and not (IsFolder and not GlobalSettings.FolderExt) then
       Result := Result + WideExtractFileExt(AFileName);
 end;
 
@@ -1416,6 +1423,8 @@ begin
   end;
   if Settings.AddSuffix then
     Result := Result + stradDateTimeSuffix;
+  if Settings.Offset <> 0 then
+    Result := Result + WideFormat(stradDateTimeOffset, [Settings.Offset]);
 end;
 
 {-------------------------------------------------------------------------------
@@ -1424,24 +1433,26 @@ end;
 function TRenActionDateTime.MakeNewName(const AFileName: WideString; IsFolder: Boolean): WideString;
 var
   Inside: Boolean;
-  i{, FileDate}: Integer;
+  i: Integer;
   FileDate, DateCreated, DateAccess, DateModified: TDateTime;
 begin
   Result := inherited MakeNewName(AFileName, IsFolder);
-{
-  FileDate := FileAge(AFileName);
-  if FileDate < 0 then
-    FileDate := DateTimeToFileDate(Now);
-}
   if GetFileDates(AFileName, DateCreated, DateModified, DateAccess) then
   begin
     if Settings.WhichDate = 0 then
-      FileDate := DateCreated
+      FileDate := DateCreated + Settings.Offset * OneSecond
     else
-      FileDate := DateModified;
+      FileDate := DateModified + Settings.Offset * OneSecond;
   end
   else
-    FileDate := Now;
+  begin
+    with FLastError do
+    begin
+      Description := WideFormat(strfsNotRenamed, [AFileName, 'Could not get file date']);
+      Status := rsInfo;
+    end;
+    Exit;
+  end;
   Inside := False;
   for i := 1 to Length(Settings.Mask) do
   begin
@@ -1475,6 +1486,7 @@ begin
     Properties.Add('Mask', UTF8Encode(Settings.Mask));
     Properties.Add('AddSuffix', Settings.AddSuffix);
     Properties.Add('WhichDate', Settings.WhichDate);
+    Properties.Add('Offset', Settings.Offset);
   end;
 end;
 
@@ -1486,6 +1498,7 @@ begin
   Settings.Mask := UTF8Decode(ActionNode.Properties.Value('Mask', 'yyyy''-''mm''-''dde'));
   Settings.AddSuffix := ActionNode.Properties.BoolValue('AddSuffix', False);
   Settings.WhichDate := ActionNode.Properties.IntValue('WhichDate', 1);
+  Settings.Offset := ActionNode.Properties.IntValue('Offset', 0);
 end;
 
 {-------------------------------------------------------------------------------
@@ -1849,16 +1862,32 @@ end;
 function TRenActionExif.Description: WideString;
 begin
   Result := WideFormat(stradExif, [Settings.Mask]);
+  if Settings.Offset <> 0 then
+    Result := Result + WideFormat(stradDateTimeOffset, [Settings.Offset]);
 end;
 
 {-------------------------------------------------------------------------------
 -------------------------------------------------------------------------------}
 
 function TRenActionExif.GetTagValue(const ATag: WideString; out AValue: WideString): Boolean;
+var
+  dt: TDateTime;
 begin
   if FImgData.ExifObj.LookupTagDefn(ATag) <> -1 then // check if it is a valid Exif tag (even if current file does not have it)
   begin
     AValue := FImgData.ExifObj.LookupTagVal(ATag); // returns '' if the tag was not found in current file
+    if (Settings.Offset <> 0) and (FRegexp <> nil) and FRegexp.Exec(AValue) then // if the value matches the format of a date time, extract the components to apply the offset
+    begin
+      dt := EncodeDateTime(
+        StrToInt(FRegexp.Match[1]),
+        StrToInt(FRegexp.Match[2]),
+        StrToInt(FRegexp.Match[3]),
+        StrToInt(FRegexp.Match[4]),
+        StrToInt(FRegexp.Match[5]),
+        StrToInt(FRegexp.Match[6]),
+      0) + Settings.Offset * OneSecond;
+      AValue := FormatDateTime('yyyy'':''mm'':''dd hh'':''nn'':''ss', dt);
+    end;
     Result := True;
   end
   {
@@ -1901,6 +1930,18 @@ procedure TRenActionExif.Init;
 begin
   DexifDecode := True;
   FImgData := TImgData.Create;
+  FRegexp := TRegExpr.Create;
+  FRegexp.ModifierR := False;
+  FRegexp.Expression := '^(\d{4}):(\d{2}):(\d{2}) (\d{2}):(\d{2}):(\d{2})$';
+  try
+    FRegexp.Compile;
+  except
+    on e: Exception do
+    begin
+      FreeAndNil(FRegexp);
+    end;
+  end;
+
 end;
 
 {-------------------------------------------------------------------------------
@@ -1909,6 +1950,7 @@ end;
 procedure TRenActionExif.Finish;
 begin
   FImgData.Free;
+  FRegexp.Free;
 end;
 
 {-------------------------------------------------------------------------------
@@ -1917,6 +1959,7 @@ end;
 procedure TRenActionExif.LoadFromFile(ActionNode: TJvSimpleXmlElem);
 begin
   Settings.Mask := UTF8Decode(ActionNode.Properties.Value('Mask', ''));
+  Settings.Offset := ActionNode.Properties.IntValue('Offset', 0);
 end;
 
 {-------------------------------------------------------------------------------
@@ -1927,6 +1970,7 @@ begin
   with BatchNode.Items.Add('Exif') do
   begin
     Properties.Add('Mask', UTF8Encode(Settings.Mask));
+    Properties.Add('Offset', Settings.Offset);
   end;
 end;
 

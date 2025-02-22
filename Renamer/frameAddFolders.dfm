@@ -7,7 +7,7 @@ object AddFoldersFrame: TAddFoldersFrame
   DesignSize = (
     225
     65)
-  object cbxRecursive: TCheckBox
+  object cbxRecursive: TTntCheckBox
     Left = 0
     Top = 48
     Width = 225
@@ -16,7 +16,7 @@ object AddFoldersFrame: TAddFoldersFrame
     Caption = 'Apply these two options also to subfolders'
     TabOrder = 2
   end
-  object cbxFiles: TCheckBox
+  object cbxFiles: TTntCheckBox
     Left = 0
     Top = 0
     Width = 225
@@ -26,7 +26,7 @@ object AddFoldersFrame: TAddFoldersFrame
     TabOrder = 0
     OnClick = ClickCheck
   end
-  object cbxFolders: TCheckBox
+  object cbxFolders: TTntCheckBox
     Left = 0
     Top = 24
     Width = 225

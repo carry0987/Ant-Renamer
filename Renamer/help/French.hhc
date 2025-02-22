@@ -42,7 +42,7 @@
     		<param name="Local" value="format_fr.html">
     		</OBJECT>
     	<LI> <OBJECT type="text/sitemap">
-    		<param name="Name" value="Expresions rationnelles">
+    		<param name="Name" value="Expressions rationnelles">
     		<param name="Local" value="regexp_fr.html">
     		</OBJECT>
     </UL>

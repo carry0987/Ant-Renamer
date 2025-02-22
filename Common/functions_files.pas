@@ -1,6 +1,6 @@
 (************************************************************************
  *                                                                      *
- *   (C) 2002-2012 Antoine Potten, Mickaël Vanneufville                 *
+ *   (C) 2002-2024 Antoine Potten, Mickaël Vanneufville                 *
  *   http://www.antp.be/software                                        *
  *                                                                      *
  ************************************************************************
@@ -24,7 +24,7 @@ unit functions_files;
 interface
 
 uses
-  Classes, Windows, SysUtils, Graphics,
+  Classes, Windows, SysUtils, Graphics, DateUtils,
   {$IFDEF ANTUNICODE}
   TntSysUtils,
   {$ENDIF}
@@ -43,6 +43,7 @@ type
 
 var
   strHelpFile: TAntFileName;
+  FileDateTimeDSTRelativeToFile: Boolean = True; // to initialize with IsWindows7
 
 procedure CopyAllFiles(const strSourceMask: string; const strDestFolder: string);
 function CopyWithoutOverwrite(const strSourceFile, strDestPath: string): string;
@@ -80,6 +81,7 @@ function GetFileDates(const FileName: WideString; out Created, Modified, Access:
 function GetFileModifiedDate(const FileName: WideString): TDateTime;
 function FileOrDirExists(const FileName: WideString): Boolean;
 function WideSetCurrentDir(const FileName: WideString): Boolean;
+function ResolveLink(const widepath: WideString): WideString;
 {$ELSE}
 function MakeUniqueFileName(const strFileName: string; const Separator: string = ''): string;
 function GetIcon(const FileName: string; const Large: Boolean): TIcon;
@@ -89,6 +91,7 @@ function GetDirectoryIcon(const Folder: string; const Large: Boolean): TIcon;
 function GetFileDates(const FileName: string; out Created, Modified, Access: TDateTime): Boolean;
 function GetFileModifiedDate(const FileName: string): TDateTime;
 function FileOrDirExists(const FileName: string): Boolean;
+function ResolveLink(const Path: string): string;
 {$ENDIF}
 function CountFolderContents(const Folder: TAntFileName; const CountFolders, CountFiles, Recursive: Boolean): Integer;
 function DirectoryIsEmpty(Directory: string): Boolean;
@@ -96,7 +99,9 @@ function ListDirectory(const ADir: TFileName; const AMask: string): string;
 function DeleteFolder(ADirName: string; OnlyIfEmpty: Boolean): boolean;
 function CopyFolder(ASourceDir, ATargetDir: string): boolean;
 function GetRealPictureExt(AStream: TStream; const IfPNG, IfJPG, IfGIF, IfBMP, Current: string): string;
-function IsSameFileAttr(const File1, File2: TFileName; const Allow1hDiff: Boolean = False): Boolean;
+function IsSameFileSize(const File1, File2: TFileName): Boolean;
+function IsSameFileAttr(const File1, File2: TFileName; const Allow1hDiff: Boolean = False; const Epsilon: Extended = OneSecond): Boolean;
+function IsSameFileDate(const File1, File2: TFileName; const Allow1hDiff: Boolean = False; const Epsilon: Extended = OneSecond): Boolean;
 
 {-------------------------------------------------------------------------------
 -------------------------------------------------------------------------------}
@@ -105,7 +110,7 @@ implementation
 
 uses
   Math, StrUtils,
-  ShlObj, ActiveX, ShellAPI, DateUtils, functions_sys, functions_str;
+  ShlObj, ActiveX, ShellAPI, functions_sys, functions_str, ComObj;
 
 {$IFDEF ANTUNICODE}
 // bug in ShellAPI
@@ -700,14 +705,25 @@ var
 {$ENDIF}
   function Convert(const ft: TFileTime): TDateTime;
   var
-    lt: TFileTime;
+    lft: TFileTime;
+    lst: TSystemTime;
     st: TSystemTime;
   begin
     Result := MinDouble;
-    if FileTimeToLocalFileTime(ft, lt) then
-      if FileTimeToSystemTime(lt, st) then
-        with st do
-          Result := EncodeDateTime(wYear, wMonth, wDay, wHour, wMinute, wSecond, wMilliseconds);
+    if FileDateTimeDSTRelativeToFile then
+    begin
+      if FileTimeToSystemTime(ft, st) then
+        if SystemTimeToTzSpecificLocalTime(nil, st, lst) then
+          with lst do
+            Result := EncodeDateTime(wYear, wMonth, wDay, wHour, wMinute, wSecond, wMilliseconds);
+    end
+    else
+    begin
+      if FileTimeToLocalFileTime(ft, lft) then
+        if FileTimeToSystemTime(lft, st) then
+          with st do
+            Result := EncodeDateTime(wYear, wMonth, wDay, wHour, wMinute, wSecond, wMilliseconds);
+    end;
   end;
 begin
   Result := False;
@@ -782,6 +798,50 @@ begin
   FindClose(SearchRec);
 end;
 {$ENDIF}
+
+{-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------}
+
+{$IFDEF ANTUNICODE}
+function ResolveLink(const widepath: WideString): WideString;
+{$ELSE}
+function ResolveLink(const path: string): string;
+{$ENDIF}
+// source: Peter Below (TeamB) on http://www.delphigroups.info/2/b3/478354.html
+var
+  res: HRESULT;
+  link: IShellLink;
+  storage: IPersistFile;
+  filedata: TWin32FindData;
+  buf: Array[0..MAX_PATH] of Char;
+{$IFNDEF ANTUNICODE}
+  widepath: WideString;
+{$ENDIF}
+begin
+  CoInitialize(nil);
+  try
+    res := CoCreateInstance( CLSID_ShellLink, nil, CLSCTX_INPROC_SERVER, IShellLink, link );
+    if not Succeeded(res) then
+      OleError(res);
+    res := link.QueryInterface( IPersistFile, storage );
+    if not Succeeded(res) then
+      OleError(res);
+  {$IFNDEF ANTUNICODE}
+    widepath := path;
+  {$ENDIF}
+    Result := '';
+    If Succeeded( storage.Load( @widepath[1], STGM_READ )) Then
+      If Succeeded( link.Resolve( GetActiveWindow, SLR_NOUPDATE )) Then
+        If Succeeded( link.GetPath( buf, sizeof(buf),
+                                    filedata, SLGP_UNCPRIORITY ) )
+        Then
+          Result := buf;
+    storage := nil;
+    link:= nil;
+  finally
+    CoUninitialize;
+  end;
+end;
 
 {-------------------------------------------------------------------------------
 -------------------------------------------------------------------------------}
@@ -983,25 +1043,38 @@ end;
 {-------------------------------------------------------------------------------
 -------------------------------------------------------------------------------}
 
-const
-  OneHour = 1 / 24;
-  OneSecond = OneHour / 60 / 60;
 
-function IsSameFileAttr(const File1, File2: TFileName; const Allow1hDiff: Boolean = False): Boolean;
+function IsSameFileSize(const File1, File2: TFileName): Boolean;
 var
   Size1, Size2: Int64;
-  Date1, Date2: TDateTime;
 begin
   Size1 := GetFileSize(File1);
   Size2 := GetFileSize(File2);
   Result := Size1 = Size2;
-  if Result then
+end;
+
+{-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------}
+
+//const
+//  OneHour = 1 / 24;
+//  OneSecond = OneHour / 60 / 60;
+
+function IsSameFileAttr(const File1, File2: TFileName; const Allow1hDiff: Boolean = False; const Epsilon: Extended = OneSecond): Boolean;
+begin
+  Result := IsSameFileSize(File1, File2) and IsSameFileDate(File1, File2, Allow1hDiff, Epsilon);
+end;
+
+function IsSameFileDate(const File1, File2: TFileName; const Allow1hDiff: Boolean = False; const Epsilon: Extended = OneSecond): Boolean;
+var
+  Date1, Date2: TDateTime;
+begin
+  Date1 := GetFileModifiedDate(File1);
+  Date2 := GetFileModifiedDate(File2);
+  Result := SameValue(Date1, Date2, Epsilon);
+  if not Result and Allow1hDiff then
   begin
-    Date1 := GetFileModifiedDate(File1);
-    Date2 := GetFileModifiedDate(File2);
-    Result := SameValue(Date1, Date2, OneSecond);
-    if not Result and Allow1hDiff then
-      Result := SameValue(Date1, Date2 - OneHour, OneSecond) or SameValue(Date1, Date2 + OneHour, OneSecond);
+    Result := SameValue(Date1, Date2 - OneHour, Epsilon) or SameValue(Date1, Date2 + OneHour, Epsilon);
   end;
 end;
 

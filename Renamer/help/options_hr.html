@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Pomoć Ant Renamer 2</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1250" />
+	<link rel="stylesheet" href="main.css" type="text/css" />
+</head>
+<body>
+<h1>Opcije</h1>
+<p>Ovaj prozor je dostupan putem ikone <img src="img/options.png" alt="Opcije" /> "Opcije" u glavnom prozoru. Podijeljen je na četiri stranice:</p>
+<h2 id="display">Prikaz</h2>
+<ul>
+  <li><span class="optname">Izmjena u realnom vremenu kod preimenovanja datoteka</span> : Sadržaj popisa ažurira se svaki puta nakon preimenovanja datoteka. To je dosta sporije ako
+    preimenujte tisuće datoteka ili na sporom računalu.</li>
+  <li><span class="optname">Automatska promjena veličine stupaca popisa datoteka</span> : Kada je omogućeno, program će uvijek pokušati prilagoditi stupce popisa datoteka (glavni prozor)
+    širini prozora.</li>
+  <li><span class="optname">Prikaz ikona u popisu datoteka, na temelju datotečnih nastavaka</span> : Prikazuje ikone na lijevoj strani stavke u popisu datoteka. To može malo
+    usporiti pomicanje popisa, jer svaka ".exe" datoteka ima svoju ikonu, i može biti prilično sporo za datoteke koje dolaze s mrežnog pogona, na primjer.</li>
+  <li><span class="optname">Prisiliti sljedeći font kada je potreban prikaz posebnih znakova</span> : Omogućuje odrediti font za korištenje kod
+    polja koju mogu sadržavati unicode znakove, uključujući popise datoteka i zapisnika. Ako je dostupan, font "Arial Unicode MS" koristi se kao zadani.
+    <a href="fonts_hr.html">Kliknite ovdje za više informacija</a>.</li>
+  <li><span class="optname">Broj vrijednosti koje se zadržavaju u povijesti</span> : Na padajućem popisu nalaze se posljednji nizovi znakova koje ste koristili. Ovdje možete odrediti
+    koliko nizova će se zadržavati (0 = ništa).</li>
+  <li><span class="optname">Samodovršetak s povijesnim vrijednostima prilikom tipkanja</span> : Kada tipkate tekst, ako ima isti početak kao postojeća stavka
+    iz povijesti ova stavka će se kopirati u polje (dio koje niste tipkali je izabran, tako da možete nastaviti tipkati da ga prepišete).</li>
+  <li><span class="optname">Postavljanje ikona</span> : Postavljanje ikona za korištenje kod alatne trake. Program obuhvaća niz pod nazivom "Scrows". Dodatne datoteke koje se mogu staviti u mapu 
+    "Alatne trake". Zadana instalacija uključuje dva dodatna seta: "Windows XP" i "Windows XP veliki" (drugi je isti, ali ima veće ikone).</li>
+</ul>
+<h2 id="files">Datoteke &amp; Mape</h2>
+<ul>
+  <li><span class="optname">Nemoj pitati što napraviti, uvijek koristi sljedeće opcije</span> : Onemogućuje prikazivanje prozora svaki put kada prevučete i ispustite datoteke u
+    Ant Renamer prozor. Ovdje možete odrediti te opcije umjesto da ih odabirete svaki puta. Ove opcije detaljno su prikazane u
+    poglavlju "<a href="addfiles_hr.html#dragdrop">Dodavanje datoteka &amp; mapa</a>".</li>
+  <li><span class="optname">Pokreni datoteku dvostrukim klikom</span> : Ako je ova opcija omogućena, kada dvaput kliknete na datoteku s popisa, datoteka će se
+    otvoriti kao i kada dvaput kliknete u Windows Exploreru.</li>
+</ul>
+<h2 id="processing">Obrada</h2>
+<ul>
+  <li><span class="optname">Kopiraj umjesto preimenuj</span> : Iako je program dizajniran za preimenovanje datoteka, to ponekad može biti korisno za kopiranje datoteka na drugo
+    mjestu s novim imenom umjesto njihovog preimenovanja</li>
+  <li><span class="optname">Generiraj zapisnik</span> : Ako je to onemogućeno, stranica Zapisnik glavnog prozora neće biti ispunjena sa svim obrađenim datotekama.</li>
+	<li><span class="optname">DST offset related to file date</span> : If enabled, the offset for daylight saving time is computed from the file date (default on
+		Windows 7 and higher), otherwise it is computed from current date (default for older Windows versions).</li>
+  <li><span class="optname">Prisili direktorije</span> : Znak "\" nije valjan u nazivu datoteke, budući da služi za razdvajanje putanje (npr. c:\Programske datoteke\Ant
+    Renamer\Renamer.exe). Zato, kada se "\" pronađe u nazivu datoteke, dio prije "\" shvaćen je kao mapa. Da bi mogli premjestiti datoteku u ovu mapu,
+    ona mora postojati. Ako je ova opcija označena, prije preimenovanja/micanja svake datoteke program će provjeriti je li mapa postoji, te će ju stvoriti ako nije pronađena.</li>
+	<li><span class="optname">Consider the last "." in a folder name as extension delimiter like for files</span> : By default this option is disabled, as usually in 
+	modern Windows environment the folders do not have extensions like files do; in such case, the folder names are treated like files that do not have an extension. 
+	If the option is enabled, all what follows the last dot in a folder name will be considered as an extension, as it is done on files. This affects the behaviour of the 
+	options "Include extension" and "Apply to extension instead of name in several actions.</li>
+</ul>
+<h2 id="events">Events</h2>
+<ul>  <li><span class="optname">Utvrdi ":\" ili "\\" kao putanja</span> : Kada je ova opcija omogućena, ako novi naziv datoteke počinje s "x:\" (x = bilo koje slovo)
+    ili s "\\", onda stara putanja neće biti dodana ispred. To omogućuje da se presele datoteke bilo gdje dajući punu putanju kao novo ime datoteke.</li>
+  <li><span class="optname">Kod početka</span> : Omogućuje definirati što napraviti prije početka preimenovanja datoteka, kada kliknete na tipku "Idi".</li>
+  <li><span class="optname">Kod završetka</span> : Omogućuje definirati što napraviti kada je postupak preimenovanja završen. Opcija "Spremi zapisnik u datoteku" omogućuje pohranu
+    sadržaja zapisnika u datoteku. Pogledajte "<a href="log_hr.html#save">Zapisnik</a>" za više informacija.</li>
+</ul>
+<h2 id="languages">Jezik</h2>
+<ul>
+  <li>Na ovoj stranici možete odabrati jezik koji želite koristiti u korisničkom sučelju.</li>
+  <li>Osim engleskog jezika, jezici se mogu ispravno prikazati ako je vaše računalo konfigurirano za korištenje istih znakova kao jezik koji se koristi. To ovisi
+  o postavkama određenim u "Regija i jezik" na kontrnoj ploči Windovsa.</li>
+</ul>
+</body>
+</html>

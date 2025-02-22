@@ -18,49 +18,49 @@
 		<param name="Local" value="main_en.html">
 		</OBJECT>
 	<UL>
-  	<LI> <OBJECT type="text/sitemap">
-  		<param name="Name" value="Files">
-  		<param name="Local" value="files_en.html">
-  		</OBJECT>
-  	<UL>
-    	<LI> <OBJECT type="text/sitemap">
-    		<param name="Name" value="Adding files &amp; folders">
-    		<param name="Local" value="addfiles_en.html">
-    		</OBJECT>
-    </UL>
-  	<LI> <OBJECT type="text/sitemap">
-  		<param name="Name" value="Actions">
-  		<param name="Local" value="actions_en.html">
-  		</OBJECT>
-  	<UL>
-    	<LI> <OBJECT type="text/sitemap">
-    		<param name="Name" value="Predefined list (batch)">
-    		<param name="Local" value="batch_en.html">
-    		</OBJECT>
-    	<LI> <OBJECT type="text/sitemap">
-    		<param name="Name" value="Formatting strings">
-    		<param name="Local" value="format_en.html">
-    		</OBJECT>
-    	<LI> <OBJECT type="text/sitemap">
-    		<param name="Name" value="Regular expressions">
-    		<param name="Local" value="regexp_en.html">
-    		</OBJECT>
-    </UL>
-  	<LI> <OBJECT type="text/sitemap">
-  		<param name="Name" value="Log">
-  		<param name="Local" value="log_en.html">
-  		</OBJECT>
-  </UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Files">
+			<param name="Local" value="files_en.html">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Adding files &amp; folders">
+				<param name="Local" value="addfiles_en.html">
+				</OBJECT>
+		</UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Actions">
+			<param name="Local" value="actions_en.html">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Predefined list (batch)">
+				<param name="Local" value="batch_en.html">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Formatting strings">
+				<param name="Local" value="format_en.html">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Regular expressions">
+				<param name="Local" value="regexp_en.html">
+				</OBJECT>
+		</UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Log">
+			<param name="Local" value="log_en.html">
+			</OBJECT>
+	</UL>
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="Options">
 		<param name="Local" value="options_en.html">
 		</OBJECT>
 	<UL>
-  	<LI> <OBJECT type="text/sitemap">
-  		<param name="Name" value="Fonts">
-  		<param name="Local" value="fonts_en.html">
-  		</OBJECT>
-  </UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Fonts">
+			<param name="Local" value="fonts_en.html">
+			</OBJECT>
+	</UL>
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="Command-line parameters">
 		<param name="Local" value="params_en.html">

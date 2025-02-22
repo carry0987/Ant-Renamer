@@ -1,11 +1,11 @@
 object MainForm: TMainForm
-  Left = 290
-  Top = 178
+  Left = 422
+  Top = 207
   HelpContext = 1200
   AutoScroll = False
   Caption = 'MainForm'
-  ClientHeight = 632
-  ClientWidth = 692
+  ClientHeight = 547
+  ClientWidth = 708
   Color = clBtnFace
   Constraints.MinHeight = 300
   Constraints.MinWidth = 300
@@ -27,11 +27,11 @@ object MainForm: TMainForm
   object tbdMain: TSpTBXDock
     Left = 0
     Top = 0
-    Width = 692
-    Height = 50
+    Width = 708
+    Height = 46
     FixAlign = True
     object tbProgram: TSpTBXToolbar
-      Left = 125
+      Left = 127
       Top = 0
       CloseButton = False
       DefaultDock = tbdMain
@@ -110,7 +110,7 @@ object MainForm: TMainForm
     end
     object tbFiles: TSpTBXToolbar
       Left = 0
-      Top = 25
+      Top = 23
       CloseButton = False
       DefaultDock = tbdMain
       DockRow = 1
@@ -145,8 +145,8 @@ object MainForm: TMainForm
       end
     end
     object tbActions: TSpTBXToolbar
-      Left = 205
-      Top = 25
+      Left = 235
+      Top = 23
       CloseButton = False
       DefaultDock = tbdMain
       DockPos = 2
@@ -183,8 +183,8 @@ object MainForm: TMainForm
       end
     end
     object tbLog: TSpTBXToolbar
-      Left = 514
-      Top = 25
+      Left = 534
+      Top = 23
       CloseButton = False
       DefaultDock = tbdMain
       DockPos = 3
@@ -219,8 +219,8 @@ object MainForm: TMainForm
       end
     end
     object tbMove: TSpTBXToolbar
-      Left = 87
-      Top = 25
+      Left = 93
+      Top = 23
       CloseButton = False
       DefaultDock = tbdMain
       DockPos = 1
@@ -245,10 +245,10 @@ object MainForm: TMainForm
   end
   object pgctrlMain: TPageControl
     Left = 0
-    Top = 50
-    Width = 692
-    Height = 553
-    ActivePage = tshAction
+    Top = 46
+    Width = 708
+    Height = 472
+    ActivePage = tshFiles
     Align = alClient
     Style = tsButtons
     TabOrder = 1
@@ -258,8 +258,8 @@ object MainForm: TMainForm
       object lstFiles: TVirtualStringTree
         Left = 0
         Top = 0
-        Width = 677
-        Height = 522
+        Width = 700
+        Height = 441
         Hint = 
           '|Files list - Click with right mouse button on header to customi' +
           'ze columns'
@@ -349,14 +349,14 @@ object MainForm: TMainForm
       object Splitter1: TSplitter
         Left = 150
         Top = 0
-        Height = 349
+        Height = 268
         AutoSnap = False
         ResizeStyle = rsUpdate
       end
       object splBatch: TSplitter
         Left = 0
-        Top = 414
-        Width = 684
+        Top = 333
+        Width = 700
         Height = 3
         Cursor = crVSplit
         Align = alBottom
@@ -368,19 +368,18 @@ object MainForm: TMainForm
       object Panel1: TPanel
         Left = 153
         Top = 0
-        Width = 531
-        Height = 349
+        Width = 547
+        Height = 268
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 1
         object pgctrlAction: TPageControl
           Left = 0
           Top = 0
-          Width = 531
-          Height = 349
-          ActivePage = tshMultstrRepl
+          Width = 547
+          Height = 268
+          ActivePage = tshEmpty
           Align = alClient
-          MultiLine = True
           RaggedRight = True
           Style = tsButtons
           TabOrder = 0
@@ -392,8 +391,8 @@ object MainForm: TMainForm
             Caption = 'tshChangeExt'
             ImageIndex = 1
             DesignSize = (
-              523
-              294)
+              539
+              237)
             object lblChangeExt: TLabel
               Left = 8
               Top = 8
@@ -404,7 +403,7 @@ object MainForm: TMainForm
             object lblChangeExtNotes: TAntJvLinkLabel
               Left = 8
               Top = 88
-              Width = 511
+              Width = 527
               Height = 39
               Caption = 
                 'Notes:<br>'#13#10'- Do not include the dot, just enter the new extensi' +
@@ -434,14 +433,14 @@ object MainForm: TMainForm
               Height = 21
               AutoComplete = False
               DropDownCount = 20
-              ItemHeight = 0
+              ItemHeight = 13
               TabOrder = 0
               OnChange = UpdateActionPreview
             end
-            object cbxChangeExtNoRepl: TCheckBox
+            object cbxChangeExtNoRepl: TTntCheckBox
               Left = 8
               Top = 64
-              Width = 507
+              Width = 523
               Height = 17
               Anchors = [akLeft, akTop, akRight]
               Caption = 'Do not replace extension, append it to current full name'
@@ -453,8 +452,8 @@ object MainForm: TMainForm
             Caption = 'tshStringRepl'
             ImageIndex = 2
             DesignSize = (
-              523
-              294)
+              539
+              237)
             object lblStrReplSearch: TLabel
               Left = 8
               Top = 8
@@ -469,30 +468,30 @@ object MainForm: TMainForm
               Height = 13
               Caption = 'Replace by:'
             end
-            object cbxStrReplAll: TCheckBox
+            object cbxStrReplAll: TTntCheckBox
               Left = 8
               Top = 128
-              Width = 507
+              Width = 523
               Height = 17
               Anchors = [akLeft, akTop, akRight]
               Caption = 'Replace all occurences'
               TabOrder = 2
               OnClick = UpdateActionPreview
             end
-            object cbxStrReplCase: TCheckBox
+            object cbxStrReplCase: TTntCheckBox
               Left = 8
               Top = 152
-              Width = 507
+              Width = 523
               Height = 17
               Anchors = [akLeft, akTop, akRight]
               Caption = 'Case sensitive'
               TabOrder = 3
               OnClick = UpdateActionPreview
             end
-            object cbxStrReplExt: TCheckBox
+            object cbxStrReplExt: TTntCheckBox
               Left = 8
               Top = 176
-              Width = 507
+              Width = 523
               Height = 17
               Anchors = [akLeft, akTop, akRight]
               Caption = 'Include extension in search'
@@ -502,31 +501,31 @@ object MainForm: TMainForm
             object edtStrReplSearch: TTntComboBox
               Left = 32
               Top = 32
-              Width = 483
+              Width = 499
               Height = 21
               AutoComplete = False
               Anchors = [akLeft, akTop, akRight]
               DropDownCount = 20
-              ItemHeight = 0
+              ItemHeight = 13
               TabOrder = 0
               OnChange = UpdateActionPreview
             end
             object edtStrReplBy: TTntComboBox
               Left = 32
               Top = 88
-              Width = 483
+              Width = 499
               Height = 21
               AutoComplete = False
               Anchors = [akLeft, akTop, akRight]
               DropDownCount = 20
-              ItemHeight = 0
+              ItemHeight = 13
               TabOrder = 1
               OnChange = UpdateActionPreview
             end
-            object cbxStrReplOnlyExt: TCheckBox
+            object cbxStrReplOnlyExt: TTntCheckBox
               Left = 8
               Top = 200
-              Width = 507
+              Width = 523
               Height = 17
               Anchors = [akLeft, akTop, akRight]
               Caption = 'Apply to extension instead of name'
@@ -538,8 +537,8 @@ object MainForm: TMainForm
             Caption = 'tshMultstrRepl'
             ImageIndex = 12
             DesignSize = (
-              523
-              294)
+              539
+              237)
             object lblMultstrSearch: TLabel
               Left = 8
               Top = 8
@@ -564,7 +563,7 @@ object MainForm: TMainForm
             object lblMultstrReplNotes: TAntJvLinkLabel
               Left = 328
               Top = 131
-              Width = 187
+              Width = 203
               Height = 39
               Caption = 
                 'Notes:<BR>'#13#10'- Use Ctrl+Plus (+) and Ctrl+Minus (-) to insert or ' +
@@ -588,7 +587,7 @@ object MainForm: TMainForm
               Left = 8
               Top = 24
               Width = 313
-              Height = 249
+              Height = 209
               Anchors = [akLeft, akTop, akBottom]
               ColCount = 2
               DefaultColWidth = 140
@@ -605,67 +604,85 @@ object MainForm: TMainForm
             object edtMultstrReplSet: TTntComboBox
               Left = 328
               Top = 24
-              Width = 187
+              Width = 203
               Height = 21
               AutoComplete = False
               Anchors = [akLeft, akTop, akRight]
               ItemHeight = 13
               Sorted = True
-              TabOrder = 3
+              TabOrder = 1
               OnClick = edtMultstrReplSetClick
             end
             object btnMultstrReplSave: TCorelButton
               Left = 328
               Top = 50
-              Width = 75
+              Width = 97
               Height = 21
               Action = ActionMultistrReplSave
-              TabOrder = 1
+              TabOrder = 2
             end
             object btnMultstrReplDelete: TCorelButton
-              Left = 408
+              Left = 432
               Top = 50
-              Width = 75
+              Width = 97
               Height = 21
               Action = ActionMultistrReplDelete
-              TabOrder = 2
+              TabOrder = 3
             end
             object btnMultstrReplClear: TCorelButton
               Left = 328
-              Top = 250
-              Width = 75
+              Top = 209
+              Width = 97
               Height = 21
               Action = ActionMultistrReplClear
               Anchors = [akLeft, akBottom]
-              TabOrder = 6
+              TabOrder = 8
             end
-            object cbxMultstrReplExt: TCheckBox
+            object cbxMultstrReplExt: TTntCheckBox
               Left = 328
               Top = 80
-              Width = 187
+              Width = 203
               Height = 17
               Anchors = [akLeft, akTop, akRight]
               Caption = 'Include extension in search'
               TabOrder = 4
               OnClick = UpdateActionPreview
             end
-            object cbxMultstrCase: TCheckBox
+            object cbxMultstrCase: TTntCheckBox
               Left = 328
               Top = 104
-              Width = 187
+              Width = 203
               Height = 17
               Anchors = [akLeft, akTop, akRight]
               Caption = 'Case sensitive'
               TabOrder = 5
               OnClick = UpdateActionPreview
             end
+            object btnMultstrReplPaste: TCorelButton
+              Left = 328
+              Top = 181
+              Width = 97
+              Height = 21
+              Action = ActionMultistrReplPaste
+              Anchors = [akLeft, akBottom]
+              TabOrder = 7
+            end
+            object btnMultstrReplCopy: TCorelButton
+              Left = 328
+              Top = 153
+              Width = 97
+              Height = 21
+              Action = ActionMultistrReplCopy
+              Anchors = [akLeft, akBottom]
+              TabOrder = 6
+            end
           end
           object tshStringInsert: TTabSheet
             Caption = 'tshStringInsert'
             ImageIndex = 3
             DesignSize = (
-              523
-              294)
+              539
+              237)
             object lblStrInsStr: TLabel
               Left = 8
               Top = 8
@@ -683,23 +700,25 @@ object MainForm: TMainForm
             object lblStrInsNotes: TAntJvLinkLabel
               Left = 8
               Top = 144
-              Width = 511
+              Width = 527
               Height = 91
               Caption = 
                 'Notes:<br>'#13#10'- If you want to insert a string after or before ano' +
                 'ther one, use the <LINK>String replacement</LINK> action<br>'#13#10'- ' +
                 '%name% = Original file name (without extension)<BR>'#13#10'- %ext% = O' +
-                'riginal extension (including the dot)<BR>'#13#10'- %folder<i>N</i>% = ' +
-                'Folder name<BR>'#13#10'- %% = % character<BR>'#13#10'see <LINK>Help</LINK> f' +
-                'or more information'#13#10
+                'riginal extension (including the dot)<BR>'#13#10'- %folderN% = Folder ' +
+                'name, where N is the level (1 = current, 2 = parent, etc.)<BR>'#13#10 +
+                '- %% = % character<BR>'#13#10'see <LINK>Help</LINK> for more informati' +
+                'on'#13#10
               Text.Strings = (
                 
                   'Notes:<br>'#13#10'- If you want to insert a string after or before ano' +
                   'ther one, use the <LINK>String replacement</LINK> action<br>'#13#10'- ' +
                   '%name% = Original file name (without extension)<BR>'#13#10'- %ext% = O' +
-                  'riginal extension (including the dot)<BR>'#13#10'- %folder<i>N</i>% = ' +
-                  'Folder name<BR>'#13#10'- %% = % character<BR>'#13#10'see <LINK>Help</LINK> f' +
-                  'or more information'#13#10)
+                  'riginal extension (including the dot)<BR>'#13#10'- %folderN% = Folder ' +
+                  'name, where N is the level (1 = current, 2 = parent, etc.)<BR>'#13#10 +
+                  '- %% = % character<BR>'#13#10'see <LINK>Help</LINK> for more informati' +
+                  'on'#13#10)
               Anchors = [akLeft, akTop, akRight]
               Transparent = False
               LinkColor = clBlue
@@ -712,7 +731,7 @@ object MainForm: TMainForm
               MarginHeight = 0
               OnLinkClick = lblStrInsNotesLinkClick
             end
-            object rbtStrInsBegin: TRadioButton
+            object rbtStrInsBegin: TTntRadioButton
               Left = 112
               Top = 90
               Width = 113
@@ -723,7 +742,7 @@ object MainForm: TMainForm
               TabStop = True
               OnClick = UpdateActionPreview
             end
-            object rbtStrInsEnd: TRadioButton
+            object rbtStrInsEnd: TTntRadioButton
               Left = 232
               Top = 90
               Width = 113
@@ -735,19 +754,19 @@ object MainForm: TMainForm
             object edtStrInsStr: TTntComboBox
               Left = 32
               Top = 32
-              Width = 483
+              Width = 499
               Height = 21
               AutoComplete = False
               Anchors = [akLeft, akTop, akRight]
               DropDownCount = 20
-              ItemHeight = 0
+              ItemHeight = 13
               TabOrder = 0
               OnChange = UpdateActionPreview
             end
-            object cbxStrInsExt: TCheckBox
+            object cbxStrInsExt: TTntCheckBox
               Left = 8
               Top = 120
-              Width = 507
+              Width = 523
               Height = 17
               Anchors = [akLeft, akTop, akRight]
               Caption = 'Apply to extension instead of name'
@@ -766,8 +785,8 @@ object MainForm: TMainForm
             Caption = 'tshMoveString'
             ImageIndex = 12
             DesignSize = (
-              523
-              294)
+              539
+              237)
             object lblMoveStrFrom: TLabel
               Left = 8
               Top = 8
@@ -792,7 +811,7 @@ object MainForm: TMainForm
             object lblMoveStrNotes: TAntJvLinkLabel
               Left = 8
               Top = 176
-              Width = 511
+              Width = 527
               Height = 65
               Caption = 
                 'Notes:<br>'#13#10'- If you want to move a specified string but that is' +
@@ -828,7 +847,7 @@ object MainForm: TMainForm
               Height = 21
               BevelOuter = bvNone
               TabOrder = 1
-              object rbtMoveStrFromBegin: TRadioButton
+              object rbtMoveStrFromBegin: TTntRadioButton
                 Left = 8
                 Top = 2
                 Width = 113
@@ -839,7 +858,7 @@ object MainForm: TMainForm
                 TabStop = True
                 OnClick = UpdateActionPreview
               end
-              object rbtMoveStrFromEnd: TRadioButton
+              object rbtMoveStrFromEnd: TTntRadioButton
                 Left = 128
                 Top = 2
                 Width = 113
@@ -856,7 +875,7 @@ object MainForm: TMainForm
               Height = 21
               BevelOuter = bvNone
               TabOrder = 4
-              object rbtMoveStrToBegin: TRadioButton
+              object rbtMoveStrToBegin: TTntRadioButton
                 Left = 8
                 Top = 2
                 Width = 113
@@ -867,7 +886,7 @@ object MainForm: TMainForm
                 TabStop = True
                 OnClick = UpdateActionPreview
               end
-              object rbtMoveStrToEnd: TRadioButton
+              object rbtMoveStrToEnd: TTntRadioButton
                 Left = 128
                 Top = 2
                 Width = 113
@@ -908,8 +927,8 @@ object MainForm: TMainForm
             Caption = 'tshCharDel'
             ImageIndex = 4
             DesignSize = (
-              523
-              294)
+              539
+              237)
             object lblCharDel: TLabel
               Left = 8
               Top = 8
@@ -920,7 +939,7 @@ object MainForm: TMainForm
             object lblCharDelNotes: TAntJvLinkLabel
               Left = 8
               Top = 200
-              Width = 511
+              Width = 527
               Height = 26
               Caption = 
                 'Notes:<BR>- To delete a specified string, use the <LINK>String r' +
@@ -943,10 +962,10 @@ object MainForm: TMainForm
               MarginHeight = 0
               OnLinkClick = lblCharDelNotesLinkClick
             end
-            object rbtCharDelPos: TRadioButton
+            object rbtCharDelPos: TTntRadioButton
               Left = 8
               Top = 64
-              Width = 507
+              Width = 523
               Height = 17
               Anchors = [akLeft, akTop, akRight]
               Caption = 'From position:'
@@ -955,7 +974,7 @@ object MainForm: TMainForm
               TabStop = True
               OnClick = UpdateActionPreview
             end
-            object rbtCharDelStr: TRadioButton
+            object rbtCharDelStr: TTntRadioButton
               Left = 8
               Top = 120
               Width = 120
@@ -971,7 +990,7 @@ object MainForm: TMainForm
               Height = 21
               BevelOuter = bvNone
               TabOrder = 3
-              object rbtCharDelBegin: TRadioButton
+              object rbtCharDelBegin: TTntRadioButton
                 Left = 8
                 Top = 2
                 Width = 113
@@ -982,7 +1001,7 @@ object MainForm: TMainForm
                 TabStop = True
                 OnClick = UpdateActionPreview
               end
-              object rbtCharDelEnd: TRadioButton
+              object rbtCharDelEnd: TTntRadioButton
                 Left = 128
                 Top = 2
                 Width = 113
@@ -995,25 +1014,25 @@ object MainForm: TMainForm
             object edtCharDelStr: TTntComboBox
               Left = 32
               Top = 144
-              Width = 483
+              Width = 499
               Height = 21
               AutoComplete = False
               Anchors = [akLeft, akTop, akRight]
               DropDownCount = 20
-              ItemHeight = 0
+              ItemHeight = 13
               TabOrder = 6
               OnChange = UpdateActionPreview
             end
-            object cbxCharDelExt: TCheckBox
+            object cbxCharDelExt: TTntCheckBox
               Left = 8
               Top = 176
-              Width = 507
+              Width = 523
               Height = 17
               Anchors = [akLeft, akTop, akRight]
               Caption = 'Apply to extension instead of name'
               TabOrder = 7
             end
-            object rbtCharDelStr2: TRadioButton
+            object rbtCharDelStr2: TTntRadioButton
               Left = 136
               Top = 120
               Width = 120
@@ -1043,8 +1062,8 @@ object MainForm: TMainForm
             Caption = 'tshEnum'
             ImageIndex = 5
             DesignSize = (
-              523
-              294)
+              539
+              237)
             object lblEnumMask: TLabel
               Left = 8
               Top = 8
@@ -1076,19 +1095,21 @@ object MainForm: TMainForm
             object lblEnumNotes: TAntJvLinkLabel
               Left = 8
               Top = 144
-              Width = 511
+              Width = 527
               Height = 91
               Caption = 
                 'Notes:<BR>'#13#10'- %name% = Original file name (without extension)<BR' +
                 '>'#13#10'- %ext% = Original extension (including the dot)<BR>'#13#10'- %num%' +
-                ' = Number<BR>'#13#10'- %folder<i>N</i>% = Folder name<BR>'#13#10'- %% = % ch' +
-                'aracter<BR>'#13#10'see <LINK>Help</LINK> for more information'#13#10
+                ' = Number<BR>'#13#10'- %folderN% = Folder name, where N is the level (' +
+                '1 = current, 2 = parent, etc.)<BR>'#13#10'- %% = % character<BR>'#13#10'see ' +
+                '<LINK>Help</LINK> for more information'#13#10
               Text.Strings = (
                 
                   'Notes:<BR>'#13#10'- %name% = Original file name (without extension)<BR' +
                   '>'#13#10'- %ext% = Original extension (including the dot)<BR>'#13#10'- %num%' +
-                  ' = Number<BR>'#13#10'- %folder<i>N</i>% = Folder name<BR>'#13#10'- %% = % ch' +
-                  'aracter<BR>'#13#10'see <LINK>Help</LINK> for more information'#13#10)
+                  ' = Number<BR>'#13#10'- %folderN% = Folder name, where N is the level (' +
+                  '1 = current, 2 = parent, etc.)<BR>'#13#10'- %% = % character<BR>'#13#10'see ' +
+                  '<LINK>Help</LINK> for more information'#13#10)
               Anchors = [akLeft, akTop, akRight]
               Transparent = False
               LinkColor = clBlue
@@ -1104,19 +1125,19 @@ object MainForm: TMainForm
             object edtEnum: TTntComboBox
               Left = 32
               Top = 32
-              Width = 483
+              Width = 499
               Height = 21
               AutoComplete = False
               Anchors = [akLeft, akTop, akRight]
               DropDownCount = 20
-              ItemHeight = 0
+              ItemHeight = 13
               TabOrder = 0
               OnChange = UpdateActionPreview
             end
-            object cbxEnumRestart: TCheckBox
+            object cbxEnumRestart: TTntCheckBox
               Left = 8
               Top = 120
-              Width = 507
+              Width = 523
               Height = 17
               Anchors = [akLeft, akTop, akRight]
               Caption = 'Go back to start value when changing folder'
@@ -1152,8 +1173,8 @@ object MainForm: TMainForm
             Caption = 'tshMP3Tag'
             ImageIndex = 6
             DesignSize = (
-              523
-              294)
+              539
+              237)
             object lblMP3Mask: TLabel
               Left = 8
               Top = 8
@@ -1164,25 +1185,27 @@ object MainForm: TMainForm
             object lblMP3Notes: TAntJvLinkLabel
               Left = 8
               Top = 88
-              Width = 511
+              Width = 527
               Height = 182
               Caption = 
                 'Notes:<BR>'#13#10'- %author% = Author<BR>'#13#10'- %title% = Title<BR>'#13#10'- %a' +
                 'lbum% = Album<BR>'#13#10'- %year% = Year<BR>'#13#10'- %genre% = Genre<BR>'#13#10'-' +
                 ' %comm% = Comment<BR>'#13#10'- %track% = Track number (ID3V1.1)<BR>'#13#10'-' +
                 ' %name% = Original filename (without extension)<BR>'#13#10'- %ext% = O' +
-                'riginal extension (including dot)<BR>'#13#10'- %folder<i>N</i>% = Fold' +
-                'er name<BR>'#13#10'- %% = % character<BR>'#13#10'- $if(condition,true-value,' +
-                'false-value)<BR>'#13#10'see <LINK>Help</LINK> for more information'#13#10
+                'riginal extension (including dot)<BR>'#13#10'- %folderN% = Folder name' +
+                ', where N is the level (1 = current, 2 = parent, etc.)<BR>'#13#10'- %%' +
+                ' = % character<BR>'#13#10'- $if(condition,true-value,false-value)<BR>'#13 +
+                #10'see <LINK>Help</LINK> for more information'#13#10
               Text.Strings = (
                 
                   'Notes:<BR>'#13#10'- %author% = Author<BR>'#13#10'- %title% = Title<BR>'#13#10'- %a' +
                   'lbum% = Album<BR>'#13#10'- %year% = Year<BR>'#13#10'- %genre% = Genre<BR>'#13#10'-' +
                   ' %comm% = Comment<BR>'#13#10'- %track% = Track number (ID3V1.1)<BR>'#13#10'-' +
                   ' %name% = Original filename (without extension)<BR>'#13#10'- %ext% = O' +
-                  'riginal extension (including dot)<BR>'#13#10'- %folder<i>N</i>% = Fold' +
-                  'er name<BR>'#13#10'- %% = % character<BR>'#13#10'- $if(condition,true-value,' +
-                  'false-value)<BR>'#13#10'see <LINK>Help</LINK> for more information'#13#10)
+                  'riginal extension (including dot)<BR>'#13#10'- %folderN% = Folder name' +
+                  ', where N is the level (1 = current, 2 = parent, etc.)<BR>'#13#10'- %%' +
+                  ' = % character<BR>'#13#10'- $if(condition,true-value,false-value)<BR>'#13 +
+                  #10'see <LINK>Help</LINK> for more information'#13#10)
               Anchors = [akLeft, akTop, akRight]
               Transparent = False
               LinkColor = clBlue
@@ -1195,10 +1218,10 @@ object MainForm: TMainForm
               MarginHeight = 0
               OnLinkClick = lblMP3NotesLinkClick
             end
-            object cbxMP3TwoDigit: TCheckBox
+            object cbxMP3TwoDigit: TTntCheckBox
               Left = 8
               Top = 64
-              Width = 507
+              Width = 523
               Height = 17
               Anchors = [akLeft, akTop, akRight]
               Caption = 
@@ -1210,12 +1233,12 @@ object MainForm: TMainForm
             object edtMP3Mask: TTntComboBox
               Left = 32
               Top = 32
-              Width = 483
+              Width = 499
               Height = 21
               AutoComplete = False
               Anchors = [akLeft, akTop, akRight]
               DropDownCount = 20
-              ItemHeight = 0
+              ItemHeight = 13
               TabOrder = 0
               OnChange = UpdateActionPreview
             end
@@ -1224,8 +1247,8 @@ object MainForm: TMainForm
             Caption = 'tshDateTime'
             ImageIndex = 7
             DesignSize = (
-              523
-              294)
+              539
+              237)
             object lblDTMask: TLabel
               Left = 8
               Top = 8
@@ -1235,7 +1258,7 @@ object MainForm: TMainForm
             end
             object lblDTNotes: TLabel
               Left = 8
-              Top = 112
+              Top = 168
               Width = 31
               Height = 13
               Caption = 'Notes:'
@@ -1247,10 +1270,24 @@ object MainForm: TMainForm
               Height = 13
               Caption = 'Date to use:'
             end
-            object cbxDTSuffix: TCheckBox
+            object lblDTOffset: TLabel
+              Left = 8
+              Top = 112
+              Width = 31
+              Height = 13
+              Caption = 'Offset:'
+            end
+            object lblDTOffsetSec: TLabel
+              Left = 104
+              Top = 138
+              Width = 40
+              Height = 13
+              Caption = 'seconds'
+            end
+            object cbxDTSuffix: TTntCheckBox
               Left = 8
               Top = 64
-              Width = 507
+              Width = 427
               Height = 17
               Anchors = [akLeft, akTop, akRight]
               Caption = 'Add suffix if more than one file with the same date/time'
@@ -1259,9 +1296,9 @@ object MainForm: TMainForm
             end
             object lblDTNotes2: TMemo
               Left = 24
-              Top = 128
-              Width = 491
-              Height = 141
+              Top = 184
+              Width = 507
+              Height = 51
               TabStop = False
               Anchors = [akLeft, akTop, akRight, akBottom]
               BorderStyle = bsNone
@@ -1299,46 +1336,54 @@ object MainForm: TMainForm
               ParentColor = True
               ReadOnly = True
               ScrollBars = ssVertical
-              TabOrder = 2
+              TabOrder = 5
               WordWrap = False
             end
             object edtDTMask: TTntComboBox
               Left = 32
               Top = 32
-              Width = 483
+              Width = 499
               Height = 21
               AutoComplete = False
               Anchors = [akLeft, akTop, akRight]
               DropDownCount = 20
-              ItemHeight = 0
+              ItemHeight = 13
               TabOrder = 0
               OnChange = UpdateActionPreview
             end
-            object rbtDTWhichCreation: TRadioButton
+            object rbtDTWhichCreation: TTntRadioButton
               Left = 96
               Top = 88
               Width = 105
               Height = 17
               Caption = 'Creation'
-              TabOrder = 3
+              TabOrder = 2
               OnClick = UpdateActionPreview
             end
-            object rbtDTWhichModif: TRadioButton
+            object rbtDTWhichModif: TTntRadioButton
               Left = 208
               Top = 88
               Width = 137
               Height = 17
               Caption = 'Last modification'
-              TabOrder = 4
+              TabOrder = 3
               OnClick = UpdateActionPreview
+            end
+            object edtDTOffset: TAntJvSpinEdit
+              Left = 32
+              Top = 136
+              Width = 65
+              Height = 21
+              TabOrder = 4
+              OnChange = UpdateActionPreview
             end
           end
           object tshRandom: TTabSheet
             Caption = 'tshRandom'
             ImageIndex = 8
             DesignSize = (
-              523
-              294)
+              539
+              237)
             object lblRandomMask: TLabel
               Left = 8
               Top = 8
@@ -1356,7 +1401,7 @@ object MainForm: TMainForm
             object lblRandomNotes: TAntJvLinkLabel
               Left = 8
               Top = 160
-              Width = 511
+              Width = 527
               Height = 78
               Caption = 
                 'Notes:<BR>'#13#10'- %name% = Original file name (without extension)<BR' +
@@ -1381,30 +1426,30 @@ object MainForm: TMainForm
               MarginHeight = 0
               OnLinkClick = lblRandomNotesLinkClick
             end
-            object rbtRandomGUID: TRadioButton
+            object rbtRandomGUID: TTntRadioButton
               Left = 32
               Top = 136
-              Width = 483
+              Width = 499
               Height = 17
               Anchors = [akLeft, akTop, akRight]
               Caption = 'GUID'
               TabOrder = 3
               OnClick = UpdateActionPreview
             end
-            object rbtRandomTick: TRadioButton
+            object rbtRandomTick: TTntRadioButton
               Left = 32
               Top = 112
-              Width = 483
+              Width = 499
               Height = 17
               Anchors = [akLeft, akTop, akRight]
               Caption = 'Windows tick count'
               TabOrder = 2
               OnClick = UpdateActionPreview
             end
-            object rbtRandomNumber: TRadioButton
+            object rbtRandomNumber: TTntRadioButton
               Left = 32
               Top = 88
-              Width = 483
+              Width = 499
               Height = 17
               Anchors = [akLeft, akTop, akRight]
               Caption = 'Random number (8 digits)'
@@ -1414,12 +1459,12 @@ object MainForm: TMainForm
             object edtRandomMask: TTntComboBox
               Left = 32
               Top = 32
-              Width = 483
+              Width = 499
               Height = 21
               AutoComplete = False
               Anchors = [akLeft, akTop, akRight]
               DropDownCount = 20
-              ItemHeight = 0
+              ItemHeight = 13
               TabOrder = 0
               OnChange = UpdateActionPreview
             end
@@ -1428,62 +1473,62 @@ object MainForm: TMainForm
             Caption = 'tshCase'
             ImageIndex = 9
             DesignSize = (
-              523
-              294)
-            object rbtCaseWords: TRadioButton
+              539
+              237)
+            object rbtCaseWords: TTntRadioButton
               Left = 8
               Top = 8
-              Width = 507
+              Width = 523
               Height = 17
               Anchors = [akLeft, akTop, akRight]
               Caption = 'Upper first letter following any of these characters:'
               TabOrder = 0
               OnClick = UpdateActionPreview
             end
-            object rbtCaseFirst: TRadioButton
+            object rbtCaseFirst: TTntRadioButton
               Left = 8
               Top = 64
-              Width = 507
+              Width = 523
               Height = 17
               Anchors = [akLeft, akTop, akRight]
               Caption = 'Upper the first letter of the filename'
               TabOrder = 2
               OnClick = UpdateActionPreview
             end
-            object rbtCaseUpper: TRadioButton
+            object rbtCaseUpper: TTntRadioButton
               Left = 8
               Top = 88
-              Width = 507
+              Width = 523
               Height = 17
               Anchors = [akLeft, akTop, akRight]
               Caption = 'Upper'
               TabOrder = 3
               OnClick = UpdateActionPreview
             end
-            object rbtCaseLower: TRadioButton
+            object rbtCaseLower: TTntRadioButton
               Left = 8
               Top = 112
-              Width = 507
+              Width = 523
               Height = 17
               Anchors = [akLeft, akTop, akRight]
               Caption = 'Lower'
               TabOrder = 4
               OnClick = UpdateActionPreview
             end
-            object cbxCaseLocale: TCheckBox
+            object cbxCaseLocale: TTntCheckBox
               Left = 8
               Top = 136
-              Width = 507
+              Width = 523
               Height = 17
               Anchors = [akLeft, akTop, akRight]
               Caption = 'Use Windows'#39' locale settings to change accentuated characters'
               TabOrder = 5
               OnClick = UpdateActionPreview
             end
-            object cbxCaseIncludeExt: TCheckBox
+            object cbxCaseIncludeExt: TTntCheckBox
               Left = 8
               Top = 160
-              Width = 507
+              Width = 523
               Height = 17
               Anchors = [akLeft, akTop, akRight]
               Caption = 'Also apply to extension'
@@ -1493,19 +1538,19 @@ object MainForm: TMainForm
             object edtCaseAfter: TTntComboBox
               Left = 32
               Top = 32
-              Width = 483
+              Width = 499
               Height = 21
               AutoComplete = False
               Anchors = [akLeft, akTop, akRight]
               DropDownCount = 20
-              ItemHeight = 0
+              ItemHeight = 13
               TabOrder = 1
               OnClick = UpdateActionPreview
             end
-            object cbxCaseOnlyExt: TCheckBox
+            object cbxCaseOnlyExt: TTntCheckBox
               Left = 8
               Top = 184
-              Width = 507
+              Width = 523
               Height = 17
               Anchors = [akLeft, akTop, akRight]
               Caption = 'Apply to extension instead of name'
@@ -1517,12 +1562,12 @@ object MainForm: TMainForm
             Caption = 'tshFromList'
             ImageIndex = 10
             DesignSize = (
-              523
-              294)
+              539
+              237)
             object lblFromListNotes: TAntJvLinkLabel
               Left = 8
-              Top = 226
-              Width = 511
+              Top = 189
+              Width = 527
               Height = 46
               Caption = 
                 'Notes:<BR>'#13#10'- Each line from this list will be used as a name fo' +
@@ -1549,18 +1594,18 @@ object MainForm: TMainForm
             object edtFromList: TTntMemo
               Left = 0
               Top = 24
-              Width = 523
-              Height = 149
+              Width = 539
+              Height = 113
               Anchors = [akLeft, akTop, akRight, akBottom]
               ScrollBars = ssBoth
               TabOrder = 0
               WordWrap = False
               OnChange = UpdateActionPreview
             end
-            object cbxFromListExt: TCheckBox
+            object cbxFromListExt: TTntCheckBox
               Left = 8
-              Top = 180
-              Width = 507
+              Top = 143
+              Width = 523
               Height = 17
               Anchors = [akLeft, akRight, akBottom]
               Caption = 'Append original extension of the file'
@@ -1591,10 +1636,10 @@ object MainForm: TMainForm
               Action = ActionFromListSave
               TabOrder = 4
             end
-            object cbxFromListOnlyExt: TCheckBox
+            object cbxFromListOnlyExt: TTntCheckBox
               Left = 8
-              Top = 204
-              Width = 507
+              Top = 167
+              Width = 523
               Height = 17
               Anchors = [akLeft, akRight, akBottom]
               Caption = 'Use items as extensions instead of names'
@@ -1606,8 +1651,8 @@ object MainForm: TMainForm
             Caption = 'tshRegexp'
             ImageIndex = 13
             DesignSize = (
-              523
-              294)
+              539
+              237)
             object lblRegexp: TLabel
               Left = 8
               Top = 8
@@ -1625,7 +1670,7 @@ object MainForm: TMainForm
             object lblRegexpNotes: TAntJvLinkLabel
               Left = 8
               Top = 120
-              Width = 511
+              Width = 527
               Height = 78
               Caption = 
                 'Notes:<BR>'#13#10'- \ character can be used to escape special characte' +
@@ -1659,24 +1704,24 @@ object MainForm: TMainForm
             object edtRegexp: TTntComboBox
               Left = 32
               Top = 32
-              Width = 483
+              Width = 499
               Height = 21
               AutoComplete = False
               Anchors = [akLeft, akTop, akRight]
               DropDownCount = 20
-              ItemHeight = 0
+              ItemHeight = 13
               TabOrder = 0
               OnChange = UpdateActionPreview
             end
             object edtRegexpRepl: TTntComboBox
               Left = 32
               Top = 88
-              Width = 483
+              Width = 499
               Height = 21
               AutoComplete = False
               Anchors = [akLeft, akTop, akRight]
               DropDownCount = 20
-              ItemHeight = 0
+              ItemHeight = 13
               TabOrder = 1
               OnChange = UpdateActionPreview
             end
@@ -1685,8 +1730,8 @@ object MainForm: TMainForm
             Caption = 'tshExif'
             ImageIndex = 14
             DesignSize = (
-              523
-              294)
+              539
+              237)
             object lblExifMask: TLabel
               Left = 8
               Top = 8
@@ -1696,8 +1741,8 @@ object MainForm: TMainForm
             end
             object lblExifNotes: TAntJvLinkLabel
               Left = 8
-              Top = 64
-              Width = 511
+              Top = 120
+              Width = 527
               Height = 104
               Caption = 
                 'Notes:<BR>'#13#10'- %name% = Original file name (without extension)<BR' +
@@ -1728,16 +1773,38 @@ object MainForm: TMainForm
               MarginHeight = 0
               OnLinkClick = lblExifNotesLinkClick
             end
+            object lblExifOffset: TLabel
+              Left = 8
+              Top = 64
+              Width = 31
+              Height = 13
+              Caption = 'Offset:'
+            end
+            object lblExifOffsetSec: TLabel
+              Left = 104
+              Top = 90
+              Width = 40
+              Height = 13
+              Caption = 'seconds'
+            end
             object edtExifMask: TTntComboBox
               Left = 32
               Top = 32
-              Width = 483
+              Width = 499
               Height = 21
               AutoComplete = False
               Anchors = [akLeft, akTop, akRight]
               DropDownCount = 20
-              ItemHeight = 0
+              ItemHeight = 13
               TabOrder = 0
+              OnChange = UpdateActionPreview
+            end
+            object edtExifOffset: TAntJvSpinEdit
+              Left = 32
+              Top = 88
+              Width = 65
+              Height = 21
+              TabOrder = 1
               OnChange = UpdateActionPreview
             end
           end
@@ -1747,7 +1814,7 @@ object MainForm: TMainForm
         Left = 0
         Top = 0
         Width = 150
-        Height = 349
+        Height = 268
         Hint = '|Actions list'
         Align = alLeft
         ItemHeight = 13
@@ -1773,14 +1840,14 @@ object MainForm: TMainForm
       end
       object grpPreview: TGroupBox
         Left = 0
-        Top = 349
-        Width = 684
+        Top = 268
+        Width = 700
         Height = 65
         Align = alBottom
         Caption = '     Preview of selected file '
         TabOrder = 2
         DesignSize = (
-          684
+          700
           65)
         object lblPreviewOld: TLabel
           Left = 16
@@ -1798,23 +1865,25 @@ object MainForm: TMainForm
         end
         object lblPreviewOldName: TTntLabel
           Left = 120
-          Top = 20
-          Width = 401
-          Height = 14
+          Top = 16
+          Width = 569
+          Height = 22
           Anchors = [akLeft, akTop, akRight]
           AutoSize = False
           Caption = '.'
           ShowAccelChar = False
+          Layout = tlCenter
         end
         object lblPreviewNewName: TTntLabel
           Left = 120
-          Top = 40
-          Width = 401
-          Height = 14
+          Top = 36
+          Width = 569
+          Height = 22
           Anchors = [akLeft, akTop, akRight]
           AutoSize = False
           Caption = '.'
           ShowAccelChar = False
+          Layout = tlCenter
         end
         object cbxPreview: TSpTBXCheckBox
           Left = 8
@@ -1828,8 +1897,8 @@ object MainForm: TMainForm
       end
       object grpBatch: TGroupBox
         Left = 0
-        Top = 417
-        Width = 684
+        Top = 336
+        Width = 700
         Height = 105
         Align = alBottom
         Caption = '     Batch contents (planned actions) '
@@ -1837,7 +1906,7 @@ object MainForm: TMainForm
         object lstBatch: TVirtualStringTree
           Left = 2
           Top = 15
-          Width = 680
+          Width = 696
           Height = 88
           Hint = '|Batch contents (planned actions)'
           Align = alClient
@@ -1893,8 +1962,8 @@ object MainForm: TMainForm
       object lstLog: TVirtualStringTree
         Left = 0
         Top = 0
-        Width = 677
-        Height = 526
+        Width = 700
+        Height = 441
         Align = alClient
         DrawSelectionMode = smBlendedRectangle
         Header.AutoSizeIndex = 0
@@ -1918,22 +1987,22 @@ object MainForm: TMainForm
         Columns = <
           item
             Position = 0
-            Width = 677
+            Width = 696
           end>
       end
     end
   end
   object tbdBottom: TSpTBXDock
     Left = 0
-    Top = 603
-    Width = 692
+    Top = 518
+    Width = 708
     Height = 9
     Position = dpBottom
   end
   object StatusBar1: TSpTBXStatusBar
     Left = 0
-    Top = 612
-    Width = 692
+    Top = 527
+    Width = 708
     Height = 20
     object StatusBarProgress: TTBControlItem
       Control = ProgressBar1
@@ -1972,8 +2041,8 @@ object MainForm: TMainForm
   object ActionList1: TActionList
     Images = imglstHot
     OnExecute = ActionList1Execute
-    Left = 72
-    Top = 320
+    Left = 48
+    Top = 272
     object ActionLogClear: TAction
       Category = 'Log'
       Caption = 'Clear'
@@ -2235,8 +2304,8 @@ object MainForm: TMainForm
     end
     object ActionMultistrReplClear: TAction
       Category = 'ActionItems'
-      Caption = 'Clear grid'
-      Hint = 'Clear the string grid'
+      Caption = 'Clear Table'
+      Hint = '|Clear the string table'
       OnExecute = ActionMultistrReplClearExecute
     end
     object ActionMultistrReplSave: TAction
@@ -2282,10 +2351,26 @@ object MainForm: TMainForm
         ' not renamed'
       OnExecute = ActionLogFilterChange
     end
+    object ActionMultistrReplCopy: TAction
+      Category = 'ActionItems'
+      Caption = 'Copy/Export'
+      Hint = 
+        '|Copy the whole string table to the clipboard as tab-delimited t' +
+        'ext for importing in Excel or text editors'
+      OnExecute = ActionMultistrReplCopyExecute
+    end
+    object ActionMultistrReplPaste: TAction
+      Category = 'ActionItems'
+      Caption = 'Paste/Import'
+      Hint = 
+        '|Paste the whole string table from the clipboard as tab-delimite' +
+        'd text, for importing from Excel or text editors'
+      OnExecute = ActionMultistrReplPasteExecute
+    end
   end
   object imglstHot: TImageList
-    Left = 128
-    Top = 320
+    Left = 48
+    Top = 312
   end
   object pmFiles: TSpTBXPopupMenu
     Images = imglstHot
@@ -2344,19 +2429,19 @@ object MainForm: TMainForm
   end
   object pmhFiles: TVTHeaderPopupMenu
     OnPopup = pmhFilesPopup
-    Left = 60
-    Top = 364
+    Left = 84
+    Top = 316
   end
   object imglstFiles: TImageList
     Left = 12
-    Top = 364
+    Top = 308
   end
   object XPManifest1: TXPManifest
     Left = 16
-    Top = 312
+    Top = 272
   end
   object VarMessages: TAntJvTranslatorStrings
     Left = 120
-    Top = 376
+    Top = 320
   end
 end

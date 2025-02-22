@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Pomoć Ant Renamer 2</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1250" />
+	<link rel="stylesheet" href="main.css" type="text/css" />
+</head>
+<body>
+<h1>Što ovaj program radi...</h1>
+<p>Ovaj program dizajniran je za preimenovanje datoteka. Dakle, samo će mijenjati nazive datotekama, a neće mijenjati njihov sadržaj.</p>
+<p>On je napravljen za preimenovanje, ali u <a href="options_hr.html">Opcijama</a> možete ga koristiti za kopiranje datoteka umjesto njihovog preimenovanja.</p>
+<p>Može <a href="batch_hr.html">pohraniti unaprijed definirani popis radnji</a> da bi ih ponovno koristito kasnije.
+<p>Podržava unicode, što znači da možete preimenovati datoteke koje imaju znakove na Grčkom, Japanskom, Kineskom, Arapskom ili bilo kojem drugom jeziku. Dok većina
+  programa ima problema s takvim imenima, to može biti korisno da bi ih mogli preimenovati s latiničnim znakovima (osnovni ASCII), na primjer.</p>
+<h1>... a što ne može napraviti</h1>
+<p>Kao što sam rekao, neće mijenjati sadržaj datoteka.</p>
+<p>On neće mijenjati datoteke datum i vrijeme.</p>
+<p>It will not modify the ID3 (tag) contained in MP3s or EXIF from JPEG; it only read this info for building a new file name.</p>
+<p>It does not read any info from files other than MP3s (and for these it only reads the v1 of the ID3, not the v2) and JPEG.</p>
+<p>On ne može biti u potpunosti kontroliran od naredbenog retka, iako podržava neke <a href="params_hr.html">parametre</a>.</p>
+<p>Imajte na umu da sadržaj ovog popisa nije određen. Osim mijenjanja sadržaja datoteka, sve "što ne može" stvari se mogu pojaviti u budućim verzijama.</p>
+<h2>Poznate greške i ograničenja:</h2>
+<ul>
+  <li>Unicode je podržan samo na NT sustavima (Windows NT4, 2000, XP, Vista, 7, ...).</li>
+  <li>Serijsko preimenovanje datoteka ne može imati Unicode znakove u njihovom imenu i putanji.</li>
+  <li>Isto vrijedi za mapu gdje se program nalazi, a za naredbeni redak kada se poziva s parametrima.</li>
+  <li>Do verzije 2.04 program se nije pokretao na nekim verzijama Windows 95, čini se da je uzrokovano nedostatkom funkcije na tim sustavima.</li>
+  <li>U akciji "Koristi datum &amp; vrijeme", ako koristite dugi formata datuma (s danom ili mjesecom u slovima, kao "December" na Engleskom), bude pogriješio s danima
+    ili mjesecima koji imaju posebne znakove u svom nazivu (kao "Décembre" na Francuskom). Ovaj bug će biti ispravljen uskoro, ali moram pronaći način za to.</li>
+</ul>
+</body>
+</html>

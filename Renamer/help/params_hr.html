@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Pomoć Ant Renamer 2</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1250" />
+	<link rel="stylesheet" href="main.css" type="text/css" />
+</head>
+<body>
+<h1>Parametri naredbenog retka</h1>
+<p>Program ne podržava (još uvijek) puno parametara. Zapravo i nije moguće preimenovati datoteke određivanjem svih potrebnih parametara za preimenovanje 
+   iz naredbenog retka, ali oni se mogu dati kroz <a href="batch_hr.html">spremanje datoteke za skupne obradbe</a>.</p>
+<p>Ovdje je popis podržanih parametara:</p>
+<ul>
+  <li><code>-b FileName.arb</code> : Učitava datoteku za skupne obradbe FileName.arb</li>
+  <li><code>-g</code> : Pokreće postupak preimenovanja nakon što su datoteke dodane i datoteka za skupne obradbe učitana</li>
+  <li><code>-x</code> : Zatvara program nakon preimenovanja</li>
+  <li><code>-a</code> : Mijenja način dodavanja datoteke, na temelju slova nakon "-a" parametra:
+    <ul>
+      <li><code>f</code> : Dodaj datoteke iz naziva datoteka / putanja koje slijede</li>
+      <li><code>F</code> : Dodaje mape koje slijede, ili koje su sadržane u mapama, vidjeti primjere</li>
+      <li><code>r</code> : Rekurzivno dodavanje sadržaja mape</li>
+    </ul>
+  </li>
+</ul>
+<p>Nazivi datoteka i putanje mogu biti relativne ili apsolutne i mogu sadržavati zamjenske znakove (* i ?).</p>
+<p>Evo nekoliko primjera:</p>
+<ul>
+  <li><code>Renamer.exe -b d:\test.arb -af c:\data\*.* -g -x</code><br />
+    To će učitati navedenu datoteku za skupne obradbe, dodati sve datoteke sadržane u C:\data mapi, pokrenuti preimenovanje i onda izaći</li>
+  <li><code>Renamer.exe -af c:\data</code><br />
+    To će dodati datoteku naziva c:\data</li>
+  <li><code>Renamer.exe -afr c:\data</code><br />
+    To će dodati datoteku naziva c:\data. Ako je to mapa, dodati će datoteke koje sadrži (rekurzivna pretraga)</li>
+  <li><code>Renamer.exe -aF c:\data</code><br />
+    To će dodati "data" mapu</li>
+  <li><code>Renamer.exe -aF c:\data\*.*</code><br />
+    To će dodati mape sadržane u mapi "data", ali ne i datoteke</li>
+  <li><code>Renamer.exe -af c:\data\*.* c:\images\*.jpg c:\test.txt -afr c:\mp3\*.*</code><br />
+    Možete kombinirati nekoliko putanja/naziva datoteka koristeći maske i koristeći različite "-a" parametre u jednom naredbenom retku</li>
+</ul>
+<p>Ako je naziv dan bez ikakvog "-a" parametra, to će se analizirati kao u Ant Renamer 2.07 (i starijim) : ako naziv datoteke završava s ".arb",
+  biti će učitana kao datoteka za skupne obradbe; ako je dana mapa, njen se sadržaj dodaje rekurzivno (samo datoteke, nisu podržani zamjenski znakovi, potreban je potpuni naziv mape).</p>
+<p>Moguće je dodati Ant Renamer u "Pošalji" popis (u izborniku koji se pojavljuje kada kliknete desnom tipkom miša na mapu u Windows Exploreru).
+  Dakle, to dodaje mogućnost da pošaljete mapu u Ant Renamer iz kontekstnog izbornika, za učitavanje njegovog sadržaja u popisa datoteka.
+  Da bi to učinili, idite na "Start" -&gt; "Pokreni" i upišite <code>sendto</code>. Prozor mape će se otvoriti; stavite prečac do Ant Renamer-a.</p>
+</body>
+</html>

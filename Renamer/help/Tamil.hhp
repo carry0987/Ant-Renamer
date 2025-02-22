@@ -1,0 +1,70 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=Tamil.chm
+Contents file=Tamil.hhc
+Default topic=index_ta.html
+Display compile progress=Yes
+Error log file=compiler.log
+Index file=Tamil.hhk
+Language=0x449 Tamil (Tamil Nadu)
+Title=எறும்பு மறுபெயரிடு 2 உதவி
+
+
+[FILES]
+main.css
+about_ta.html
+history_ta.html
+index_ta.html
+batch_ta.html
+options_ta.html
+fonts_ta.html
+params_ta.html
+what_ta.html
+main_ta.html
+addfiles_ta.html
+files_ta.html
+actions_ta.html
+log_ta.html
+format_ta.html
+regexp_ta.html
+img\tabs.png
+img\go.png
+img\undo.png
+img\options.png
+img\ontop.png
+img\addfiles.png
+img\addfolders.png
+img\removesel.png
+img\removeall.png
+img\removedead.png
+img\preview.png
+img\addfilesoptions.png
+img\filestoolbar.png
+img\logtoolbar.png
+img\batchtoolbar.png
+img\clear.png
+img\open.png
+img\batchdel.png
+img\batchadd.png
+img\copy.png
+img\save.png
+
+[ALIAS]
+about=about_ta.html
+history=history_ta.html
+index=index_ta.html
+batch=batch_ta.html
+options=options_ta.html
+fonts=fonts_ta.html
+params=params_ta.html
+what=what_ta.html
+main=main_ta.html
+addfiles=addfiles_ta.html
+format=format_ta.html
+regexp=regexp_ta.html
+
+[MAP]
+#include map.h
+
+[INFOTYPES]
+

@@ -134,7 +134,7 @@ var
     if Encoded <> '' then
       try
         PicStream.Seek(0, soFromBeginning);
-        Decoder.DecodeToStream(Encoded, PicStream);
+        Decoder.DecodeStream(Encoded, PicStream);
         PicStream.Seek(0, soFromBeginning);
         bmp.LoadFromStream(PicStream);
         Result := imgLanguages.AddMasked(bmp, bmp.Canvas.Pixels[0, 0])
@@ -182,8 +182,12 @@ begin
           with SubItems do
           begin
             Add(LocalName);
-            Add(ExtractFileName(SearchRecord.Name)); { we suppose that language
-              filenames are in English, so no need of unicode when path is stripped }
+            // we suppose that language filenames are in English, so no need of unicode when path is stripped
+            {$IFDEF ANTUNICODE}
+            Add(WideExtractFileName(SearchRecord.Name));
+            {$ELSE}
+            Add(ExtractFileName(SearchRecord.Name));
+            {$ENDIF}
             Add(Version);
             Add(Authors);
             Add(Comments);
@@ -414,7 +418,7 @@ end;
 
 procedure TLanguageFrame.lblMadebyTextLinkClick(Sender: TObject; LinkNumber: Integer; LinkText: String);
 begin
-  ShellExecute(0, nil, PChar('mailto:' + LinkText), nil, nil, SW_SHOWMAXIMIZED); 
+  ShellExecute(0, nil, PChar('mailto:' + LinkText), nil, nil, SW_SHOWMAXIMIZED);
 end;
 
 {-------------------------------------------------------------------------------
@@ -432,17 +436,29 @@ end;
 
 procedure TLanguageFrame.lstLanguagesCustomDrawSubItem(Sender: TCustomListView; Item: TListItem; SubItem: Integer; State: TCustomDrawState; var DefaultDraw: Boolean);
 var
+  IsUTF8: Boolean;
   Charset: Byte;
   ColWidth: Integer;
   r: TRect;
   s: string;
+  ws: WideString;
   w: PWidechar;
 begin
   DefaultDraw := True;
   if IsWindowsNT and (Subitem = 1) then
   begin
-    Charset := EncodingToCharset(Item.SubItems[idxEncoding]);
-    if Charset <> DEFAULT_CHARSET then
+    s := Item.SubItems[idxLocalName];
+    if SameText(Item.SubItems[idxEncoding], 'UTF-8') then
+    begin
+      IsUTF8 := true;
+      Charset := DEFAULT_CHARSET;
+    end
+    else
+    begin
+      IsUTF8 := false;
+      Charset := EncodingToCharset(Item.SubItems[idxEncoding]);
+    end;
+    if IsUTF8 or (Charset <> DEFAULT_CHARSET) then
     begin
       DefaultDraw := False;
       if Item = lstLanguages.Selected then
@@ -471,14 +487,27 @@ begin
         FListItemLeftTextMargin := Sender.Canvas.TextWidth('  ');
       end;
       Sender.Canvas.FillRect(Rect(r.Left + ColWidth, r.Top, ColWidth + Sender.Column[1].Width, r.Bottom));
-      s := Item.SubItems[idxLocalName];
-      GetMem(w, Length(s) * 2 + 1);
-      MultiByteToWideChar(CharsetToCodepage(Charset), MB_USEGLYPHCHARS, PChar(s), -1, w, Length(s) * 2 + 1);
-      Windows.TextOutW(Sender.Canvas.Handle,
-        r.Left + ColWidth + FListItemLeftTextMargin,
-        r.Top + FListItemTopTextMargin,
-        w, Length(WideString(w)));
-      FreeMem(w);
+      try
+        if IsUTF8 then
+        begin
+          ws := Utf8Decode(s);
+          w := PWideChar(ws);
+        end
+        else
+        begin
+          GetMem(w, Length(s) * 2 + 1);
+          MultiByteToWideChar(CharsetToCodepage(Charset), MB_USEGLYPHCHARS, PChar(s), -1, w, Length(s) * 2 + 1);
+        end;
+        Windows.TextOutW(Sender.Canvas.Handle,
+          r.Left + ColWidth + FListItemLeftTextMargin,
+          r.Top + FListItemTopTextMargin,
+          w, Length(WideString(w)));
+      finally
+        if not IsUTF8 then
+        begin
+          FreeMem(w);
+        end;
+      end;
     end;
   end
 end;

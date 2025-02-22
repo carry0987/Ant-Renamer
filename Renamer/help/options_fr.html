@@ -18,7 +18,7 @@
 		la liste des Fichiers. Cela peut ralentir un peu le défilement de la liste, et comme chaque fichier ".exe" a sa propre icône cela peut être assez lent pour
 		les fichiers provenant d'un disque réseau par exemple.</li>
 	<li><span class="optname">Forcer la police suivante pour l'affichage des caractères spéciaux</span> : Permet de spécifier la police à utiliser pour les champs
-		qui peuvent contenir des caractères unicode, incluant les listes Fichiers et Journal. Si disponible, la police "Arial Unicode MS" est utilisée par défaut.
+		qui peuvent contenir des caractères unicode, incluant les listes Fichiers et Journal. Si disponible, la police "Noto Sans", "DejaVu Sans" ou "Arial Unicode MS" est utilisée par défaut.
 		<a href="fonts_fr.html">Cliquez ici pour plus d'informations</a>.</li>
 	<li><span class="optname">Nombre de valeurs à conserver dans l'historique</span> : Les listes déroulantes retiennent les dernières chaînes de caractères
 		que vous avez utilisées. Vous pouvez choisir ici combien doivent être conservées (0 = aucune).</li>
@@ -43,6 +43,8 @@
 	pour copier les fichiers sous un autre nom plutôt que de les renommer.</li>
 	<li><span class="optname">Générer un journal</span> : Si l'option est désactivée, la page "Journal" de la fenêtre principale ne sera pas remplie avec tous
 	les fichiers traités.</li>
+	<li><span class="optname">Décalage d'heure d'été en fonction de la date du fichier</span> : Si activé, le décalage pour l'heure d'été est calculé en fonction de la
+		date du fichier (par défaut sous Windows 7 et supérieur), sinon il est calculé en fonction de la date actuelle (par défaut dans les anciennes versions de Windows).</li>
 	<li><span class="optname">Forcer les dossiers</span> : Un caractère "\" n'est pas valide dans un nom de fichiers puisqu'il peut être utilisé comme délimiteur
 		de dossiers (par exemple c:\Program Files\Ant Renamer\Renamer.exe). Donc lorsqu'un "\" est trouvé dans un nom de fichier la partie avant le "\" est
 		considérée comme un dossier. Pour pouvoir déplacer le fichier vers ce dossier, il doit exister. Si cette option est activée, avant de renommer/déplacer chaque
@@ -55,7 +57,7 @@
 		traités comme des fichiers sans extension. Si l'option est activée, tout ce qui suit le dernier point dans un nom de dossier sera considéré comme une extension, comme
 		cela est fait sur les fichiers. Cela affecte le comportement des options "Inclure l'extension" et "Appliquer à l'extension plutôt qu'au nom" de plusieurs opérations.</li>
 	</ul>
-<h2 id="processing">Événements</h2>
+<h2 id="events">Événements</h2>
 <ul>
 	<li><span class="optname">Au démarrage du renommage</span> : Permet de définir quoi faire avant de commencer à renommer les fichiers, lorsque vous cliquez le bouton "Démarrer".</li>
 	<li><span class="optname">À la fin du renommage</span> : Permet de définir quoi faire lorsque le traitement est terminé. L'option "Stocker le journal" permet de conserver

@@ -197,6 +197,7 @@ type
     property DragDropNoAsk: Boolean index 11 read GetOptionBooleanIndex write SetOptionBooleanIndex;
     property LaunchFile: Boolean index 12 read GetOptionBooleanIndex write SetOptionBooleanIndex;
     property DropdownComplete: Boolean index 13 read GetOptionBooleanIndex write SetOptionBooleanIndex;
+    property FontHeight: Integer index 14 read GetOptionIntegerIndex write SetOptionIntegerIndex;
   end;
 
   TSettingsProcessing = class(TSettingsBase)
@@ -218,6 +219,7 @@ type
     property SaveLog: Boolean index 10 read GetOptionBooleanIndex write SetOptionBooleanIndex;
     property SaveLogAppend: Boolean index 11 read GetOptionBooleanIndex write SetOptionBooleanIndex;
     property SaveLogFile: string index 12 read GetOptionStringIndex write SetOptionStringIndex;
+    property DSTRelativeToFile: Boolean index 13 read GetOptionBooleanIndex write SetOptionBooleanIndex;
   end;
 
 {-------------------------------------------------------------------------------
@@ -348,6 +350,7 @@ type
     property Mask: string index 0 read GetOptionStringIndex write SetOptionStringIndex;
     property AddSuffix: Boolean index 1 read GetOptionBooleanIndex write SetOptionBooleanIndex;
     property WhichDate: Integer index 2 read GetOptionIntegerIndex write SetOptionIntegerIndex;
+    property Offset: Integer index 3 read GetOptionIntegerIndex write SetOptionIntegerIndex;
   end;
 
   TSettingsRandom = class(TSettingsBase)
@@ -406,8 +409,7 @@ type
   public
     MaskList: TSettingsList;
     property Mask: string index 0 read GetOptionStringIndex write SetOptionStringIndex;
-    property DateFormat: string index 1 read GetOptionStringIndex write SetOptionStringIndex;
-    property TimeFormat: string index 2 read GetOptionStringIndex write SetOptionStringIndex;
+    property Offset: Integer index 1 read GetOptionIntegerIndex write SetOptionIntegerIndex;
   end;
 
 {-------------------------------------------------------------------------------
@@ -428,7 +430,7 @@ type
 implementation
 
 uses
-  functions_files, ConstValues;
+  functions_files, functions_sys, ConstValues;
 
 {-------------------------------------------------------------------------------
   TRenamerSettings
@@ -628,7 +630,7 @@ end;
 
 procedure TSettingsDisplay.Init;
 begin
-  SetOptionsLength(14);
+  SetOptionsLength(15);
   OptionString[1] := 'ToolbarIconSet';
   OptionString[5] := 'RealtimeUpdate';
   OptionString[6] := 'ResizeColsFiles';
@@ -639,16 +641,18 @@ begin
   OptionString[11] := 'DragDropNoAsk';
   OptionString[12] := 'LaunchFile';
   OptionString[13] := 'DropdownComplete';
+  OptionString[14] := 'FontHeight';
   DefaultString[1] := '?';
   DefaultBoolean[5] := True;
   DefaultBoolean[6] := False;
   DefaultBoolean[7] := True;
-  DefaultBoolean[8] := True;
-  DefaultString[9] := 'Arial Unicode MS';
+  DefaultBoolean[8] := IsWindowsNT;
+  DefaultString[9] := '?';
   DefaultInteger[10] := 20;
   DefaultBoolean[11] := False;
   DefaultBoolean[12] := False;
   DefaultBoolean[13] := False;
+  DefaultInteger[14] := 0;
   DragDropOptions := TSettingsAddFolders.Create(FRoot, 'DragDropOptions');
 end;
 
@@ -663,7 +667,7 @@ end;
 
 procedure TSettingsProcessing.Init;
 begin
-  SetOptionsLength(13);
+  SetOptionsLength(14);
   OptionString[0] := 'ForceDir';
   OptionString[1] := 'DetectAbsdir';
   OptionString[2] := 'FolderExt';
@@ -677,6 +681,7 @@ begin
   OptionString[10] := 'SaveLog';
   OptionString[11] := 'SaveLogAppend';
   OptionString[12] := 'SaveLogFile';
+  OptionString[13] := 'DSTRelativeToFile';
   DefaultBoolean[0] := True;
   DefaultBoolean[1] := True;
   DefaultBoolean[2] := False;
@@ -690,6 +695,7 @@ begin
   DefaultBoolean[10] := False;
   DefaultBoolean[11] := True;
   DefaultString[12] := '';
+  DefaultBoolean[13] := IsWindows7;
 end;
 
 procedure TSettingsProcessing.Clean;
@@ -960,13 +966,15 @@ end;
 
 procedure TSettingsDateTime.Init;
 begin
-  SetOptionsLength(3);
+  SetOptionsLength(4);
   OptionString[0] := 'Mask';
   OptionString[1] := 'AddSuffix';
   OptionString[2] := 'WhichDate';
+  OptionString[3] := 'Offset';
   DefaultString[0] := 'yyyy''-''mm''-''dde';
   DefaultBoolean[1] := False;
   DefaultInteger[2] := 1;
+  DefaultInteger[3] := 0;
   MaskList := TSettingsList.Create(FRoot, 'Mask', 'Value');
 end;
 
@@ -1065,9 +1073,11 @@ end;
 
 procedure TSettingsExif.Init;
 begin
-  SetOptionsLength(1);
+  SetOptionsLength(2);
   OptionString[0] := 'Mask';
+  OptionString[1] := 'Offset';
   DefaultString[0] := '%datetime%%ext%';
+  DefaultInteger[1] := 0;
   MaskList := TSettingsList.Create(FRoot, 'Mask', 'Value');
 end;
 

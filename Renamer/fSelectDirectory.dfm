@@ -79,13 +79,13 @@ inherited SelectDirectoryForm: TSelectDirectoryForm
     Height = 67
     Anchors = [akLeft, akRight, akBottom]
     TabOrder = 1
-    inherited cbxRecursive: TCheckBox
+    inherited cbxRecursive: TTntCheckBox
       Width = 306
     end
-    inherited cbxFiles: TCheckBox
+    inherited cbxFiles: TTntCheckBox
       Width = 306
     end
-    inherited cbxFolders: TCheckBox
+    inherited cbxFolders: TTntCheckBox
       Width = 306
     end
   end

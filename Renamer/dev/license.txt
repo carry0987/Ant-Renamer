@@ -1,8 +1,8 @@
-Ant Renamer 2.12.0 (2015-07-04)
+Ant Renamer 2.13.0 (2024-12-14)
 
-Copyright (c) 2000-2015 Antoine Potten
+Copyright (c) 2000-2024 Antoine Potten
 
-http://www.antp.be/software/
+https://www.antp.be/software/
 
 -------------------------------------------------------------------------------
 

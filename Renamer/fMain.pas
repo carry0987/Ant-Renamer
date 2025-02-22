@@ -1,7 +1,7 @@
 (************************************************************************
  *                                                                      *
  *   Ant Renamer 2.x                                                    *
- *   (C) 2003-2015 Antoine Potten                                       *
+ *   (C) 2003-2024 Antoine Potten                                       *
  *   http://www.antp.be/software                                        *
  *                                                                      *
  ************************************************************************
@@ -82,15 +82,15 @@ type
     ActionTabActions: TAction;
     ActionTabFiles: TAction;
     ActionTabLog: TAction;
-    cbxCaseIncludeExt: TCheckBox;
-    cbxCaseLocale: TCheckBox;
-    cbxChangeExtNoRepl: TCheckBox;
-    cbxDTSuffix: TCheckBox;
-    cbxFromListExt: TCheckBox;
-    cbxMP3TwoDigit: TCheckBox;
-    cbxStrReplAll: TCheckBox;
-    cbxStrReplCase: TCheckBox;
-    cbxStrReplExt: TCheckBox;
+    cbxCaseIncludeExt: TTntCheckBox;
+    cbxCaseLocale: TTntCheckBox;
+    cbxChangeExtNoRepl: TTntCheckBox;
+    cbxDTSuffix: TTntCheckBox;
+    cbxFromListExt: TTntCheckBox;
+    cbxMP3TwoDigit: TTntCheckBox;
+    cbxStrReplAll: TTntCheckBox;
+    cbxStrReplCase: TTntCheckBox;
+    cbxStrReplExt: TTntCheckBox;
     edtCaseAfter: TTntComboBox;
     edtChangeExt: TTntComboBox;
     edtCharDelStr: TTntComboBox;
@@ -146,19 +146,19 @@ type
     pmLog: TSpTBXPopupMenu;
     pnlCharDelPos: TPanel;
     ProgressBar1: TAntJvSpecialProgress;
-    rbtCaseFirst: TRadioButton;
-    rbtCaseLower: TRadioButton;
-    rbtCaseUpper: TRadioButton;
-    rbtCaseWords: TRadioButton;
-    rbtCharDelBegin: TRadioButton;
-    rbtCharDelEnd: TRadioButton;
-    rbtCharDelPos: TRadioButton;
-    rbtCharDelStr: TRadioButton;
-    rbtRandomGUID: TRadioButton;
-    rbtRandomNumber: TRadioButton;
-    rbtRandomTick: TRadioButton;
-    rbtStrInsBegin: TRadioButton;
-    rbtStrInsEnd: TRadioButton;
+    rbtCaseFirst: TTntRadioButton;
+    rbtCaseLower: TTntRadioButton;
+    rbtCaseUpper: TTntRadioButton;
+    rbtCaseWords: TTntRadioButton;
+    rbtCharDelBegin: TTntRadioButton;
+    rbtCharDelEnd: TTntRadioButton;
+    rbtCharDelPos: TTntRadioButton;
+    rbtCharDelStr: TTntRadioButton;
+    rbtRandomGUID: TTntRadioButton;
+    rbtRandomNumber: TTntRadioButton;
+    rbtRandomTick: TTntRadioButton;
+    rbtStrInsBegin: TTntRadioButton;
+    rbtStrInsEnd: TTntRadioButton;
     splBatch: TSplitter;
     Splitter1: TSplitter;
     StatusBar1: TSpTBXStatusBar;
@@ -248,30 +248,30 @@ type
     ActionMultistrReplClear: TAction;
     ActionMultistrReplDelete: TAction;
     btnMultstrReplClear: TCorelButton;
-    cbxMultstrReplExt: TCheckBox;
+    cbxMultstrReplExt: TTntCheckBox;
     lblMultstrReplNotes: TAntJvLinkLabel;
     lstLog: TVirtualStringTree;
     tbbUndo: TSpTBXItem;
-    cbxStrReplOnlyExt: TCheckBox;
-    cbxStrInsExt: TCheckBox;
-    cbxCharDelExt: TCheckBox;
-    cbxCaseOnlyExt: TCheckBox;
-    cbxFromListOnlyExt: TCheckBox;
+    cbxStrReplOnlyExt: TTntCheckBox;
+    cbxStrInsExt: TTntCheckBox;
+    cbxCharDelExt: TTntCheckBox;
+    cbxCaseOnlyExt: TTntCheckBox;
+    cbxFromListOnlyExt: TTntCheckBox;
     tshMoveString: TTabSheet;
     lblMoveStrFrom: TLabel;
     lblMoveStrCount: TLabel;
     lblMoveStrTo: TLabel;
     pnlMoveStrFrom: TPanel;
-    rbtMoveStrFromBegin: TRadioButton;
-    rbtMoveStrFromEnd: TRadioButton;
+    rbtMoveStrFromBegin: TTntRadioButton;
+    rbtMoveStrFromEnd: TTntRadioButton;
     pnlMoveStrTo: TPanel;
-    rbtMoveStrToBegin: TRadioButton;
-    rbtMoveStrToEnd: TRadioButton;
+    rbtMoveStrToBegin: TTntRadioButton;
+    rbtMoveStrToEnd: TTntRadioButton;
     lblMoveStrNotes: TAntJvLinkLabel;
-    rbtDTWhichCreation: TRadioButton;
+    rbtDTWhichCreation: TTntRadioButton;
     lblDTWhich: TLabel;
-    rbtDTWhichModif: TRadioButton;
-    cbxEnumRestart: TCheckBox;
+    rbtDTWhichModif: TTntRadioButton;
+    cbxEnumRestart: TTntCheckBox;
     cbxPreview: TSpTBXCheckBox;
     cbxBatch: TSpTBXCheckBox;
     ActionLogFilter: TAction;
@@ -283,7 +283,7 @@ type
     tbsLogFilterError: TSpTBXItem;
     tbbLogFilterOk: TSpTBXItem;
     tbsLogFilter: TSpTBXSeparatorItem;
-    rbtCharDelStr2: TRadioButton;
+    rbtCharDelStr2: TTntRadioButton;
     tshRegexp: TTabSheet;
     lblRegexp: TLabel;
     edtRegexp: TTntComboBox;
@@ -307,7 +307,17 @@ type
     StatusBarPanel2: TSpTBXLabelItem;
     StatusBarProgress: TTBControlItem;
     mruBatch: TSpTBXMRUListItem;
-    cbxMultstrCase: TCheckBox;
+    cbxMultstrCase: TTntCheckBox;
+    edtDTOffset: TAntJvSpinEdit;
+    lblDTOffset: TLabel;
+    lblDTOffsetSec: TLabel;
+    lblExifOffset: TLabel;
+    edtExifOffset: TAntJvSpinEdit;
+    lblExifOffsetSec: TLabel;
+    btnMultstrReplPaste: TCorelButton;
+    ActionMultistrReplCopy: TAction;
+    ActionMultistrReplPaste: TAction;
+    btnMultstrReplCopy: TCorelButton;
     procedure FormCreate(Sender: TObject);
     procedure ActionHelpAboutExecute(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -412,6 +422,8 @@ type
     procedure lblRegexpNotesLinkClick(Sender: TObject; LinkNumber: Integer;
       LinkText: String);
     procedure mruBatchClick(Sender: TObject; const Filename: WideString);
+    procedure ActionMultistrReplCopyExecute(Sender: TObject);
+    procedure ActionMultistrReplPasteExecute(Sender: TObject);
   private
     lstFilesExt: TStringList;
     FFilesList: TRenFiles;
@@ -420,7 +432,7 @@ type
     FCurrentLanguage: string;
     procedure LoadOptions;
     procedure SaveOptions;
-    procedure ApplyOptions;
+    procedure ApplyOptions(const Startup: Boolean);
     procedure SetToolbarIcons;
     procedure SetMessageStrings;
     procedure AddFile(const AFileName: WideString; ACounter: integer = -1);
@@ -461,15 +473,14 @@ uses
   //Delphi
   StrUtils, Clipbrd, stdActns, commctrl, Math, DateUtils,
   //3rd
-  TntDialogs, TntSysUtils, TntSystem,
+  TntDialogs, TntSysUtils, TntSystem, TntClipbrd, VirtualTreeUtils,
   //Themes
   TBXDefaultTheme, TBXOfficeXPTheme,
   //Forms
   fAbout, fOptions, fSelectDirectory, fDragdropOptions,
   //Perso
-  ProgramSettings, ConstValues, functions_sys, Log, SettingsBase,
-  functions_files, functions_str, functions_xml, VarMessages,
-  functions_gui, VirtualTreeUtils;
+  ProgramSettings, ConstValues, Log, SettingsBase, VarMessages,
+  functions_sys, functions_files, functions_str, functions_xml, functions_gui;
 
 {$R *.dfm}
 
@@ -647,7 +658,7 @@ begin
   ActionTabFiles.Execute;
   if Settings.Root.Options.Language = '?' then
     TOptionsForm.Execute(True);
-  ApplyOptions;
+  ApplyOptions(True);
 end;
 
 {-------------------------------------------------------------------------------
@@ -1288,7 +1299,7 @@ end;
 procedure TMainForm.ActionOptionsExecute(Sender: TObject);
 begin
   if TOptionsForm.Execute then
-    ApplyOptions;
+    ApplyOptions(False);
 end;
 
 {-------------------------------------------------------------------------------
@@ -1448,12 +1459,6 @@ end;
 procedure TMainForm.ActionLogCopyExecute(Sender: TObject);
 var
   CurNode: PVirtualNode;
-  Clip: TClipboard;
-  mem: Cardinal;
-  ptr: Pointer;
-  ws: WideString;
-  TextLength: Integer;
-  s: string;
 begin
   with TTntStringList.Create do
     try
@@ -1465,26 +1470,7 @@ begin
       end;
       if Sender = ActionLogCopy then
       begin
-        Clip := Clipboard;
-        Clip.Open;
-        ws := Text;
-        if IsWindowsNT then
-        begin
-          TextLength := (Length(ws) + 1) * 2;
-          mem := GlobalAlloc(GMEM_MOVEABLE + GMEM_DDESHARE, TextLength);
-          ptr := GlobalLock(mem);
-          System.Move(PWideChar(ws)^, ptr^, TextLength);
-          GlobalUnlock(mem);
-          Clip.SetAsHandle(CF_UNICODETEXT, mem);
-        end;
-        s := ws;
-        TextLength := Length(s) + 1;
-        mem := GlobalAlloc(GMEM_MOVEABLE + GMEM_DDESHARE, TextLength);
-        ptr := GlobalLock(mem);
-        System.Move(PChar(s)^, ptr^, TextLength);
-        GlobalUnlock(mem);
-        Clip.SetAsHandle(CF_TEXT, mem);
-        Clip.Close;
+        TntClipboard.AsWideText := Text;
       end
       else
       if Sender = ActionLogSave then
@@ -1700,6 +1686,7 @@ begin
           rbtDTWhichCreation.Checked := True
         else
           rbtDTWhichModif.Checked := True;
+        edtDTOffset.AsInteger := DateTime.Offset;
 
         edtRandomMask.Text := UTF8Decode(Random.Mask);
         Random.MaskList.Load(TempList);
@@ -1737,6 +1724,7 @@ begin
         edtExifMask.Text := UTF8Decode(Exif.Mask);
         Exif.MaskList.Load(TempList);
         UTF8ListDecode(TempList, edtExifMask.Items);
+        edtExifOffset.AsInteger := Exif.Offset;
       finally
         TempList.Free;
       end;
@@ -1863,6 +1851,7 @@ begin
           DateTime.WhichDate := 0
         else
           DateTime.WhichDate := 1;
+        DateTime.Offset := edtDTOffset.AsInteger;
 
         Random.Mask := UTF8Encode(edtRandomMask.Text);
         UTF8ListEncode(edtRandomMask.Items, TempList, MaxItems);
@@ -1896,6 +1885,7 @@ begin
         Exif.Mask := UTF8Encode(edtExifMask.Text);
         UTF8ListEncode(edtExifMask.Items, TempList, MaxItems);
         Exif.MaskList.Save(TempList);
+        Exif.Offset := edtExifOffset.AsInteger;
       finally
         TempList.Free;
       end;
@@ -1906,10 +1896,10 @@ end;
 {-------------------------------------------------------------------------------
 -------------------------------------------------------------------------------}
 
-procedure TMainForm.ApplyOptions;
+procedure TMainForm.ApplyOptions(const Startup: Boolean);
 var
   bmpTBNormal, bmpTBHot: TBitmap;
-  IconSize: Integer;
+  IconSize, FontHeight: Integer;
 //  ToolbarColorType: Integer;
 //  ToolbarOfficeXP: Boolean;
   FontName: string;
@@ -1929,6 +1919,12 @@ var
     pmActions.Images := AList;
   end;
   }
+  function UpdateFont(const Font: TFont; const Name: String; const Height: Integer): TFont;
+  begin
+    Result := Font;
+    Result.Name := Name;
+    Result.Height := -Height;
+  end;
 begin
   with Settings.Root.Options do
   begin
@@ -2006,31 +2002,63 @@ begin
     end;
     if IsWindowsNT then
     begin
-      if (Display.ForceFont) and (Screen.Fonts.IndexOf(Display.FontName) > -1) then
-        FontName := Display.FontName
-      else
-        FontName := Graphics.DefFontData.Name;
-      lstFiles.Font.Name := FontName;
-      lstBatch.Font.Name := FontName;
-      lstLog.Font.Name := FontName;
-      edtChangeExt.Font.Name := FontName;
-      edtStrReplSearch.Font.Name := FontName;
-      edtStrReplBy.Font.Name := FontName;
-      edtMultstrRepl.Font.Name := FontName;
-      edtMultstrReplSet.Font.Name := FontName;
-      edtStrInsStr.Font.Name := FontName;
-      edtCharDelStr.Font.Name := FontName;
-      edtEnum.Font.Name := FontName;
-      edtMP3Mask.Font.Name := FontName;
-      edtDTMask.Font.Name := FontName;
-      edtRandomMask.Font.Name := FontName;
-      edtCaseAfter.Font.Name := FontName;
-      edtFromList.Font.Name := FontName;
-      edtRegexp.Font.Name := FontName;
-      edtRegexpRepl.Font.Name := FontName;
-      edtExifMask.Font.Name := FontName;
-      lblPreviewOldName.Font.Name := FontName;
-      lblPreviewNewName.Font.Name := FontName;
+      FontName := Graphics.DefFontData.Name;
+      FontHeight := -Graphics.DefFontData.Height;
+      if Display.ForceFont then
+      begin
+        if Display.FontName = '?' then
+        begin
+          if Screen.Fonts.IndexOf('Noto Sans') > -1 then
+          begin
+            FontName := 'Noto Sans';
+            Display.FontName := FontName;
+          end
+          else
+          if Screen.Fonts.IndexOf('DejaVu Sans') > -1 then
+          begin
+            FontName := 'DejaVu Sans';
+            Display.FontName := FontName;
+          end
+          else
+          if Screen.Fonts.IndexOf('Arial Unicode MS') > -1 then
+          begin
+            FontName := 'Arial Unicode MS';
+            Display.FontName := FontName;
+          end
+          else
+          begin
+            Display.ForceFont := False;
+          end;
+        end
+        else if (Screen.Fonts.IndexOf(Display.FontName) > -1) then
+          FontName := Display.FontName;
+        if Display.FontHeight > 0 then
+          FontHeight := Display.FontHeight;
+      end;
+      if Display.ForceFont or not Startup then
+      begin
+        lstFiles.Font := UpdateFont(lstFiles.Font, FontName, FontHeight);
+        lstBatch.Font := UpdateFont(lstBatch.Font, FontName, FontHeight);
+        lstLog.Font := UpdateFont(lstLog.Font, FontName, FontHeight);
+        edtChangeExt.Font := UpdateFont(edtChangeExt.Font, FontName, FontHeight);
+        edtStrReplSearch.Font := UpdateFont(edtStrReplSearch.Font, FontName, FontHeight);
+        edtStrReplBy.Font := UpdateFont(edtStrReplBy.Font, FontName, FontHeight);
+        edtMultstrRepl.Font := UpdateFont(edtMultstrRepl.Font, FontName, FontHeight);
+        edtMultstrReplSet.Font := UpdateFont(edtMultstrReplSet.Font, FontName, FontHeight);
+        edtStrInsStr.Font := UpdateFont(edtStrInsStr.Font, FontName, FontHeight);
+        edtCharDelStr.Font := UpdateFont(edtCharDelStr.Font, FontName, FontHeight);
+        edtEnum.Font := UpdateFont(edtEnum.Font, FontName, FontHeight);
+        edtMP3Mask.Font := UpdateFont(edtMP3Mask.Font, FontName, FontHeight);
+        edtDTMask.Font := UpdateFont(edtDTMask.Font, FontName, FontHeight);
+        edtRandomMask.Font := UpdateFont(edtRandomMask.Font, FontName, FontHeight);
+        edtCaseAfter.Font := UpdateFont(edtCaseAfter.Font, FontName, FontHeight);
+        edtFromList.Font := UpdateFont(edtFromList.Font, FontName, FontHeight);
+        edtRegexp.Font := UpdateFont(edtRegexp.Font, FontName, FontHeight);
+        edtRegexpRepl.Font := UpdateFont(edtRegexpRepl.Font, FontName, FontHeight);
+        edtExifMask.Font := UpdateFont(edtExifMask.Font, FontName, FontHeight);
+        lblPreviewOldName.Font := UpdateFont(lblPreviewOldName.Font, FontName, FontHeight);
+        lblPreviewNewName.Font := UpdateFont(lblPreviewNewName.Font, FontName, FontHeight);
+      end;
     end;
     b := Display.DropdownComplete;
     edtChangeExt.AutoComplete := b;
@@ -2053,6 +2081,7 @@ begin
     GlobalSettings.Copy := Processing.Copy;
     GlobalSettings.Refresh := Display.RealtimeUpdate;
     GlobalSettings.Log := Processing.GenerLog;
+    FileDateTimeDSTRelativeToFile := Processing.DSTRelativeToFile;
     if Language = '?' then
       Language := '';
     if Language <> FCurrentLanguage then
@@ -2156,6 +2185,7 @@ begin
     Add('stradDateTimeCreat', stradDateTimeCreat);
     Add('stradDateTimeModif', stradDateTimeModif);
     Add('stradDateTimeSuffix', stradDateTimeSuffix);
+    Add('stradDateTimeOffset', stradDateTimeOffset);
     Add('stradRandom', stradRandom);
     Add('stradRandomNumbers', stradRandomNumbers);
     Add('stradRandomTick', stradRandomTick);
@@ -2170,7 +2200,7 @@ begin
     Add('stradFromListExt', stradFromListExt);
     Add('stradRegexp', stradRegexp);
     Add('stradExif', stradExif);
-    Add('stradShiftDT', stradShiftDT); 
+    //Add('stradShiftDT', stradShiftDT);
     Add('straeFromListEmpty', straeFromListEmpty);
     Add('straeFromListEnd', straeFromListEnd);
     Add('straeExifNoInfo', straeExifNoInfo);
@@ -2836,6 +2866,51 @@ end;
 {-------------------------------------------------------------------------------
 -------------------------------------------------------------------------------}
 
+procedure TMainForm.ActionMultistrReplCopyExecute(Sender: TObject);
+var
+  gridtext: WideString;
+  i: Integer;
+begin
+  gridtext := '';
+  for i := 0 to edtMultstrRepl.RowCount-1 do
+  begin
+    if i > 0 then
+      gridtext := gridtext + sLineBreak;
+    gridtext := gridtext + edtMultstrRepl.Cells[0, i] + Chr(9) + edtMultstrRepl.Cells[1, i];
+  end;
+  TntClipboard.AsWideText := gridtext;
+end;
+
+{-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------}
+
+procedure TMainForm.ActionMultistrReplPasteExecute(Sender: TObject);
+var
+  lines: TTntStringList;
+  part1, part2: WideString;
+  i, c: Integer;
+begin
+  lines := TTntStringList.Create;
+  try
+    lines.Text := TntClipboard.AsWideText;
+    c := lines.Count;
+    edtMultstrRepl.RowCount := c + 1;
+    for i := 0 to c - 1 do
+    begin
+      Split(lines[i], Chr(9), part1, part2, True);
+      edtMultstrRepl.Cells[0,i] := part1;
+      edtMultstrRepl.Cells[1,i] := Tnt_WideStringReplace(part2, Chr(9), '', [rfReplaceAll]);
+    end;
+    edtMultstrRepl.Cells[0,c] := '';
+    edtMultstrRepl.Cells[1,c] := '';
+  finally
+    lines.Free;
+  end;
+end;
+
+{-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------}
+
 procedure TMainForm.ActionMultistrReplSaveExecute(Sender: TObject);
 var
   i: Integer;
@@ -3102,6 +3177,7 @@ begin
         Mask := edtDTMask.Text;
         AddSuffix := cbxDTSuffix.Checked;
         WhichDate := IfThen(rbtDTWhichCreation.Checked, 0, 1);
+        Offset := edtDTOffset.AsInteger;
         if UpdateHistory then
           UpdateHistoryList(edtDTMask);
       end;
@@ -3151,6 +3227,7 @@ begin
       with TRenActionExif(AAction).Settings do
       begin
         Mask := edtExifMask.Text;
+        Offset := edtExifOffset.AsInteger;
         if UpdateHistory then
           UpdateHistoryList(edtExifMask);
       end;

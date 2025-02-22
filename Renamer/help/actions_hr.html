@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Pomoć Ant Renamer 2</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1250" />
+	<link rel="stylesheet" href="main.css" type="text/css" />
+</head>
+<body>
+<h1>Akcije</h1>
+<p>Ova stranica prikazuje akcije koje se mogu primijeniti na datoteke.</p>
+<ul>
+  <li><a href="#changeext">Promjena datotečnog nastavka</a></li>
+  <li><a href="#stringrepl">Zamjena niza znakova</a></li>
+  <li><a href="#multstrrepl">Višestruka zamjena niza znakova</a></li>
+  <li><a href="#stringinsert">Ubacivanje niza znakova</a></li>
+  <li><a href="#movestring">Pomicanje niza znakova</a></li>
+  <li><a href="#chardel">Brisanje znakova</a></li>
+  <li><a href="#enum">Brojčani naziv</a></li>
+  <li><a href="#mp3">Koristi mp3 info oznake</a></li>
+  <li><a href="#datetime">Koristi datum &amp; vrijeme</a></li>
+  <li><a href="#random">Nasumični nazivi</a></li>
+  <li><a href="#case">Promjena slučaja</a></li>
+  <li><a href="#fromlist">Uzmi nazive sa spiska</a></li>
+  <li><a href="#regexp">Regilarni izrazi</a></li>
+  <li><a href="#exif">Koristi EXIF info</a></li>
+</ul>
+<p>Ova stranica također ima naredbe za serijsko upravljanje datotekama. Uz dodavanje datoteke na alatnoj traci koja je uvijek vidljiva, alatnom trakom upravljamo i tim datotekama za seriju.
+  Za više informacija o tim serijama, pogledajte <a href="batch_hr.html">ovu stranicu</a>.</p>
+<p>Na dnu prozora, postoje dvije ploče:</p>
+<ul>
+  <li><span="optname">Predpregled izabrane datoteke</span>, koji prikazuje trenutni i budući naziv izabrane datoteke sa spiska datoteka (ili prve datoteke ako niti jedna
+    nije izabrana). Ovaj pregled se osvježava kod svake promjene u parametrima akcije, omogućujući vam izravno vidjeti rezultat onoga što ste promijenili u tim parametrima.</li>
+  <li><span="optname">Sadržaj serije</span> (zadano je skriven), prikazuje planirane akcije. To je opisano na stranici <a href="batch_hr.html">"Serija"</a>.</li>
+</ul>
+<p>Možete sakriti/prikazati ove ploče pomoću okvir na lijevoj strani njihovog naslova.</p>
+
+<h2 id="changeext">Promjena datotečnog nastavka</h2>
+<p>Možete prepisati novi datotečni nastavak ili dodati novi, poslije postojećeg, ako potvrdite opciju za to.</p>
+<p>Točka će se dodati prije Vašeg datotečnog nastavka. Za uklanjanje trenutnog datotečnog nastavaka, jednostavno ostavite polje prazno.</p>
+
+<h2 id="stringrepl">Zamjena niza znakova</h2>
+<p>U nazivima datoteka možete zamjeniti tekst drugim. Ako opcija "Zamjeni sva pojavljivanja" nije potvrđena, samo prvo pojavljivanje teksta u svakom nazivu datoteke
+  biti će zamjenjeno.</p>
+<p>Ova akcija se također može koristiti za umetanje niza znakova prije ili poslije postojećeg (ako ne znate mjesto gdje novi niz znakova mora biti postavljen).
+  Na primjer, ako hoćete umetnuti "2" iza svakog pojavljivanja "test" sadržanog u nazivima, zamjenite "test" s "test2".
+<p>To se također može koristiti za brisanje određenog niza: jednostavno ostavite drugo polje prazno.</p>
+
+<h2 id="multstrrepl">Višestruka zamjena niza znakova</h2>
+<p>It can be used for single characters replacement, like replacing all accentuated characters by their latin equivalent, or to replace whole strings, of different lengths.</p>
+<p>U početku je dodano za zamjene više znakova, poput zamjene svih naglašenim slova svojim latinskim ekvivalentom. Ali sam dodao podršku za
+  niz znakova umjesto slova za neke jezike, gdje jedno slovo može biti prevedeno s nekoliko latinskih slova, ili obrnuto.</p>
+<p>Možete spremiti sadržaj mreže da ga možete vratiti kasnije iz padajućeg popisa. Upišete ime u to polje i kliknete "Spremi".</p>
+<p>Za dodati redak u mrežu, pritisnite tipku "Ctrl" i "Plus" (+) tipke. Novi redak će biti dodan prije odabrane ćelije.<br />
+  Na isti način, pritiskom "Ctrl" i "Minus" (-) tipki će se ukloniti trenutni redak.</p>
+<p>The Copy and Paste buttons allow you to easily export and import the contents of the whole table as plain text to modify it in Excel or any text editor.<br />
+  Each row of the table corresponds to a line of text, and the two columns are separated by a tab character (this is what Excel uses as column separator for copy/paste).</p>
+
+<h2 id="stringinsert">Umetanje niza znakova</h2>
+<p>Možete umetnuti niz znakova na bilo koje mjesto, brojeći od početka ili kraja imena. Nula znači da će niz znakova biti umetnut prije prvog postojećeg znaka
+  ili iza zadnjeg.</p>
+<p>Datotečni nastavak nije uključen kod brojanja znakova, tako da je predviđena mogućnost to primijeniti i na datotečni nastavak uz ime.</p>
+<p>Ova akcija podržava sljedeće oznake:</p>
+  <li><code>%name%</code> : Stavi izvorni naziv datoteke, bez datotečnog nastavka</li>
+  <li><code>%ext%</code> : Stavi izvorni datotečni nastavak, uključujući točku</li>
+  <li><code>%folderN%</code> : Stavi N-tu nadređenu mapu</li>
+<p>Pogledajte <a href="format_hr.html#folder">poglavlje posvećeno oznakama mape na stranici "Oblikovanje"</a> za više informacija.</p>
+
+<h2 id="movestring">Pomicanje znakova</h2>
+<p>Možete u imenu premjestiti unaprijed definiran broj znakova s jednog mjesta na drugo. Kao za <a href="#stringinsert">umetanje niza znakova</a>, "S mjesta" i "Na mjesto"
+  počevši od 0 (gdje je 0 = prije prvog znaka ili poslije zadnjeg).</p>
+<p>"Na mjesto" broji preostale znakove. To znači da se prvi navedeni broj znakova briše, a zatim će ih program pokušati ponovno umetnuti.
+  </p>
+<p>Na primjer, u nizu "abcdef", ako pomaknete 1 znak s mjesta 2 (znači "c") na mjesto 4, neće se pojaviti iza "d" nego iza "e": dok se
+  "c" uklanja, "d" postaje treći, a "e" četvrti.</p>
+
+<h2 id="chardel">Brisanje znakova</h2>
+<p>Možete navesti broj znakova za izrezivanje, s tog mjesta (kao za <a href="#stringinsert">umetanje niza znakova</a>) ili poslije niza znakova.</p>
+
+<h2 id="enum">Brojčani naziv</h2>
+<p>Za ovu akciju, morate odrediti masku. Ova maska mora sadržavati barem oznaku %num%, za određivanje programu gdje staviti broj koji će 
+  generirati.</p>
+<ul>
+  <li><code>%name%</code> : Stavi izvorni naziv datoteke, bez datotečnog nastavka</li>
+  <li><code>%ext%</code> : Stavi izvorni datotečni nastavak, uključujući točku</li>
+  <li><code>%num%</code> : Stavi trenutni broj</li>
+</ul>
+<p>Na primjer, ako svoje slike hoćete nazvati "Datoteka 0001.jpg", "Datoteka 0002.jpg", itd. trebate staviti <code>Datoteka %num%%ext%</code>. Možete staviti ".jpg" umjesto
+  "%ext%" ako ne želite zadržati izvorni datotečni nastavak (ili ako su sve datoteke JPEG).</p>
+<p>Pogledajte stranicu <a href="format_hr.html#folder">"Oblikovanje"</a> za više informacija o maskama i oznakama.</p>
+<p>"Počni s" je broj koji će se dati prvoj datoteci. "Broj znamenaka" predstavlja najmanji broj znamenaka (ako trenutni broj ima manje znamenaka,
+  ispred će se dodati nule; polje stavite na 1 ako ne želite nule ispred broja). "Povećanje za" je uvećanje dodano za svaku slijedeću datoteku.</p>
+<p>Ako su datoteke grupirane u mapama (npr. osnovno sortiranje je naziv mape, tako da sadržaji mape nisu pomješani na spisku) možete upotrijebiti opciju "Vrati 
+  na početnu vrijednost...". To će staviti vrijednost "Počni s", kada je trenutna datoteka iz druge mape na početnu vrijednost. To omogućava neku vrstu brojčanog preimenovanja
+    u više mapa bez potrebe ponavljanja te operacije za svaku mapu odvojeno.</p>
+
+<h2 id="mp3">Koristi mp3 info</h2>
+<p>Ovdje opet morate unijeti masku. Tu postoji nekoliko oznaka koje se mogu raspoznati. Pogledajte stranicu <a href="format_hr.html#folder">"Oblikovanje"</a> za više informacija.</p>
+<ul>
+  <li><code>%author%</code> : Author/Izvođač</li>
+  <li><code>%title%</code> : Naziv pjesme</li>
+  <li><code>%album%</code> : Naziv albuma</li>
+  <li><code>%year%</code> : Godina</li>
+  <li><code>%genre%</code> : Žanr/Kategorija</li>
+  <li><code>%comm%</code> : Komentar</li>
+  <li><code>%track%</code> : Broj zapisa, koji je prisutan iza ID3v1.1 i koji je pohranjen iza zadnjeg byta u polju komentara.</li>
+</ul>
+<p>%name% i %ext% oznake su također dostupne.</p>
+<p>Budući da u mp3 oznaka može sadržavati bilo koji znak, opcija omogućava zamjenu zabranjenih znakova. Navodnici "..." će se zamjeniti s
+  dvostrukim apostrofima ''...'' (dva ' zajedno). Upitnik s točkom. Ostali znakovi će biti zamijenjeni s crticom.</p>
+
+<h2 id="datetime">Koristi datum &amp; vrijeme</h2>
+<p>Ova akcija koristi različiti sistem maske. Oznake su slova:</p>
+<ul>
+  <li><code>f</code> : Izvorni naziv datoteke (bez datotečnog nastavka)</li>
+  <li><code>e</code> : Izvorni datotečni nastavak (uključujući točku)</li>
+  <li><code>c</code> : Datum i vrijeme u Windows standardnom formatu</li>
+  <li><code>d</code> : Dan bez nule na početku (1-31)</li>
+  <li><code>dd</code> : Dan s nulom na početku (01-31)</li>
+  <li><code>ddd</code> : Dan, kratko ime (Pon-Pet)</li>
+  <li><code>dddd</code> : Dan, puno ime (Nedjelja-Utorak)</li>
+  <li><code>ddddd</code> : Datum u Windows' kratkom formatu</li>
+  <li><code>dddddd</code> : Datum u Windows' dugom formatu</li>
+  <li><code>m</code> : Mjesec bez nule na početku (1-12)</li>
+  <li><code>mm</code> : Mjesec s nulom na početku (01-12)</li>
+  <li><code>mmm</code> : Mjesec, kratko ime (Tra-Ruj)</li>
+  <li><code>mmmm</code> : Mjesec, puno ime (Siječanj-Prosinac)</li>
+  <li><code>yy</code> : Godina, 2-znamenkasti broj (00-99)</li>
+  <li><code>yyyy</code> : Godina, 4-znamenkasti broj (0000-9999)</li>
+  <li><code>h</code> : Sat bez nule na početku (0-23)</li>
+  <li><code>hh</code> : Sat s nulom na početku (00-23)</li>
+  <li><code>n</code> : Minute bez nule na početku (0-59)</li>
+  <li><code>nn</code> : Minute s nulom na početku (00-59)</li>
+  <li><code>s</code> : Sekunde bez nule na početku (0-59)</li>
+  <li><code>ss</code> : Sekunde s nulom na početku (00-59)</li>
+  <li><code>am/pm</code> : Koristi 12-satni sat za h ili hh (mogu biti velika slova)</li>
+  <li><code>a/p</code> : Koristi 12-satni sat za h ili hh (biti velika slova)</li>
+</ul>
+<p>Ako m ili mm slijede odmah iza h ili hh, koriste se minute umjesto mjeseca</p>
+<p>Budite oprezni s formatima datuma i vremena, naročito kod upotrebe Windows' formata. "/" i ":" često se koriste kao razdvojnici, ali oni se ne mogu koristiti u nazivu datoteke.
+  Dakle, ako koristite zadani znak razdvajanja, morate ručno umetnuti drugi razdvojnik između navodnika, kao što je objašnjeno u narednim stavcima.</p>
+<p>Ovdje sve znakove, koji nisu dio maske, morate staviti unutar navodnika (jednostrukih ili dvostrukih). Preporučam upotrebu dvostrukih navodnika (navodnici "...")
+  umjesto jednostrukih (apostrofi '...') tako da možete staviti apostrofe unutar navodnika.</p>
+<p>Evo nekoliko primjera :</p>
+<ul>
+  <li><code>yyyy'-'mm'-'dde</code> : Uzima yyyy-mm-dd format datuma, forsira razdvojnik da bude "-", i zadržava izvorni datotečni nastavak.</li>
+  <li><code>"a'b" yyyymmdd".txt"</code> : Ovdje je primjer koji uključuje apostrof unutar citata. Datotečni nastavak ".txt" je nametnut.</li>
+  <li><code>yy'-'mm'-'dd hh'-'nn'-'sse</code> : Uključuje vrijeme u ime, u 24-satnom obliku.</li>
+  <li><code>yy'-'mm'-'dd hh'-'nn'-'ss am/pme</code> : Isto, samo koristi 12-satni format (s am/pm) umjesto 24-satnog. am/pm se prikazuje iza vremena.</li>
+</ul>
+<p>Budući da više datoteka može imati isti datum (ili vrijeme), može se potvrditi opcija kojom će se dodati predmetak nakon duplih datoteka. Taj predmetak je duži broj. U
+  idućoj verziji će biti moguće to bolje kontrolirati.</p>
+<p>Možete izabrati hoće se koristiti ili datum/vrijeme stvaranja ili datum/vrijeme zadnje izmjene. Prvo je datum kada je datoteka stavljena na disk, a drugo je
+  datum kada je datoteka zadnji puta promijenjena. Ako ste nedavno stavili staru datoteku na novi disk, datum stvaranja može biti noviji od datuma izmjene. Većinom
+  se, u tom slučaju, koristi datum zadnje promijene.</p>
+
+<h2 id="random">Nasumični nazivi</h2>
+<p>Koristeći isti princip maske kao kod <a href="#enum">Brojčanog naziva</a> i <a href="#mp3">Koristi mp3</a>, možete generirati nova imena koja će sadržavati slučajni naziv.
+  Kao u ove dvije akcije, %name% i %ext% oznake su također dostupne.</p>
+<p><code>%random%</code> oznaka će staviti slučajan broj, generiran u skladu s jednom od sljedećih mogućnosti:</p>
+<ul>
+  <li><span class="optname">Slučajan broj</span> : Generira 8 znamenki slučajno.</li>
+  <li><span class="optname">Windows nasumični brojač</span> : To zapravo i nije slučajni broj, to je Windows' brojač. To je broj milisekundi od
+    pokretanja Windowsa (i vraća se na nulu nakon otprilike 49.7 dana), pa su ti brojevi periodični</li>
+  <li><span class="optname">GUID</span> : Ovi posebni nizovi su vrlo dugi identifikatori, dizajnirani da budu jedinstveni (generiran korištenjem mrežne adrese, datuma, vremena i
+    drugih sličnih podataka). Možete biti sigurni da nikada nećete dobiti dva identična GUID. Jedini nedostatak im je što ne izgledaju lijepo, npr.
+    "{FC7F6B42-A25A-47B1-96A7-52A12BC36A02}".</li>
+</ul>
+
+<h2 id="case">Velika i mala slova</h2>
+<p>Kod ove akcije mijenjaju se samo veličine slova (veliko slovo/malo slovo), tako da se ime neće stvarno promijeniti, budući da Windows sustavi nisu osjetljivi
+  na veličinu slova.</p>
+<p>Možete napraviti različite vrste promjena. Prva je, "Veliko prvo slovo slijedi", se obično koriste kako bi se dobila mješovita imena (npr.morate staviti u polje znakove poput razmaka, 
+  crtica, točkica, itd.)</p>
+<p>Obično je bolje zadržati opciju "Koristi Windows' lokalne postavke..." potvrđenom. To će zatražiti od Windowsa promjenu veličine slova, što ovisi o jezičnim postavkama trenutnog jezika 
+  pa će znakovi biti ispravno izmijenjeni. Ako ta opcija nije potvrđena, samo standardna latinična slova (a..z) se mijenjaju.</p>
+
+<h2 id="fromlist">Uzmi nazive sa spiska</h2>
+<p>Za ovu akciju, jednostavno morate dati popis s novim imenom. Ant Renamer će preimenovati datoteke tim imenima.</p>
+<p>Prema zadanim postavkama uzima svaki redak kao puno ime, ali ako ne želite prepisati datotečni nastavak (npr. uzima ime sa spiska bez nastavka i onda
+  dodaje izvorni nastavak) možete potvrditi opciju "Dodaj izvorni nastavak..."</p>
+<p>Također možete jednostavno dati u popis nastavaka, i potvrditi "Uzmi stavke kao nastavak..." opciju. Tada se imena neće mijenjati.</p>
+<p>Ako je popis prekratak, datoteke koje nemaju odgovarajući redak s popisa neće biti preimenovane. Isto kada se prazan redak nalazi u spisku.</p>
+
+<h2 id="regexp">Regularni izrazi</h2>
+<p>Ako ste upoznati sa sintaksom tih izraza, bit ćete u mogućnosti brzo izvući dio imena datoteka za generiranje novog imena u jednom koraku
+  umjesto da kombinirate nekoliko akcija. Možete čak i ostvariti neke promjene koje nisu mogle biti učinjene s klasičnim premjesti/umetni/obriši akcijama.</p>
+<p>Morate dati programu regularni izraz i niz znakova "novo ime" koje sadrži $<i>nn</i> oznake (gdje je <i>nn</i> broj) pokazujući gdje smjestiti
+  znakove pronađene u izvornom nazivu datoteke.</a>
+<p>Za više informacija o sintaksi regularnog izraza, pogledajte stranicu <a href="regexp_hr.html">posvećenu tome</a>.</p>
+
+<h2 id="exif">Koristi EXIF info</h2>
+<p>Koristeći isti sistem maske kao kod nekoliko radnji gore opisanih, možete generirati tom akcijom novi naziv datoteke na temelju EXIF podataka sadržanih u JPEG slikama.
+  To može biti, na primjer, vrlo korisno kao zamjena akciji <a href="#datetime">Koristi datum &amp; vrijeme</a> ako datumi vaših fotografija nisu sačuvani kada
+  ste ih prenosili iz vaše digitalne kamere.</a>
+<p>Pogledajte stranicu <a href="format_hr.html#folder">"Oblikovanje"</a> za više informacija. zbog vrlo dugog popisa postojećih EXIF oznaka, oni su navedene
+  <a href="exif_tags.txt">na posebnoj stranici</a> umjesto da budu uključene ovdje.</p>
+
+</body>
+</html>

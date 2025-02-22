@@ -9,9 +9,18 @@
 <h1>Version history</h1>
 <p>2.x versions:</p>
 <ul>
+	<li>2.13 (14/12/2024)
+		<ul>
+			<li>Option for better handling of daylight summer time (DST) for files to follow the behaviour of recent Windows versions (enabled by default on Windows 7 and higher).</li>
+			<li>Offset feature for "Date &amp; time" and "EXIF Info" actions.</li>
+			<li>Copy/paste of the table for the "Multiple string replacement" action, for easy export/import.</li>
+			<li>Upgrade of TRegExpr library.</li>
+			<li>A few bugs fixed.</li>
+		</ul>
+	</li>
 	<li>2.12 (04/07/2015)
 		<ul>
-			<li>Option (disabled by default) to consider the last "." in folder name as extension delimiter. Previous versions were always considering that a folder could have an extension, but that's commonly used.</li>
+			<li>Option (disabled by default) to consider the last "." in folder name as extension delimiter. Previous versions were always considering that a folder could have an extension, but that's not commonly used.</li>
 			<li>When folders are renamed, the path of files in the list is updated if needed. Previous versions were giving an error as files contained by renamed folders were not found anymore.</li>
 			<li>"Case sensitive" option in the "Multiple string replace" action.</li>
 			<li>A few bugs fixed.</li>

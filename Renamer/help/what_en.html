@@ -15,18 +15,18 @@
 <h1>... and what it does not</h1>
 <p>As I said, it won't modify the contents of the files.</p>
 <p>It will not either modify files' date & time.</p>
-<p>It will not modify the ID3 (tag) contained in MP3s; it only read this info for building a new file name.</p>
-<p>It does not read any info from files other than MP3s, and even for MP3s it only reads the v1 of the ID3, not the v2.</p>
+<p>It will not modify the ID3 (tag) contained in MP3s or EXIF from JPEG; it only read this info for building a new file name.</p>
+<p>It does not read any info from files other than MP3s (and for these it only reads the v1 of the ID3, not the v2) and JPEG.</p>
 <p>It cannot be fully controlled from command line, though it supports some <a href="params_en.html">parameters</a>.</p>
 <p>Note that the contents of this list is not fixed. Except modifying the contents of the files, all the "does not" things may appear in future versions.</p>
 <h2>Known bugs and limitations:</h2>
 <ul>
-  <li>Unicode is supported only on NT systems (Windows NT4, 2000, XP, Vista, 7, 8.x).</li>
+  <li>Unicode is supported only on NT systems (Windows NT4, 2000, XP, Vista, 7 and higher).</li>
   <li>Batch files cannot have unicode characters in their name and path.</li>
   <li>Ditto for the folder where the program is located, and for the command-line when it is called with parameters.</li>
-  <li>Since version 2.04 the program does not start on some Windows 95 versions, it seems to be caused by a missing Unicode function on these system.</li>
+  <li>Since version 2.04 the program does not start on some Windows 95 versions, it seems to be caused by a missing function on these system.</li>
   <li>In the "Use date &amp; time" action, if you use a long date format (with day or month in letters, like "December" in English), it will fail for days
-    or months that have special characters in their name (like "Décembre" in French). This bug will be corrected soon, but I have to find how to do that.</li>
+    or months that have special characters in their name (like "Décembre" in French). This bug will be corrected some day, but I have to find how to do that.</li>
 </ul>
 </body>
 </html>

@@ -16,20 +16,20 @@
 <h1>... et ce qu'il ne fait pas</h1>
 <p>Comme je l'ai dit, il ne modifiera pas le contenu des fichiers.</p>
 <p>Il ne va pas non plus modifier la date et l'heure des fichiers.</p>
-<p>Il ne modifie pas les tags ID3 contenus dans les mp3 ; il va seulement lire ces infos pour construire un nouveau nom de fichier.</p>
-<p>Il ne lit aucune info de fichiers autres que les mp3, et même pour les mp3 il ne lit que la version 1 de l'ID3, pas la version 2.</p>
+<p>Il ne modifie pas les tags ID3 contenus dans les MP3 ni les infos EXIF des JPEG ; il va seulement lire ces infos pour construire un nouveau nom de fichier.</p>
+<p>Il ne lit aucune info de fichiers autres que les MP3 (et pour ceux-là il ne lit que la version 1 de l'ID3, pas la version 2) and JPEG.</p>
 <p>Il ne peut pas être entièrement contrôlé depuis la ligne de commande, mais il supporte quelques <a href="params_fr.html">paramètres</a>.</p>
 <p>Notez que le contenu de cette ligne n'est pas définitif. À part pour ce qui est de la modification du contenu des fichiers, toutes les choses qu'il ne fait
   pas peuvent apparaître dans les versions futures.</p>
 <h2>Bugs connus et limitations :</h2>
 <ul>
-  <li>L'unicode n'est supporté que sur les systèmes NT (Windows NT4, 2000, XP, Vista, 7, 8.x).</li>
+  <li>L'unicode n'est supporté que sur les systèmes NT (Windows NT4, 2000, XP, Vista, 7 et supérieur).</li>
   <li>Les fichiers de job ne peuvent pas avoir de caractères unicode dans leur nom et chemin.</li>
   <li>Idem pour le dossier où se trouve le programme, et pour la ligne de commande lorsqu'il est appelé avec des paramètres.</li>
-  <li>Depuis la version 2.04 le programme ne démarre pas sur certaines versions de Windows 95, cela semble causé par une fonction Unicode manquante sur
+  <li>Depuis la version 2.04 le programme ne démarre pas sur certaines versions de Windows 95, cela semble causé par une fonction manquante sur
     ces systèmes.</li>
   <li>Dans l'action "Date et heure", si vous utilisez un format de date long (avec le jour ou le mois en toutes lettres, comme "Vendredi"), cela échouera
-    pour les jours ou mois qui ont des caractères spéciaux dans leur nom (comme "Décembre"). Ce bug sera corrigé prochainement, mais je dois trouver
+    pour les jours ou mois qui ont des caractères spéciaux dans leur nom (comme "Décembre"). Ce bug sera corrigé un jour, mais je dois trouver
     comment faire cela.</li>
 </ul>
 </body>

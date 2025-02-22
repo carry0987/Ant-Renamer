@@ -1,7 +1,7 @@
 (************************************************************************
  *                                                                      *
  *   Ant Renamer 2.x                                                    *
- *   (C) 2003-2006 Antoine Potten                                       *
+ *   (C) 2003-2024 Antoine Potten                                       *
  *   http://www.antp.be/software                                        *
  *                                                                      *
  ************************************************************************
@@ -43,23 +43,23 @@ type
     tshProcessing: TTabSheet;
     tshLanguage: TTabSheet;
     LanguageFrame: TLanguageFrame;
-    cbxForceDir: TCheckBox;
-    cbxDetectAbsdir: TCheckBox;
-    cbxCopy: TCheckBox;
-    cbxDragdropNoAsk: TCheckBox;
+    cbxForceDir: TTntCheckBox;
+    cbxDetectAbsdir: TTntCheckBox;
+    cbxCopy: TTntCheckBox;
+    cbxDragdropNoAsk: TTntCheckBox;
     DragdropOptions: TAddFoldersFrame;
     lblForceFont: TLabel;
     lblDropdownMax: TLabel;
-    cbxRealTimeUpdate: TCheckBox;
-    cbxResizeColsFiles: TCheckBox;
-    cbxFilesIcons: TCheckBox;
-    cbxForceFont: TCheckBox;
+    cbxRealTimeUpdate: TTntCheckBox;
+    cbxResizeColsFiles: TTntCheckBox;
+    cbxFilesIcons: TTntCheckBox;
+    cbxForceFont: TTntCheckBox;
     cmbForceFont: TComboBox;
     lblIconSet: TLabel;
     cmbIconSet: TComboBox;
-    cbxGenerLog: TCheckBox;
-    cbxLaunchFile: TCheckBox;
-    cbxDropdownComplete: TCheckBox;
+    cbxGenerLog: TTntCheckBox;
+    cbxLaunchFile: TTntCheckBox;
+    cbxDropdownComplete: TTntCheckBox;
     lbhLists: TAntJvGroupHeader;
     lbhFonts: TAntJvGroupHeader;
     lbhDropdown: TAntJvGroupHeader;
@@ -70,20 +70,22 @@ type
     edtDropdownMax: TAntJvSpinEdit;
     tshEvents: TTabSheet;
     lbhWhenStarted: TAntJvGroupHeader;
-    cbxStartSwitch: TCheckBox;
+    cbxStartSwitch: TTntCheckBox;
     cmbStartSwitch: TComboBox;
-    cbxStartClearLog: TCheckBox;
+    cbxStartClearLog: TTntCheckBox;
     lbhWhenFinished: TAntJvGroupHeader;
-    cbxFinishSwitch: TCheckBox;
-    cbxClearFilesList: TCheckBox;
-    cbxClearBatchList: TCheckBox;
-    cbxSaveLog: TCheckBox;
-    cbxSaveLogAppend: TCheckBox;
+    cbxFinishSwitch: TTntCheckBox;
+    cbxClearFilesList: TTntCheckBox;
+    cbxClearBatchList: TTntCheckBox;
+    cbxSaveLog: TTntCheckBox;
+    cbxSaveLogAppend: TTntCheckBox;
     edtSaveLog: TTntEdit;
     btnSaveLog: TCorelButton;
     cmbFinishSwitch: TComboBox;
     lbhFoldersRules: TAntJvGroupHeader;
-    cbxFolderExt: TCheckBox;
+    cbxFolderExt: TTntCheckBox;
+    cbxDSTRelativeToFile: TTntCheckBox;
+    edtForceFont: TAntJvSpinEdit;
     procedure FormCreate(Sender: TObject);
     procedure btn3Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -201,6 +203,7 @@ begin
           if ItemIndex = -1 then
             ItemIndex := 0;
         end;
+        edtForceFont.Value := Display.FontHeight;
       end;
       cbxForceFontClick(cbxForceFont);
       edtDropdownMax.Value := Display.DropdownMax;
@@ -215,6 +218,7 @@ begin
       cbxFolderExt.Checked := Processing.FolderExt;
       cbxCopy.Checked := Processing.Copy;
       cbxGenerLog.Checked := Processing.GenerLog;
+      cbxDSTRelativeToFile.Checked := Processing.DSTRelativeToFile;
       cbxStartSwitch.Checked := Processing.StartedSwitch <> -1;
       cmbStartSwitch.ItemIndex := Processing.StartedSwitch;
       cbxStartClearLog.Checked := Processing.StartedClearLog;
@@ -273,6 +277,7 @@ begin
         Display.ForceFont := cbxForceFont.Checked;
         if cmbForceFont.ItemIndex > -1 then
           Display.FontName := cmbForceFont.Items[cmbForceFont.ItemIndex];
+        Display.FontHeight := edtForceFont.AsInteger;
       end;
       Display.DropdownMax := edtDropdownMax.AsInteger;
       Display.DropdownComplete := cbxDropdownComplete.Checked;
@@ -293,6 +298,7 @@ begin
       Processing.FolderExt := cbxFolderExt.Checked;
       Processing.Copy := cbxCopy.Checked;
       Processing.GenerLog := cbxGenerLog.Checked;
+      Processing.DSTRelativeToFile := cbxDSTRelativeToFile.Checked;
       if cbxStartSwitch.Checked then
         Processing.StartedSwitch := cmbStartSwitch.ItemIndex
       else
@@ -382,6 +388,7 @@ begin
         tshDisplay.TabVisible := False;
         tshAdding.TabVisible := False;
         tshProcessing.TabVisible := False;
+        tshEvents.TabVisible := False;
         btn1.Visible := False;
         LanguageFrame.LoadLanguages(lfXML, strDirApp + strDirLanguages, '*.lng');
         LanguageFrame.lstLanguages.OnDblClick := btn3.OnClick;

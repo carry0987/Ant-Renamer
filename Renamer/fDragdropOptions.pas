@@ -1,7 +1,7 @@
 (************************************************************************
  *                                                                      *
  *   Ant Renamer 2.x                                                    *
- *   (C) 2005-2006 Antoine Potten                                       *
+ *   (C) 2005-2024 Antoine Potten                                       *
  *   http://www.antp.be/software                                        *
  *                                                                      *
  ************************************************************************
@@ -26,7 +26,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, ExtCtrls,
 
-  AntAutoHintLabel, AntCorelButton,
+  TntStdCtrls, AntAutoHintLabel, AntCorelButton,
 
   base, frameAddFolders;
 
@@ -37,7 +37,7 @@ type
   TDragdropOptionsForm = class(TBaseDlg)
     lblOptions: TLabel;
     Options: TAddFoldersFrame;
-    cbxNotAgain: TCheckBox;
+    cbxNotAgain: TTntCheckBox;
     procedure btn3Click(Sender: TObject);
     procedure btn1Click(Sender: TObject);
   private

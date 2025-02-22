@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//TA">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<!-- Sitemap 1.0 -->
+</HEAD><BODY>
+<UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="குறிஎண்">
+		<param name="Local" value="index_ta.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="நிரல் என்ன செய்கிறது">
+		<param name="Local" value="what_ta.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="முதன்மை சாளரம்">
+		<param name="Local" value="main_ta.html">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="கோப்புகள்">
+			<param name="Local" value="files_ta.html">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="கோப்புகள் &amp; கோப்புறைகள் சேர்">
+				<param name="Local" value="addfiles_ta.html">
+				</OBJECT>
+		</UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="செயல்கள்">
+			<param name="Local" value="actions_ta.html">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="முன் வரையறுக்கப்பட்ட பட்டியல் (தொகுதி)">
+				<param name="Local" value="batch_ta.html">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="சரங்களை வடிவமைத்தல்">
+				<param name="Local" value="format_ta.html">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="வழக்கமான வெளிப்பாடுகள் ">
+				<param name="Local" value="regexp_ta.html">
+				</OBJECT>
+		</UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="பதிப்பு">
+			<param name="Local" value="log_ta.html">
+			</OBJECT>
+	</UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="விருப்பங்கள்">
+		<param name="Local" value="options_ta.html">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="எழுத்துருகள்">
+			<param name="Local" value="fonts_ta.html">
+			</OBJECT>
+	</UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="கட்டளை-வரி வாதங்கள்">
+		<param name="Local" value="params_ta.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="பதிப்பு வரலாறு">
+		<param name="Local" value="history_ta.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="ஆசிரியர், பங்களிப்புகள் &amp; இணைப்புகள் பற்றி">
+		<param name="Local" value="about_ta.html">
+		</OBJECT>
+</UL>
+</BODY></HTML>

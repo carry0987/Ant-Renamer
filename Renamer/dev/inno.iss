@@ -4,12 +4,12 @@
 
 [Setup]
 AppName=Ant Renamer
-AppVerName=Ant Renamer 2.12.0
-AppCopyright=Copyright © 2000-2015 Antoine Potten
+AppVerName=Ant Renamer 2.13.0
+AppCopyright=Copyright © 2000-2024 Antoine Potten
 AppPublisher=Ant Software
 AppPublisherURL=http://www.antp.be/software/
 AppUpdatesURL=http://www.antp.be/software/renamer/download/
-AppVersion=2.12.0
+AppVersion=2.13.0
 AppId=Ant Renamer 2
 
 DefaultDirName={pf}\Ant Renamer
@@ -36,6 +36,7 @@ Source: license.txt; DestDir: {app}; Flags: ignoreversion
 
 Source: Toolbars\Windows XP.bmp; DestDir: {app}\Toolbars; Components: Icons; Flags: ignoreversion
 Source: Toolbars\Windows XP Large.bmp; DestDir: {app}\Toolbars; Components: Icons; Flags: ignoreversion
+Source: Toolbars\Windows 10 Large.bmp; DestDir: {app}\Toolbars; Components: Icons; Flags: ignoreversion
 
 Source: Languages\*.*; Excludes: English.*; DestDir: {app}\Languages; Flags: ignoreversion; Components: Lang
 Source: Languages\English.*; DestDir: {app}\Languages; Flags: ignoreversion

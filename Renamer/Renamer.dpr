@@ -1,7 +1,7 @@
 (************************************************************************
  *                                                                      *
  *   Ant Renamer 2.x                                                    *
- *   (C) 2003-2015 Antoine Potten                                       *
+ *   (C) 2003-2024 Antoine Potten                                       *
  *   http://www.antp.be/software                                        *
  *                                                                      *
  ************************************************************************
@@ -22,6 +22,7 @@ program Renamer;
 
 uses
   Forms,
+  SysUtils,
   TntSysUtils,
   TntSystem,
   Graphics,
@@ -65,15 +66,25 @@ begin
   Graphics.DefFontData.Charset := DEFAULT_CHARSET;
   Application.Initialize;
   Application.Title := 'Ant Renamer 2';
-  Settings := TRenamerSettings.Create(strDirData + strPrefsFile);
+  Settings := TRenamerSettings.Create(strDirData + strPrefsFile, 'AntRenamerSettingsFile');
   Translator := TAntJvTranslator.Create(nil);
   try
-    Settings.LoadFromFile;
+    try
+      Settings.LoadFromFile;
+    except
+      on e: Exception do
+        Application.MessageBox(PChar('Could not load settings: ' + e.Message), 'Error', MB_ICONERROR);
+    end;
     Application.CreateForm(TMainForm, MainForm);
     Application.CreateForm(TMessageWin, MessageWin);
     Application.OnException := MainForm.OnException;
     Application.Run;
-    Settings.SaveToFile;
+    try
+      Settings.SaveToFile;
+    except
+      on e: Exception do
+        Application.MessageBox(PChar('Could not save settings: ' + e.Message), 'Error', MB_ICONERROR);
+    end;
   finally
     Translator.Free;
     Settings.Free;

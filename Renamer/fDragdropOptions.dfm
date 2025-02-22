@@ -29,13 +29,13 @@ inherited DragdropOptionsForm: TDragdropOptionsForm
     Height = 65
     Anchors = [akLeft, akTop, akRight]
     TabOrder = 4
-    inherited cbxRecursive: TCheckBox
+    inherited cbxRecursive: TTntCheckBox
       Width = 347
     end
-    inherited cbxFiles: TCheckBox
+    inherited cbxFiles: TTntCheckBox
       Width = 347
     end
-    inherited cbxFolders: TCheckBox
+    inherited cbxFolders: TTntCheckBox
       Width = 347
     end
   end
@@ -53,7 +53,6 @@ inherited DragdropOptionsForm: TDragdropOptionsForm
     Caption = 'Cancel'
     ModalResult = 2
     Visible = True
-    OnClick = btn3Click
   end
   inherited btn3: TCorelButton [6]
     Left = 146
@@ -67,7 +66,7 @@ inherited DragdropOptionsForm: TDragdropOptionsForm
     Left = 68
     Top = 145
   end
-  object cbxNotAgain: TCheckBox
+  object cbxNotAgain: TTntCheckBox
     Left = 8
     Top = 112
     Width = 363

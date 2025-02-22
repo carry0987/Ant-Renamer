@@ -1,7 +1,7 @@
 (************************************************************************
  *                                                                      *
  *   Ant Renamer 2.x                                                    *
- *   (C) 2003-2015 Antoine Potten                                       *
+ *   (C) 2003-2024 Antoine Potten                                       *
  *   http://www.antp.be/software                                        *
  *                                                                      *
  ************************************************************************
@@ -27,7 +27,7 @@ uses
   TntSystem, TntSysUtils;
 
 const
-  strDate     = '2015-07-04';
+  strDate     = '2024-12-14';
   strCaption  = 'Ant Renamer %s';
 
 var

@@ -145,7 +145,7 @@ type
   protected
     FXML: TJvSimpleXml;
   public
-    constructor Create(const AFileName: TJvSimpleXmlFileName = '');
+    constructor Create(const AFileName: TJvSimpleXmlFileName; const AMutexName: string);
     procedure LoadFromFile(const AFileName: TJvSimpleXmlFileName = ''); virtual;
     procedure SaveToFile(const AFileName: TJvSimpleXmlFileName = ''); virtual;
     destructor Destroy; override;
@@ -163,11 +163,11 @@ uses
   TSettingsFile
 -------------------------------------------------------------------------------}
 
-constructor TSettingsFile.Create(const AFileName: TJvSimpleXmlFileName = '');
+constructor TSettingsFile.Create(const AFileName: TJvSimpleXmlFileName; const AMutexName: string);
 begin
   FXML := TJvSimpleXml.Create(nil);
   FFileName := AFileName;
-  FMutex := CreateMutex(nil, False, 'Global\AntRenamerSettingsFile');
+  FMutex := CreateMutex(nil, False, PChar('Global\' + AMutexName));
 end;
 
 destructor TSettingsFile.Destroy;

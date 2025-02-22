@@ -1,7 +1,7 @@
 (************************************************************************
  *                                                                      *
  *   Ant Renamer 2.x                                                    *
- *   (C) 2003-2006 Antoine Potten                                       *
+ *   (C) 2003-2024 Antoine Potten                                       *
  *   http://www.antp.be/software                                        *
  *                                                                      *
  ************************************************************************
@@ -72,6 +72,7 @@ var
   stradDateTimeCreat:   string = ' using creation date';
   stradDateTimeModif:   string = ' using last modification date';
   stradDateTimeSuffix:  string = ', add a suffix if required';
+  stradDateTimeOffset:  string = ' with %d min offset';
   stradRandom:          string = 'Generate random names using mask "%s"';
   stradRandomNumbers:   string = ', with numbers';
   stradRandomTick:      string = ', using Windows'' tick counter';
@@ -87,7 +88,7 @@ var
   stradFromListOnlyExt: string = ', use items as extensions instead of names';
   stradRegexp:          string = 'Rename files using a regular expression';
   stradExif:            string = 'Generate names with EXIF info, based on the mask "%s"';
-  stradShiftDT:         string = 'Shift date/time by %d days and %d seconds'; 
+  //stradShiftDT:         string = 'Shift date/time by %d days and %d seconds'; 
   // Actions errors
   straeFromListEmpty:   string = 'Empty line';
   straeFromListEnd:     string = 'End of list';

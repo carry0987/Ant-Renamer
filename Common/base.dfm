@@ -1,6 +1,6 @@
 object BaseDlg: TBaseDlg
-  Left = 500
-  Top = 447
+  Left = 513
+  Top = 455
   AutoScroll = False
   BorderIcons = [biSystemMenu]
   Caption = 'basedlg'

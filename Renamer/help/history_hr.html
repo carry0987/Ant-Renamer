@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Pomoć Ant Renamer 2</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1250" />
+	<link rel="stylesheet" href="main.css" type="text/css" />
+</head>
+<body>
+<h1>Povijest inačica</h1>
+<p>2.x inačice:</p>
+<ul>
+	<li>2.13 (14/12/2024)
+		<ul>
+			<li>Option for better handling of daylight summer time (DST) for files to follow the behaviour of recent Windows versions (enabled by default on Windows 7 and higher).</li>
+			<li>Offset feature for "Date &amp; time" and "EXIF Info" actions.</li>
+			<li>Copy/paste of the table for the "Multiple string replacement" action, for easy export/import.</li>
+			<li>Upgrade of TRegExpr library.</li>
+			<li>A few bugs fixed.</li>
+		</ul>
+	</li>
+	<li>2.12 (04/07/2015)
+		<ul>
+			<li>Option (disabled by default) to consider the last "." in folder name as extension delimiter. Previous versions were always considering that a folder could have an extension, but that's not commonly used.</li>
+			<li>When folders are renamed, the path of files in the list is updated if needed. Previous versions were giving an error as files contained by renamed folders were not found anymore.</li>
+			<li>"Case sensitive" option in the "Multiple string replace" action.</li>
+			<li>A few bugs fixed.</li>
+		</ul>
+	</li>
+	<li>2.11 (01/04/2015)
+		<ul>
+			<li>By default, when installed, the settings are stored in Users folders instead of Program Files, for better compatibility with Windows Vista/7/8.</li>
+			<li>A few bugs/details fixed.</li>
+		</ul>
+	</li>
+  <li>2.10 (12/05/2008)
+    <ul>
+      <li>Zamijenjena komponenta korištena za broj polja.</li>
+      <li>Dodana %count% oznaka, i poboljšana %folder% oznaka.</li>
+    </ul>
+  </li>
+  <li>2.09 (09/09/2006)
+    <ul>
+      <li>Brisanje znakova : opcija za brisanje znakova prije određivanja niza.</li>
+      <li>Dodana nova akciju za korištenje podataka sadržanih u JPEG EXIF oznakama.</li>
+      <li>Dodana nova akciju za stvaranje novih imena pomoću regularnih izraza.</li>
+      <li>Kada su pritisnute tipka "Shift" ili "Ctrl" pri dodavanju datoteke/mape pomoću povuci &amp; ispusti, prozor opcije dodavanja datoteke/mape/podmape uvijek se prikazuje.</li>
+      <li>Nekoliko bugova ispravljeno</li>
+    </ul>
+  </li>
+  <li>2.08 (15/10/2004)
+    <ul>
+      <li>Datoteka pomoći</li>
+      <li>Dodana podrška za neke parametre naredbenog retka, pogledajte datoteku za pomoć.</li>
+      <li>Više naprednih sustava za oblikovanje u nekim akcijama, pogotovo za mp3.</li>
+      <li>Opcija za korištenje datum kreiranja umjesto datuma promjene, u akciji Datum &amp; vrijeme.</li>
+      <li>Opcija za povratak na početne vrijednosti pri promjeni mape u akciji brojčani naziv.</li>
+      <li>Opcija za spremanje zapisnika u datoteku, sa ili bez dodavanja.</li>
+      <li>Mogućnost za filtriranje unosa u zapisnik (uspjesi, pogreške, ne preimenovane datoteke).</li>
+      <li>Nekoliko bugova ispravljeno</li>
+    </ul>
+  </li>
+  <li>2.07 (06/02/2004)
+    <ul>
+      <li>"Premijesti niz znakova" akcija.</li>
+      <li>Nekoliko bugova ispravljeno, malo opcija dodano u akcije.</li>
+    </ul>
+  </li>
+  <li>2.06 (23/09/2003)
+    <ul>
+      <li>Izmijenjen sustav alatne trake, i prebačen s TBSkin na TBX (pala je "Windows XP" tema na ne-XP sustavima).</li>
+      <li>"Višestruka zamjena niza znakova" čime možete zamijeniti skup znakova drugim skupom, npr. ukloniti akcente sa slova.</li>
+      <li>Brži zapisnik (bio je stvarno spor kod preimenovanje stotina datoteka).</li>
+      <li>Ispravljen "Pregle" bug kada se koristiti popis planiranih akcija.</li>
+    </ul>
+  </li>
+  <li>2.05 (18/05/2003)
+    <ul>
+      <li>Dodatni stupci u popisu datoteka: veličina, datum izrade, datum promjene, puna putanja, datotečni nastavak.</li>
+      <li>Stavke popisa Datoteke i Serija sada se mogu seliti drag &amp; drop operacijom.</li>
+    </ul>
+  </li>
+  <li>2.04 (04/05/2003)
+    <ul>
+      <li>Možete preimenovati mape osim datoteka. To je zahtijevalo nekoliko promjena u "Dodaj sadržaj mape" i prevuci &amp; ispusti operacija.</li>
+      <li>Opcija za premještanje datoteka na drugu putanju ako im novo ime počinje s "x:\" (gdje je x bilo koje slovo) ili "\\".</li>
+      <li>Opcija da navedete maksimalan broj stavki koje će se zadržati u padajućem popisu.</li>
+      <li>Nekoliko malih promjena i ispravljen bug s povuci &amp; ispusti kod dugih imena datoteka na sistemima NT/2000/XP.</li>
+    </ul>
+  </li>
+  <li>2.03 (13/04/2003)
+    <ul>
+      <li>Unicode podrška kod Windows NT4, 2000 i XP.</li>
+      <li>Serijska akcija može biti spremljena i učitana.</li>
+    </ul>
+  </li>
+  <li>2.02 (06/04/2003)
+    <ul>
+      <li>Opcija (omogućeno prema zadanim postavkama) za prikaz ikona u popisu datoteka (na temelju datotečnog nastavka).</li>
+      <li>Pozicije alatne trake i postavke stupaca popisa sada se spremaju.</li>
+    </ul>
+  </li>
+  <li>2.01 (25/03/2003)
+    <ul>
+      <li>Dodano francuski prijevod i uzorak datoteke engleskog prijevoda, kako bi se omogućio bilo koji prijevod.</li>
+      <li>Ispravljen bug koji je ponekad zaustavio proces preimenovanja prije kraja.</li>
+    </ul>
+  </li>
+  <li>2.00 (16/03/2003)
+    <ul>
+      <li>Opcija za kopiranje datoteka s novim imenom umjesto njihova preimenovanja.</li>
+      <li>Dodano nekoliko stvari koje su nedostajale. Sada bi trebalo biti sve što je bilo u verziji 1.4 (osim sustava prijevoda).</li>
+    </ul>
+  </li>
+  <li>2.00 'Preview 1' (08/03/2003)
+    <ul>
+      <li>Vrlo dugo vremena od posljednjeg ažuriranja, jer ova verzija je kompletno prepisana pomoću programa Borland Delphi 7 (umjesto C++Builder 5).</li>
+      <li>Mogućnost da se napravi popis akcija koje se primjenjuju.</li>
+      <li>Ispravljeno puno bugova (ali vjerojatno dodani novi).</li>
+      <li>Nova akcija: uzeti imena s popisa ili datoteke.</li>
+    </ul>
+  </li>
+</ul>
+<hr />
+<p>1.x inačice:</p>
+<ul>
+  <li>1.4.0 (08/09/2001)
+    <ul>
+      <li>Funkcija "Pregled" koja vam omogućuje da vidite kako će izgledati imena bez mijenjanja ičega na disku.</li>
+      <li>Funkciju "Poništi" koja vraća imena na ona prije procesa preimenovanja (za datoteke koje su još uvijek na popisu).</li>
+      <li>Kontekstualni izbornik na popisu datoteka, omogućuje da se presele stavke (ako želite promijeniti redoslijed datoteka prije nego se preimenuju).</li>
+      <li>Poboljšane neke male stvari, većina njih nije vidljiva, ali su učinile čišći izvorni kod.</li>
+    </ul>
+  </li>
+  <li>1.3.1 (23/03/2001)
+    <ul>
+      <li>Ispravljeni neki mali problemi sa značajkom "Promijeni datotečni nastavak"</li>
+      <li>Ispravljen bug prilikom povuci i ispusti mapu u prozoru programa.</li>
+      <li>Sada program sprema u konfiguracijskoj datoteci sve opcije preimenovanja koje su korištene u posljednje vrijeme.</li>
+    </ul>
+  </li>
+  <li>1.3.0 (14/02/2001)
+    <ul>
+      <li>Korištenje broj zapisa za mp3s (ID3v1.1).</li>
+      <li>Velika i mala slova (velika slova, mala slova, prvo slovo svake riječi je veliko slovo, ...).</li>
+      <li>Neki sitni detalji.</li>
+    </ul>
+  </li>
+  <li>1.2.1 (20/10/2000)
+    <ul>
+      <li>Ispravljen bug u prozoru Opcije.</li>
+      <li>Možete zamijeniti neodgovarajuće znakove u nazivima datoteka, kao što su : &lt; &gt; * | &brvbar; / \ ? kada su u mp3 oznaci.</li>
+    </ul>
+  </li>
+  <li>1.2.0 (07/10/2000)
+    <ul>
+      <li>Kreiranje slučajanog imena.</li>
+      <li>Možete dodati datoteke na popis s povuci i ispusti iz Windows Explorera.</li>
+    </ul>
+  </li>
+  <li>1.1.1 (20/09/2000)
+    <ul>
+      <li>Nova opcija zamjene nastavaka; Brojčani naziv.</li>
+    </ul>
+  </li>
+  <li>1.1.0 (15/09/2000)
+    <ul>
+      <li>Jednostavan prijevod dodavanjem dviju datoteka (lng i txt).</li>
+    </ul>
+  </li>
+  <li>1.0.0 (13/09/2000)
+    <ul>
+      <li>Prvo izdanje.</li>
+    </ul>
+  </li>
+</ul>
+</body>
+</html>

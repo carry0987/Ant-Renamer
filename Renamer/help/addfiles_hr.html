@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Pomoć Ant Renamer 2</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1250" />
+	<link rel="stylesheet" href="main.css" type="text/css" />
+</head>
+<body>
+<h1>Dodavanje datoteka &amp; mapa</h1>
+<p>Ima nekoliko načina dodavanja datoteka na listu:</p>
+<ul>
+  <li><a href="#addfiles">Tipka "Dodaj datoteke"</a> u glavnom prozoru</li>
+  <li><a href="#addfolders">Tipka "Dodaj mape"</a> u glavnom prozoru</li>
+  <li><a href="#dragdrop">Prevuci &amp; ispusti datoteke</a> iz Windows Explorera</li>
+</ul>
+<h2 id="addfiles">Tipka "Dodaj datoteke"</h2>
+<p>Kada kliknete <img src="img/addfiles.png" alt="Dodaj datoteke" /> tipku "Dodaj datoteke" pojavljuje se standardni prozor za odabir datoteka. Ovaj prozor je pod kontrolom
+  Windowsa, tako da radi kao u drugim programima. Jedna stvar koju trebate znati je da redoslijed datoteka koje će biti vraćene u ovom prozoru nisu točno po redoslijedu 
+  koji vidite. Prvo, Windows šalje datoteku koja je fokusirana (tj. ima malu točkastu granicu, to je obično zadnja datoteka koju ste odabrali). Zatim šalje
+  sve datoteke koje slijede. Kada dođe do kraja, skače na vrhu za slanje preostalih datoteka.</p>
+<p>Također može nastati nekih problema s brzinom kada pokušavate dodati tisuće datoteka. Prozor može potrajati cijelu vječnost dok pošalje imena datoteka programu. Ako imate
+  takav slučaj, bolje upotrijebite funkciju <a href="#addfolders">"Dodaj mape"</a>.</p>
+<h2 id="addfolders">Tipka "Dodaj mape"</h2>
+<p>Kada kliknete <img src="img/addfolders.png" alt="Dodaj mape" /> tipku "Dodaj mape" pojavljuje se prozor, koji vam omogućuje odabir jedne ili više mapa.
+  Ovaj prozor nije samo dizajniran za dodavanje mapa na popis, nego i njihovog sadržaja.</p>
+<p>Nekoliko opcije na dnu prozora omogućuju da odredite što treba dodati na popis:<br /><img src="img/addfilesoptions.png" alt="Mogućnosti dodavanja datoteka" /></p>
+<p>Prva određuje hoće li se datoteke koje se nalaze u odabranoj mapi(ama) dodati ili ne. Druga navodi ako se odabrana mapa(e) treba(ju) dodati ili ne.
+  Treća navodi ako se podmape odabrane mape(a) moraju također uključiti (to se odnosi na sve podrazine, ne samo na prvu).</p>
+<p>Trenutno, ovaj prozor ne prikazuje mrežne stavke ili posebne uređaje koji nemaju svoje slovo pogona (mrežni diskovi koji imaju slovo pogona
+  će se prikazati na popisu). U budućnosti ovo može biti poboljšano (barem za mrežne stavke). Do tada, tipka "Mreža" omogućuje izabrati mapu s
+  mrežnog pogona. Za takvo dodavanje, <a href="#dragdrop">prevuci &amp; ispusti</a> može biti lakše nego ovaj prozor.</p>
+<h2 id="dragdrop">Prevuci &amp; ispusti datoteke</h2>
+<p>Možete prevući &amp; ispustiti datoteke iz Windows Explorera (ili drugog programa koji je s tim kompatibilan, kao Total Commander ili Servant Salamander) direktno u
+  glavni prozor Ant Renamera. To je obično puno jednostavniji način za dodati datoteke nego da ih odaberete u "Dodaj datoteke" prozoru.</p>
+<p>Po zadanim postavkama, kad ispustite datoteke pojavljuje se prozor. To vam omogućuje odabir kako želite dodati datoteke. Ove opcije su iste kao one dostupne u
+  prozoru <a href="#addfolders">"Dodaj mape"</a>. Opcija s oznakom "Nemoj ponovno pitati" omogućuje da zadržite odabrane opcije za buduće povuci &amp; ispusti,
+  tako da se prozor ne prikazuje ponovno. Ako označite ovu opciju i želite je odbaciti (ili promijeniti opciju), možete to učiniti na stranici "Datoteke &amp; Mape"
+  u prozoru <a href="options_hr.html">Opcije</a>. Za vraćanje ovog prozora jednom, bez mijenjanja zadanog ponašanja, možete držati tipku Ctrl ili Shift za vrijeme ispuštanja datoteke. To omogućava, na primjer,
+  dodati mape na popis kada je zadano ponašanje koje ste odabrali samo za dodavanje datoteka.</p>
+<p>Ista ograničenja vrijede kao za "Dodaj datoteke" (redoslijed datoteka i problem brzine s puno datoteka).</p>
+</body>
+</html>

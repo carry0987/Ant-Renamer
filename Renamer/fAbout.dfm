@@ -4,32 +4,32 @@ inherited AboutForm: TAboutForm
   HelpContext = 9900
   BorderStyle = bsSingle
   Caption = 'About this program'
-  ClientHeight = 347
+  ClientHeight = 345
   ClientWidth = 400
   OldCreateOrder = True
   DesignSize = (
     400
-    347)
+    345)
   PixelsPerInch = 96
   TextHeight = 13
   inherited Bevel1: TBevel
-    Top = 314
+    Top = 312
     Width = 394
   end
   inherited AntAutoHintLabel1: TAntAutoHintLabel
-    Top = 331
+    Top = 329
     Width = 400
   end
   inherited btn1: TCorelButton
     Left = 322
-    Top = 319
+    Top = 317
     Caption = 'History'
     Visible = True
     OnClick = btn1Click
   end
   inherited btn2: TCorelButton
     Left = 244
-    Top = 319
+    Top = 317
     Cancel = True
     Caption = 'Close'
     Default = True
@@ -194,7 +194,7 @@ inherited AboutForm: TAboutForm
     Left = 3
     Top = 53
     Width = 394
-    Height = 263
+    Height = 261
     Anchors = [akLeft, akTop, akRight, akBottom]
     BevelOuter = bvNone
     TabOrder = 5
@@ -202,8 +202,8 @@ inherited AboutForm: TAboutForm
       Left = 0
       Top = 0
       Width = 394
-      Height = 263
-      ActivePage = tshCredits
+      Height = 261
+      ActivePage = tshGeneral
       Align = alClient
       HotTrack = True
       MultiLine = True
@@ -216,9 +216,9 @@ inherited AboutForm: TAboutForm
           Left = 0
           Top = 0
           Width = 376
-          Height = 225
+          Height = 223
           Caption = 
-            '<b>Copyright '#169' 2000-2015 Antoine Potten</b><br>'#13#10'<br>'#13#10'This prog' +
+            '<b>Copyright '#169' 2000-2024 Antoine Potten</b><br>'#13#10'<br>'#13#10'This prog' +
             'ram was made with Borland Delphi 7<br>'#13#10'See <link>Credits</link>' +
             ' page for additionnal information<br>'#13#10'<br>'#13#10'E-mail address: <li' +
             'nk>antrenamer-contact@antp.be</link><br>'#13#10'<br>'#13#10'Web site address' +
@@ -233,7 +233,7 @@ inherited AboutForm: TAboutForm
             'NU General Public License</link> for more details.<br>'#13#10
           Text.Strings = (
             
-              '<b>Copyright '#169' 2000-2015 Antoine Potten</b><br>'#13#10'<br>'#13#10'This prog' +
+              '<b>Copyright '#169' 2000-2024 Antoine Potten</b><br>'#13#10'<br>'#13#10'This prog' +
               'ram was made with Borland Delphi 7<br>'#13#10'See <link>Credits</link>' +
               ' page for additionnal information<br>'#13#10'<br>'#13#10'E-mail address: <li' +
               'nk>antrenamer-contact@antp.be</link><br>'#13#10'<br>'#13#10'Web site address' +
@@ -267,38 +267,42 @@ inherited AboutForm: TAboutForm
           Left = 0
           Top = 0
           Width = 376
-          Height = 225
+          Height = 223
           Caption = 
             '<b>Thanks to:</b><br>'#13#10'Sebastien Buysse, Gr'#233'gory Zicot, Michel P' +
             'otten, ...and all the people that sent me suggestions and commen' +
             'ts<br>'#13#10'<br>'#13#10'<b>Translations:</b><br>'#13#10'Arek Czak, '#13#10'Asabukuro, ' +
-            #13#10'Damir13, '#13#10'Denny, '#13#10'dzmitry[li], '#13#10'elega, '#13#10'GVG, '#13#10'Hiro5, '#13#10'Iv' +
-            'o Blaauw, '#13#10'Jim Liu, '#13#10'Karin Andersson, '#13#10'Lin Fan, '#13#10'Roberto Pai' +
-            'va, '#13#10'Salvatore Meschini, '#13#10'Sepp Winkler, '#13#10'Seunghoe Yang, '#13#10'Vic' +
-            'o//Koby, '#13#10'Volker Schmidt, '#13#10'Wasilis Mandratzis, '#13#10'Zoltan Danhau' +
-            'ser'#13#10'<br>'#13#10'<br>'#13#10'<b>Components:</b><br>'#13#10'JVCL (<link>jvcl.delphi' +
-            '-jedi.org</link> - a few comps. extracted from there and modifie' +
-            'd),<br>'#13#10'Toolbar 2000 (<link>www.jrsoftware.org</link>) & TBX,<b' +
-            'r>'#13#10'CorelButton (<link>www.theill.com/delphi.asp</link> - modifi' +
-            'ed), <br>'#13#10'VirtualTreeview (<link>www.soft-gems.net</link>), Tnt' +
-            ' Unicode Controls, <br>'#13#10'TRegExpr (<link>regexpstudio.com</link>' +
-            '), dEXIF'#13#10#13#10
+            #13#10'Carlos A Medina R, '#13#10'Damir13, '#13#10'Denny, '#13#10'dzmitry[li], '#13#10'elega,' +
+            ' '#13#10'GVG, '#13#10'Hiro5, '#13#10'Ivo Blaauw, '#13#10'Jim Liu, '#13#10'Kari Eveli,'#13#10'Karin A' +
+            'ndersson, '#13#10'Lin Fan, '#13#10'N.Nedelev, '#13#10'Nazar Tychkivskyi, '#13#10'Roberto' +
+            ' Paiva, '#13#10'Salvatore Meschini, '#13#10'Sepp Winkler, '#13#10'Seunghoe Yang, '#13 +
+            #10'TamilNeram, '#13#10'Ulisses F Braga, '#13#10'Vico//Koby, '#13#10'Volker Schmidt, ' +
+            #13#10'Wasilis Mandratzis, '#13#10'Zoltan Danhauser'#13#10'<br>'#13#10'<br>'#13#10'<b>Compone' +
+            'nts:</b><br>'#13#10'JVCL (<link>jvcl.delphi-jedi.org</link> - a few co' +
+            'mps. extracted from there and modified),<br>'#13#10'Toolbar 2000 (<lin' +
+            'k>jrsoftware.org/tb2k.php</link>) & TBX,<br>'#13#10'CorelButton (<link' +
+            '>www.theill.com</link> - modified), <br>'#13#10'VirtualTreeview (<link' +
+            '>www.jam-software.com/virtual-treeview</link>), <br>'#13#10'TRegExpr (' +
+            '<link>regex.sorokin.engineer</link>), Tnt Unicode Controls, dEXI' +
+            'F'#13#10
           Text.Strings = (
             
               '<b>Thanks to:</b><br>'#13#10'Sebastien Buysse, Gr'#233'gory Zicot, Michel P' +
               'otten, ...and all the people that sent me suggestions and commen' +
               'ts<br>'#13#10'<br>'#13#10'<b>Translations:</b><br>'#13#10'Arek Czak, '#13#10'Asabukuro, ' +
-              #13#10'Damir13, '#13#10'Denny, '#13#10'dzmitry[li], '#13#10'elega, '#13#10'GVG, '#13#10'Hiro5, '#13#10'Iv' +
-              'o Blaauw, '#13#10'Jim Liu, '#13#10'Karin Andersson, '#13#10'Lin Fan, '#13#10'Roberto Pai' +
-              'va, '#13#10'Salvatore Meschini, '#13#10'Sepp Winkler, '#13#10'Seunghoe Yang, '#13#10'Vic' +
-              'o//Koby, '#13#10'Volker Schmidt, '#13#10'Wasilis Mandratzis, '#13#10'Zoltan Danhau' +
-              'ser'#13#10'<br>'#13#10'<br>'#13#10'<b>Components:</b><br>'#13#10'JVCL (<link>jvcl.delphi' +
-              '-jedi.org</link> - a few comps. extracted from there and modifie' +
-              'd),<br>'#13#10'Toolbar 2000 (<link>www.jrsoftware.org</link>) & TBX,<b' +
-              'r>'#13#10'CorelButton (<link>www.theill.com/delphi.asp</link> - modifi' +
-              'ed), <br>'#13#10'VirtualTreeview (<link>www.soft-gems.net</link>), Tnt' +
-              ' Unicode Controls, <br>'#13#10'TRegExpr (<link>regexpstudio.com</link>' +
-              '), dEXIF'#13#10#13#10)
+              #13#10'Carlos A Medina R, '#13#10'Damir13, '#13#10'Denny, '#13#10'dzmitry[li], '#13#10'elega,' +
+              ' '#13#10'GVG, '#13#10'Hiro5, '#13#10'Ivo Blaauw, '#13#10'Jim Liu, '#13#10'Kari Eveli,'#13#10'Karin A' +
+              'ndersson, '#13#10'Lin Fan, '#13#10'N.Nedelev, '#13#10'Nazar Tychkivskyi, '#13#10'Roberto' +
+              ' Paiva, '#13#10'Salvatore Meschini, '#13#10'Sepp Winkler, '#13#10'Seunghoe Yang, '#13 +
+              #10'TamilNeram, '#13#10'Ulisses F Braga, '#13#10'Vico//Koby, '#13#10'Volker Schmidt, ' +
+              #13#10'Wasilis Mandratzis, '#13#10'Zoltan Danhauser'#13#10'<br>'#13#10'<br>'#13#10'<b>Compone' +
+              'nts:</b><br>'#13#10'JVCL (<link>jvcl.delphi-jedi.org</link> - a few co' +
+              'mps. extracted from there and modified),<br>'#13#10'Toolbar 2000 (<lin' +
+              'k>jrsoftware.org/tb2k.php</link>) & TBX,<br>'#13#10'CorelButton (<link' +
+              '>www.theill.com</link> - modified), <br>'#13#10'VirtualTreeview (<link' +
+              '>www.jam-software.com/virtual-treeview</link>), <br>'#13#10'TRegExpr (' +
+              '<link>regex.sorokin.engineer</link>), Tnt Unicode Controls, dEXI' +
+              'F'#13#10)
           Transparent = True
           LinkColor = clBlue
           LinkColorClicked = clRed
@@ -316,10 +320,10 @@ inherited AboutForm: TAboutForm
   end
   inherited btn3: TCorelButton
     Left = 166
-    Top = 319
+    Top = 317
   end
   inherited btn4: TCorelButton
     Left = 88
-    Top = 319
+    Top = 317
   end
 end

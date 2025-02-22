@@ -41,22 +41,24 @@ inherited OptionsForm: TOptionsForm
       object lblForceFont: TLabel
         Left = 36
         Top = 171
-        Width = 301
-        Height = 13
+        Width = 365
+        Height = 30
+        AutoSize = False
         Caption = 
-          'Note: Arial Unicode MS is strongly recommended if it is availabl' +
-          'e'
+          'Note: Noto Sans, DejaVu Sans or Arial Unicode MS is recommended ' +
+          'if available'
+        WordWrap = True
       end
       object lblDropdownMax: TLabel
         Left = 12
-        Top = 216
+        Top = 232
         Width = 169
         Height = 13
         Caption = 'Number of values to keep in history:'
       end
       object lblIconSet: TLabel
         Left = 12
-        Top = 288
+        Top = 304
         Width = 41
         Height = 13
         Caption = 'Icon set:'
@@ -97,7 +99,7 @@ inherited OptionsForm: TOptionsForm
       end
       object lbhDropdown: TAntJvGroupHeader
         Left = 4
-        Top = 196
+        Top = 212
         Width = 400
         Height = 13
         Anchors = [akLeft, akTop, akRight]
@@ -114,7 +116,7 @@ inherited OptionsForm: TOptionsForm
       end
       object lbhToolbars: TAntJvGroupHeader
         Left = 4
-        Top = 268
+        Top = 284
         Width = 400
         Height = 13
         Anchors = [akLeft, akTop, akRight]
@@ -129,7 +131,7 @@ inherited OptionsForm: TOptionsForm
         Transparent = True
         Layout = lBottom
       end
-      object cbxRealTimeUpdate: TCheckBox
+      object cbxRealTimeUpdate: TTntCheckBox
         Left = 12
         Top = 24
         Width = 393
@@ -138,7 +140,7 @@ inherited OptionsForm: TOptionsForm
         Caption = 'Real-time update when renaming files'
         TabOrder = 0
       end
-      object cbxResizeColsFiles: TCheckBox
+      object cbxResizeColsFiles: TTntCheckBox
         Left = 12
         Top = 48
         Width = 394
@@ -147,7 +149,7 @@ inherited OptionsForm: TOptionsForm
         Caption = 'Auto-resize columns of Files list'
         TabOrder = 1
       end
-      object cbxFilesIcons: TCheckBox
+      object cbxFilesIcons: TTntCheckBox
         Left = 12
         Top = 72
         Width = 394
@@ -156,7 +158,7 @@ inherited OptionsForm: TOptionsForm
         Caption = 'Show icons in files list, based on file extension'
         TabOrder = 2
       end
-      object cbxForceFont: TCheckBox
+      object cbxForceFont: TTntCheckBox
         Left = 12
         Top = 120
         Width = 394
@@ -171,7 +173,7 @@ inherited OptionsForm: TOptionsForm
       object cmbForceFont: TComboBox
         Left = 32
         Top = 144
-        Width = 373
+        Width = 325
         Height = 21
         Style = csDropDownList
         Anchors = [akLeft, akTop, akRight]
@@ -183,32 +185,42 @@ inherited OptionsForm: TOptionsForm
       end
       object cmbIconSet: TComboBox
         Left = 91
-        Top = 284
+        Top = 300
         Width = 314
         Height = 21
         Style = csDropDownList
         Anchors = [akLeft, akTop, akRight]
         ItemHeight = 13
-        TabOrder = 7
+        TabOrder = 8
         Items.Strings = (
           'Scrows')
       end
-      object cbxDropdownComplete: TCheckBox
+      object cbxDropdownComplete: TTntCheckBox
         Left = 12
-        Top = 237
+        Top = 253
         Width = 394
         Height = 17
         Anchors = [akLeft, akTop, akRight]
         Caption = 'Autocomplete with history values while typing'
-        TabOrder = 6
+        TabOrder = 7
       end
       object edtDropdownMax: TAntJvSpinEdit
         Left = 189
-        Top = 212
+        Top = 228
         Width = 41
         Height = 21
         MaxValue = 99.000000000000000000
         Value = 20.000000000000000000
+        TabOrder = 6
+      end
+      object edtForceFont: TAntJvSpinEdit
+        Left = 363
+        Top = 144
+        Width = 41
+        Height = 21
+        AllowEmpty = True
+        EmptyValue = 0
+        MaxValue = 32.000000000000000000
         TabOrder = 5
       end
     end
@@ -252,7 +264,7 @@ inherited OptionsForm: TOptionsForm
         Transparent = True
         Layout = lBottom
       end
-      object cbxDragdropNoAsk: TCheckBox
+      object cbxDragdropNoAsk: TTntCheckBox
         Left = 12
         Top = 24
         Width = 393
@@ -271,17 +283,17 @@ inherited OptionsForm: TOptionsForm
         DesignSize = (
           369
           65)
-        inherited cbxRecursive: TCheckBox
+        inherited cbxRecursive: TTntCheckBox
           Width = 369
         end
-        inherited cbxFiles: TCheckBox
+        inherited cbxFiles: TTntCheckBox
           Width = 369
         end
-        inherited cbxFolders: TCheckBox
+        inherited cbxFolders: TTntCheckBox
           Width = 369
         end
       end
-      object cbxLaunchFile: TCheckBox
+      object cbxLaunchFile: TTntCheckBox
         Left = 12
         Top = 144
         Width = 393
@@ -315,7 +327,7 @@ inherited OptionsForm: TOptionsForm
       end
       object lbhFoldersRules: TAntJvGroupHeader
         Left = 4
-        Top = 76
+        Top = 100
         Width = 400
         Height = 13
         Caption = 'Folders rules'
@@ -329,29 +341,29 @@ inherited OptionsForm: TOptionsForm
         Transparent = True
         Layout = lBottom
       end
-      object cbxForceDir: TCheckBox
+      object cbxForceDir: TTntCheckBox
         Left = 12
-        Top = 120
+        Top = 144
         Width = 393
         Height = 17
         Anchors = [akLeft, akTop, akRight]
         Caption = 
           'Force directories (allows to create folders if "\" are found in ' +
           'names)'
-        TabOrder = 3
+        TabOrder = 4
       end
-      object cbxDetectAbsdir: TCheckBox
+      object cbxDetectAbsdir: TTntCheckBox
         Left = 12
-        Top = 96
+        Top = 120
         Width = 393
         Height = 17
         Anchors = [akLeft, akTop, akRight]
         Caption = 
           'Detect a ":\" or "\\" as an absolute path (allows to move files ' +
           'to anywhere)'
-        TabOrder = 2
+        TabOrder = 3
       end
-      object cbxCopy: TCheckBox
+      object cbxCopy: TTntCheckBox
         Left = 12
         Top = 24
         Width = 393
@@ -360,7 +372,7 @@ inherited OptionsForm: TOptionsForm
         Caption = 'Copy instead of Rename'
         TabOrder = 0
       end
-      object cbxGenerLog: TCheckBox
+      object cbxGenerLog: TTntCheckBox
         Left = 12
         Top = 48
         Width = 393
@@ -369,16 +381,25 @@ inherited OptionsForm: TOptionsForm
         Caption = 'Generate log'
         TabOrder = 1
       end
-      object cbxFolderExt: TCheckBox
+      object cbxFolderExt: TTntCheckBox
         Left = 12
-        Top = 144
+        Top = 168
         Width = 393
         Height = 17
         Anchors = [akLeft, akTop, akRight]
         Caption = 
           'Consider the last "." in a folder name as extension delimiter li' +
           'ke for files'
-        TabOrder = 4
+        TabOrder = 5
+      end
+      object cbxDSTRelativeToFile: TTntCheckBox
+        Left = 12
+        Top = 72
+        Width = 393
+        Height = 17
+        Anchors = [akLeft, akTop, akRight]
+        Caption = 'DST offset related to file date'
+        TabOrder = 2
       end
     end
     object tshEvents: TTabSheet
@@ -419,7 +440,7 @@ inherited OptionsForm: TOptionsForm
         Transparent = True
         Layout = lBottom
       end
-      object cbxStartSwitch: TCheckBox
+      object cbxStartSwitch: TTntCheckBox
         Left = 12
         Top = 24
         Width = 129
@@ -442,7 +463,7 @@ inherited OptionsForm: TOptionsForm
           'Actions'
           'Log')
       end
-      object cbxStartClearLog: TCheckBox
+      object cbxStartClearLog: TTntCheckBox
         Left = 12
         Top = 48
         Width = 393
@@ -451,7 +472,7 @@ inherited OptionsForm: TOptionsForm
         Caption = 'Clear log'
         TabOrder = 2
       end
-      object cbxFinishSwitch: TCheckBox
+      object cbxFinishSwitch: TTntCheckBox
         Left = 12
         Top = 96
         Width = 129
@@ -460,7 +481,7 @@ inherited OptionsForm: TOptionsForm
         TabOrder = 3
         OnClick = cbxFinishSwitchClick
       end
-      object cbxClearFilesList: TCheckBox
+      object cbxClearFilesList: TTntCheckBox
         Left = 12
         Top = 120
         Width = 393
@@ -469,7 +490,7 @@ inherited OptionsForm: TOptionsForm
         Caption = 'Clear files list'
         TabOrder = 4
       end
-      object cbxClearBatchList: TCheckBox
+      object cbxClearBatchList: TTntCheckBox
         Left = 12
         Top = 144
         Width = 393
@@ -478,7 +499,7 @@ inherited OptionsForm: TOptionsForm
         Caption = 'Clear batch list'
         TabOrder = 5
       end
-      object cbxSaveLog: TCheckBox
+      object cbxSaveLog: TTntCheckBox
         Left = 12
         Top = 168
         Width = 129
@@ -488,7 +509,7 @@ inherited OptionsForm: TOptionsForm
         TabOrder = 6
         OnClick = cbxSaveLogClick
       end
-      object cbxSaveLogAppend: TCheckBox
+      object cbxSaveLogAppend: TTntCheckBox
         Left = 144
         Top = 192
         Width = 261

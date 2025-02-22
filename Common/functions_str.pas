@@ -1,6 +1,6 @@
 (************************************************************************
  *                                                                      *
- *   (C) 2002-2012 Antoine Potten, Mickaël Vanneufville                 *
+ *   (C) 2002-2014 Antoine Potten, Mickaël Vanneufville                 *
  *   http://www.antp.be/software                                        *
  *                                                                      *
  ************************************************************************
@@ -76,30 +76,36 @@ function StrToRect(AStr: string): TRect;
 function DelAfterChar(const AStr: string; const AChar: Char): string;
 function DelBeforeChar(const AStr: string; const AChar: Char): string;
 function CopyExceptLastChars(const AStr: string; const LastCharsToIgnore: Integer): string;
-function CharsetToCodepage(const ACharset: TFontCharset): Cardinal;
-function CodepageToCharset(const ACodePage: Cardinal): TFontCharset;
+function CharsetToCodePage(const ACharset: TFontCharset): Cardinal;
+function CodePageToCharset(const ACodePage: Cardinal): TFontCharset;
 function EncodingToCharset(Encoding: string): TFontCharset;
 function CharsetToEncoding(Charset: TFontCharset): string;
 function CharsetToWideString(const AStr: string; const ACharset: TFontCharset): WideString;
-function GetDefaultAnsiCodepage: Cardinal;
+function GetDefaultAnsiCodePage: Cardinal;
 function StrToChar(const AStr: string): Char;
 function QuotedStrEx(const S: string; const QuoteChar: Char): string;
 
-procedure InitCmpCharTables;
+{Function called in initialization}
+function InitDefaultCPInfo : Boolean;
+
+function IsDefaultCPLeadByte(b: Byte): Boolean;
 
 function AnsiCompareEx(const S1, S2: string; IgnoreCase: Boolean = False;
-  IgnoreAccents: Boolean = False; TwoPasses: Boolean = True): Integer;
+  IgnoreAccents: Boolean = False): Integer;
+function AnsiCompareSubEx(const S1, S2: string; IgnoreCase: Boolean = False;
+  IgnoreAccents: Boolean = False; Pos1: Integer = 1; Pos2: Integer = 1;
+  Length1: Integer = MaxInt; Length2: Integer = MaxInt): Integer;
 function AnsiCompareTextEx(const S1, S2: string; IgnoreAccents: Boolean = False): Integer;
 function AnsiCompareStrEx(const S1, S2: string; IgnoreAccents: Boolean = False): Integer;
 function AnsiSameTextEx(const S1, S2: string; IgnoreAccents: Boolean = False): Boolean;
 function AnsiSameStrEx(const S1, S2: string; IgnoreAccents: Boolean = False): Boolean;
 
-function NatCompare(const S1, S2: string; IgnoreCase: Boolean = False;
+function AnsiNatCompare(const S1, S2: string; IgnoreCase: Boolean = False;
   IgnoreAccents: Boolean = False; TwoPasses: Boolean = True): Integer;
-function NatCompareText(const S1, S2: string; IgnoreAccents: Boolean = False): Integer;
-function NatCompareStr(const S1, S2: string; IgnoreAccents: Boolean = False): Integer;
-function NatSameText(const S1, S2: string; IgnoreAccents: Boolean = False): Boolean;
-function NatSameStr(const S1, S2: string; IgnoreAccents: Boolean = False): Boolean;
+function AnsiNatCompareText(const S1, S2: string; IgnoreAccents: Boolean = False): Integer;
+function AnsiNatCompareStr(const S1, S2: string; IgnoreAccents: Boolean = False): Integer;
+function AnsiNatSameText(const S1, S2: string; IgnoreAccents: Boolean = False): Boolean;
+function AnsiNatSameStr(const S1, S2: string; IgnoreAccents: Boolean = False): Boolean;
 
 function AnsiPosEx(const SubStr, S: string; IgnoreCase: Boolean = False;
   IgnoreAccents: Boolean = False; StartPos: Integer = 1): Integer;
@@ -125,6 +131,14 @@ type
   PCmpChar = ^TCmpChar;
 
 var
+  DefaultCodePage : Cardinal = 1252;
+  { Is Multi-Byte Character Sets for Default Code Page }
+  IsDefaultCPMBCS : Boolean = False;
+  { Is Multi-Byte Character Sets and Double-Byte Character Sets for Default Code Page }
+  IsDefaultCPDBCS: Boolean = False;
+  { Lead Byte for Double-Byte Character Sets }
+  DefaultCPLeadByte: array[0..MAX_LEADBYTES-1] of Byte = (0,0,0,0,0,0,0,0,0,0,0,0);
+
   CmpCharSensitive: TCmpChar;
   CmpCharNoCaseSensitive: TCmpChar;
   CmpCharNoAccentSensitive: TCmpChar;
@@ -338,11 +352,11 @@ begin
     Value[i] := Char(Byte(Value[i]) xor i);
   for i:=1 to Length(Value) do
   begin
-    b := byte(Value[i]) AND $0F;
-    b := ord('A')+b;
+    b := Byte(Value[i]) and $0F;
+    b := Ord('A')+b;
     result := result+char(b);
-    b := (byte(Value[i]) AND $F0) shr 4;
-    b := ord('a')+b;
+    b := (Byte(Value[i]) and $F0) shr 4;
+    b := Ord('a')+b;
     result := result+char(b);
   end;
 end;
@@ -360,8 +374,8 @@ begin
   j := 1;
   while i<Length(Value) do
   begin
-    b := byte(Value[i])-ord('A');
-    c := (byte(Value[i+1])-ord('a')) shl 4;
+    b := Byte(Value[i])-Ord('A');
+    c := (Byte(Value[i+1])-Ord('a')) shl 4;
     b := b+c;
     Value[j] := char(b);
     inc(i,2);
@@ -554,7 +568,7 @@ begin
   with TIdDecoderMIME.Create(nil) do
     try
       AStream.Seek(0, soFromBeginning);
-      DecodeToStream(AString, AStream);
+      DecodeToStream(AStream, AString);
     finally
       Free;
     end;
@@ -691,7 +705,7 @@ end;
 {-------------------------------------------------------------------------------
 -------------------------------------------------------------------------------}
 
-function CharsetToCodepage(const ACharset: TFontCharset): Cardinal;
+function CharsetToCodePage(const ACharset: TFontCharset): Cardinal;
 begin
   case ACharset of
     ANSI_CHARSET        : Result := 1252;
@@ -721,7 +735,7 @@ end;
 {-------------------------------------------------------------------------------
 -------------------------------------------------------------------------------}
 
-function CodepageToCharset(const ACodePage: Cardinal): TFontCharset;
+function CodePageToCharset(const ACodePage: Cardinal): TFontCharset;
 begin
   case ACodePage of
     1252                : Result := ANSI_CHARSET;
@@ -833,7 +847,7 @@ var
 begin
   Size := (Length(AStr) + 1) * 2;
   GetMem(w, Size);
-  MultiByteToWideChar(CharsetToCodepage(GB2312_CHARSET), MB_USEGLYPHCHARS, PChar(AStr), -1, w, Size);
+  MultiByteToWideChar(CharsetToCodePage(GB2312_CHARSET), MB_USEGLYPHCHARS, PChar(AStr), -1, w, Size);
   Result := w;
   FreeMem(w);
 end;
@@ -841,14 +855,14 @@ end;
 {-------------------------------------------------------------------------------
 -------------------------------------------------------------------------------}
 
-function GetDefaultAnsiCodepage: Cardinal;
+function GetDefaultAnsiCodePage: Cardinal;
 var
   BufSize: Integer;
   s: string;
 begin
   BufSize := GetLocaleInfo(GetUserDefaultLCID, LOCALE_IDEFAULTANSICODEPAGE, nil, 0);
   SetLength(s, BufSize);
-  GetLocaleinfo(GetUserDefaultLCID, LOCALE_IDEFAULTANSICODEPAGE, PChar(s), BufSize);
+  GetLocaleInfo(GetUserDefaultLCID, LOCALE_IDEFAULTANSICODEPAGE, PChar(s), BufSize);
   SetLength(s, BufSize - 1);
   Result := StrToIntDef(s, 0);
 end;
@@ -934,76 +948,155 @@ begin
 end;
 
 {-------------------------------------------------------------------------------
+  Function called in initialization
 -------------------------------------------------------------------------------}
 
-procedure InitCmpCharTables;
+function InitDefaultCPInfo : Boolean;
 var
+  CodePage: Cardinal;
+  CPInfo : TCPInfo;
   i, j : Byte;
 begin
+  CodePage := GetDefaultAnsiCodePage;
+  Result := GetCPInfo(CodePage, CPInfo);
+  if not Result then
+    Exit;
+  DefaultCodePage := CodePage;
+  IsDefaultCPMBCS := (CPInfo.MaxCharSize > 1);
+  IsDefaultCPDBCS := IsDefaultCPMBCS and (CPInfo.LeadByte[0] > 0);
+  Move(CPInfo.LeadByte[0], DefaultCPLeadByte[0],
+    SizeOf(DefaultCPLeadByte[0]) * Length(DefaultCPLeadByte));
+
   for i := 0 to 255 do
   begin
     for j := 0 to 255 do
     begin
-      CmpCharSensitive[i][j] := CompareString(LOCALE_USER_DEFAULT,
-        0, PChar(@i), 1, PChar(@j), 1);
-      CmpCharNoCaseSensitive[i][j] := CompareString(LOCALE_USER_DEFAULT,
-        NORM_IGNORECASE, PChar(@i), 1, PChar(@j), 1);
-      CmpCharNoAccentSensitive[i][j] := CompareString(LOCALE_USER_DEFAULT,
-        NORM_IGNORENONSPACE, PChar(@i), 1, PChar(@j), 1);
-      CmpCharNoCaseAccentSensitive[i][j] := CompareString(LOCALE_USER_DEFAULT,
-        NORM_IGNORECASE or NORM_IGNORENONSPACE, PChar(@i), 1, PChar(@j), 1);
+      if not IsDefaultCPMBCS then
+      begin
+        CmpCharSensitive[i][j] := CompareString(LOCALE_USER_DEFAULT,
+          0, PChar(@i), 1, PChar(@j), 1) - 2;
+        CmpCharNoCaseSensitive[i][j] := CompareString(LOCALE_USER_DEFAULT,
+          NORM_IGNORECASE, PChar(@i), 1, PChar(@j), 1) - 2;
+        CmpCharNoAccentSensitive[i][j] := CompareString(LOCALE_USER_DEFAULT,
+          NORM_IGNORENONSPACE, PChar(@i), 1, PChar(@j), 1) - 2;
+        CmpCharNoCaseAccentSensitive[i][j] := CompareString(LOCALE_USER_DEFAULT,
+          NORM_IGNORECASE or NORM_IGNORENONSPACE, PChar(@i), 1, PChar(@j), 1) - 2;
+      end else
+      begin
+        if IsDefaultCPDBCS and not IsDefaultCPLeadByte(i) and not IsDefaultCPLeadByte(j) then
+        begin
+          CmpCharSensitive[i][j] := CompareString(LOCALE_USER_DEFAULT,
+            0, PChar(@i), 1, PChar(@j), 1) - 2;
+          CmpCharNoCaseSensitive[i][j] := CompareString(LOCALE_USER_DEFAULT,
+            NORM_IGNORECASE, PChar(@i), 1, PChar(@j), 1) - 2;
+          CmpCharNoAccentSensitive[i][j] := CmpCharSensitive[i][j];
+          CmpCharNoCaseAccentSensitive[i][j] := CmpCharNoCaseSensitive[i][j];
+        end else
+        begin
+          CmpCharSensitive[i][j] := CompareValue(i, j);
+          CmpCharNoCaseSensitive[i][j] := CmpCharSensitive[i][j];
+          CmpCharNoAccentSensitive[i][j] := CmpCharSensitive[i][j];
+          CmpCharNoCaseAccentSensitive[i][j] := CmpCharSensitive[i][j];
+        end;
+      end;
     end;
   end;
 end;
 
+{-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------}
+
+function IsDefaultCPLeadByte(b: Byte): Boolean;
+var
+  i: Integer;
+begin
+  Result := False;
+  if not IsDefaultCPDBCS then
+    exit;
+  i := 0;
+  while (DefaultCPLeadByte[i] <> 0) and (DefaultCPLeadByte[i+1] <> 0) do
+  begin
+    if (b >= DefaultCPLeadByte[i]) and (b <= DefaultCPLeadByte[i+1]) then
+    begin
+      Result := True;
+      break;
+    end;
+    i := i + 2;
+  end;
+end;
 
 {-------------------------------------------------------------------------------
   AnsiCompareEx:
+  - IgnoreCase = False
+    The strings are compared with regard to case
+  - IgnoreCase = True
+    The strings are compared without regard to case
   - IgnoreAccents = False:
-    - TwoPasses = True: All characters in the string are first compared without
-      regard to accents and, if the strings are equal, a second pass over the
-      strings is performed to compare accents
-    - TwoPasses = False: The strings are compared with accents on first pass
-      (e.g. c < e < é < d)
+    The strings are compared without regard to accents on first pass
+    and if the strings are equal,
+    a second pass over the strings is performed to compare accents
   - IgnoreAccents = True: The strings are compared without regard to accents
     (e.g. c < e = é < d)
+  - With MBCS (including DBCS), IgnoreAccents option is ignored
 -------------------------------------------------------------------------------}
-
-function AnsiCompareEx(const S1, S2: string; IgnoreCase: Boolean = False;
-  IgnoreAccents: Boolean = False; TwoPasses: Boolean = True): Integer;
+function AnsiCompareEx(const S1, S2: string;
+  IgnoreCase: Boolean = False; IgnoreAccents: Boolean = False): Integer;
 var
-  i1, i2: Integer;
-  len1, len2: Integer;
-  CmpChar: PCmpChar;
-
+  flag: Integer;
 begin
-  Result := 0;
-  len1 := Length(s1);
-  len2 := Length(s2);
-  i1 := 1;
-  i2 := 1;
-  if (len1 > 0) and (len2 > 0) then
-  begin
-    if IgnoreCase then
-      if IgnoreAccents or TwoPasses then
-        CmpChar := @CmpCharNoCaseAccentSensitive
-      else
-        CmpChar := @CmpCharNoCaseSensitive
-    else
-      if IgnoreAccents or TwoPasses then
-        CmpChar := @CmpCharNoAccentSensitive
-      else
-        CmpChar := @CmpCharSensitive;
-    repeat
-      Result := CmpChar^[Ord(s1[i1])][Ord(s2[i2])] - 2;
-      i1 := i1 + 1;
-      i2 := i2 + 1;
-    until (Result <> 0) or (Min(len1-i1, len2-i2) < 0);
-  end;
-  if Result = 0 then
-    Result := Sign((len1-i1) - (len2-i2));
-  if (Result = 0) and not IgnoreAccents and TwoPasses then
-    Result := AnsiCompareEx(S1, S2, IgnoreCase, False, False);
+  flag := 0;
+  if IgnoreCase then
+    flag := flag or NORM_IGNORECASE;
+  if IgnoreAccents and not IsDefaultCPMBCS then
+    flag := flag or NORM_IGNORENONSPACE;
+  Result := CompareString(LOCALE_USER_DEFAULT, flag,
+    PChar(S1), Length(S1), PChar(S2), Length(S2)) - 2;
+end;
+
+{-------------------------------------------------------------------------------
+  AnsiCompareSubEx:
+  - IgnoreCase = False
+    The strings are compared with regard to case
+  - IgnoreCase = True
+    The strings are compared without regard to case
+  - IgnoreAccents = False
+    The strings are compared without regard to accents on first pass
+    and if the strings are equal,
+    a second pass over the strings is performed to compare accents
+  - IgnoreAccents = True: The strings are compared without regard to accents
+    (e.g. c < e = é < d)
+  - Pos1 = Position in the string S1 where comparison start (1 = firt position)
+  - Pos2 = Position in the string S2 where comparison start (1 = firt position)
+  - Length1 = Length of string S1 from Pos1 to compare
+  - Length2 = Length of string S2 from Pos2 to compare
+  - With MBCS (including DBCS), IgnoreAccents option is ignored
+-------------------------------------------------------------------------------}
+function AnsiCompareSubEx(const S1, S2: string;
+  IgnoreCase: Boolean = False; IgnoreAccents: Boolean = False;
+  Pos1: Integer = 1; Pos2: Integer = 1;
+  Length1: Integer = MaxInt; Length2: Integer = MaxInt): Integer;
+var
+  flag, len1, len2: Integer;
+begin
+  flag := 0;
+  len1 := Length(S1);
+  len2 := Length(S2);
+  if IgnoreCase then
+    flag := flag or NORM_IGNORECASE;
+  if IgnoreAccents and not IsDefaultCPMBCS then
+    flag := flag or NORM_IGNORENONSPACE;
+  Dec(Pos1);
+  Dec(Pos2);
+  if Pos1 < 0 then Pos1 := 0
+  else if Pos1 > len1 then Pos1 := len1;
+  if Pos2 < 0 then Pos2 := 0
+  else if Pos2 > len2 then Pos2 := len2;
+  if Length1 < 0 then Length1 := 0
+  else if Length1 > len1 - Pos1 then Length1 := len1 - Pos1;
+  if Length2 < 0 then Length2 := 0
+  else if Length2 > len2 - Pos2 + 1 then Length2 := len2 - Pos2;
+  Result := CompareString(LOCALE_USER_DEFAULT, flag,
+    PChar(S1) + Pos1, Length1, PChar(S2) + Pos2, Length2) - 2;
 end;
 
 {-------------------------------------------------------------------------------
@@ -1040,22 +1133,27 @@ end;
 
 {-------------------------------------------------------------------------------
   NatCompare:
+  - IgnoreCase = False
+    The strings are compared with regard to case
+  - IgnoreCase = True
+    The strings are compared without regard to case
   - IgnoreAccents = False:
-    - TwoPasses = True: All characters in the string are first compared without
-      regard to accents and, if the strings are equal, a second pass over the
+    - TwoPasses = True: The strings are compared without regard to accents
+      on first pass and if the strings are equal, a second pass over the
       strings is performed to compare accents
     - TwoPasses = False: The strings are compared with accents on first pass
       (e.g. c < e < é < d)
   - IgnoreAccents = True: The strings are compared without regard to accents
     (e.g. c < e = é < d)
+  - With MBCS (including DBCS), IgnoreAccents option is ignored
+    but the natural comparison should works properly
 -------------------------------------------------------------------------------}
 
-function NatCompare(const S1, S2: string; IgnoreCase: Boolean = False;
+function AnsiNatCompare(const S1, S2: string; IgnoreCase: Boolean = False;
   IgnoreAccents: Boolean = False; TwoPasses: Boolean = True): Integer;
 var
-  i1, i2: Integer;
+  i1, i2, j1, j2: Integer;
   len1, len2: Integer;
-  CmpChar: PCmpChar;
 
   function ExtractNum(var i: Integer; const txt: string; len: Integer): Int64;
   var
@@ -1068,72 +1166,84 @@ var
   end;
 begin
   Result := 0;
-  len1 := Length(s1);
-  len2 := Length(s2);
+  len1 := Length(S1);
+  len2 := Length(S2);
   i1 := 1;
   i2 := 1;
   if (len1 > 0) and (len2 > 0) then
   begin
-    if IgnoreCase then
-      if IgnoreAccents or TwoPasses then
-        CmpChar := @CmpCharNoCaseAccentSensitive
-      else
-        CmpChar := @CmpCharNoCaseSensitive
-    else
-      if IgnoreAccents or TwoPasses then
-        CmpChar := @CmpCharNoAccentSensitive
-      else
-        CmpChar := @CmpCharSensitive;
     repeat
-      if ((s1[i1] in ['0'..'9']) and (s2[i2] in ['0'..'9'])) then
+      {With DBCS and MBCS, extract of numbers works too because :
+        - number chars are always between x30 and x39 in table
+        - lead bytes start always after x7F in table
+        - second chars after lead bytes start always after x40 in table}
+      if ((S1[i1] in ['0'..'9']) and (S2[i2] in ['0'..'9'])) then
         Result := Sign(ExtractNum(i1, s1, len1) - ExtractNum(i2, s2, len2))
       else
       begin
-        Result := CmpChar^[Ord(s1[i1])][Ord(s2[i2])] - 2;
-        i1 := i1 + 1;
-        i2 := i2 + 1;
+        j1 := i1;
+        j2 := i2;
+        repeat
+          i1 := i1 + 1;
+          i2 := i2 + 1;
+        until (Min(len1-i1, len2-i2) < 0) or ((S1[i1] in ['0'..'9']) and (S2[i2] in ['0'..'9']));
+        Result := AnsiCompareSubEx(S1, S2, IgnoreCase,
+          (IgnoreAccents or TwoPasses) and not IsDefaultCPMBCS, j1, j2, i1-j1, i2-j2);
       end;
     until (Result <> 0) or (Min(len1-i1, len2-i2) < 0);
   end;
-  if Result = 0 then
+  if (Result = 0) then
     Result := Sign((len1-i1) - (len2-i2));
-  if (Result = 0) and not IgnoreAccents and TwoPasses then
-    Result := NatCompare(S1, S2, IgnoreCase, False, False);
+  if (Result = 0) and TwoPasses and not IgnoreAccents and not IsDefaultCPMBCS then
+    Result := AnsiNatCompare(S1, S2, IgnoreCase, False, False);
 end;
 
 {-------------------------------------------------------------------------------
 -------------------------------------------------------------------------------}
 
-function NatCompareText(const S1, S2: string; IgnoreAccents: Boolean = False): Integer;
+function AnsiNatCompareText(const S1, S2: string; IgnoreAccents: Boolean = False): Integer;
 begin
-  Result := NatCompare(S1, S2, True, IgnoreAccents);
+  Result := AnsiNatCompare(S1, S2, True, IgnoreAccents);
 end;
 
 {-------------------------------------------------------------------------------
 -------------------------------------------------------------------------------}
 
-function NatCompareStr(const S1, S2: string; IgnoreAccents: Boolean = False): Integer;
+function AnsiNatCompareStr(const S1, S2: string; IgnoreAccents: Boolean = False): Integer;
 begin
-  Result := NatCompare(S1, S2, False, IgnoreAccents);
+  Result := AnsiNatCompare(S1, S2, False, IgnoreAccents);
 end;
 
 {-------------------------------------------------------------------------------
 -------------------------------------------------------------------------------}
 
-function NatSameText(const S1, S2: string; IgnoreAccents: Boolean = False): Boolean;
+function AnsiNatSameText(const S1, S2: string; IgnoreAccents: Boolean = False): Boolean;
 begin
-  Result := NatCompareText(S1, S2, IgnoreAccents) = 0;
+  Result := AnsiNatCompareText(S1, S2, IgnoreAccents) = 0;
 end;
 
 {-------------------------------------------------------------------------------
 -------------------------------------------------------------------------------}
 
-function NatSameStr(const S1, S2: string; IgnoreAccents: Boolean = False): Boolean;
+function AnsiNatSameStr(const S1, S2: string; IgnoreAccents: Boolean = False): Boolean;
 begin
-  Result := NatCompareStr(S1, S2, IgnoreAccents) = 0;
+  Result := AnsiNatCompareStr(S1, S2, IgnoreAccents) = 0;
 end;
 
 {-------------------------------------------------------------------------------
+  AnsiPosEx:
+  - IgnoreCase = False
+    The strings are compared with regard to case
+  - IgnoreCase = True
+    The strings are compared without regard to case
+  - IgnoreAccents = False: The strings are compared with accents
+    (e.g. c < e < é < d)
+  - IgnoreAccents = True: The strings are compared without regard to accents
+    (e.g. c < e = é < d)
+  - StartPos: Start position in S where we start search from left to right
+    (1 by default)
+  - With DBCS, IgnoreAccents option is ignored
+  - With other MBCS, IgnoreCase and IgnoreAccents options are ignored
 -------------------------------------------------------------------------------}
 
 function AnsiPosEx(const SubStr, S: string; IgnoreCase: Boolean = False;
@@ -1142,6 +1252,12 @@ var
   i1, i2, i2start, cmp: Integer;
   len1, len2: Integer;
   CmpChar: PCmpChar;
+  {With DBCS, we keep previous lead byte information for SubStr and S to
+   handle the comparison properly}
+  PrevLeadByteSubStr: Boolean;
+  PrevLeadByteS: Boolean;
+  PrevLeadByteSStart: Boolean;
+  PStartPos, P: PChar;
 begin
   Result := 0;
   len1 := Length(SubStr);
@@ -1152,8 +1268,31 @@ begin
     Exit;
   if (StartPos < 1) then
     StartPos := 1;
+
+  {With MBCS (not DBCS), we call original function AnsiPos}
+  if IsDefaultCPMBCS and not IsDefaultCPDBCS then
+  begin
+    PStartPos := PChar(S) + (StartPos - 1);
+    P := AnsiStrPos(PStartPos, PChar(SubStr));
+    if P <> nil then
+      Result := Integer(P) - Integer(PChar(S)) + 1;
+    Exit;
+  end;
+
   i1 := 1;
   i2 := StartPos;
+  PrevLeadByteSubStr := False;
+  PrevLeadByteS := False;
+  { With DBCS, we initialise value of PrevLeadByteS properly }
+  if IsDefaultCPDBCS then
+  begin
+    i2 := 1;
+    while i2 < StartPos do
+    begin
+      PrevLeadByteS := not PrevLeadByteS and IsDefaultCPLeadByte(Ord(S[i2]));
+      i2 := i2 + 1;
+    end;
+  end;
   if IgnoreCase then
     if IgnoreAccents then
       CmpChar := @CmpCharNoCaseAccentSensitive
@@ -1166,8 +1305,21 @@ begin
       CmpChar := @CmpCharSensitive;
   repeat
     i2start := i2;
+    PrevLeadByteSStart := PrevLeadByteS;
     repeat
-      cmp := CmpChar^[Ord(SubStr[i1])][Ord(S[i2])] - 2;
+      if not IsDefaultCPDBCS then
+        cmp := CmpChar^[Ord(SubStr[i1])][Ord(S[i2])]
+      else
+      begin
+        if PrevLeadByteSubStr <> PrevLeadByteS then
+          cmp := -1
+        else if not PrevLeadByteSubStr then
+          cmp := CmpChar^[Ord(SubStr[i1])][Ord(S[i2])]
+        else
+          cmp := CompareValue(Ord(SubStr[i1]), Ord(S[i2]));
+        PrevLeadByteSubStr := not PrevLeadByteSubStr and IsDefaultCPLeadByte(Ord(SubStr[i1]));
+        PrevLeadByteS := not PrevLeadByteS and IsDefaultCPLeadByte(Ord(S[i2]));
+      end;
       i1 := i1 + 1;
       i2 := i2 + 1;
     until (cmp <> 0) or (Min(len1 - i1, len2 - i2) < 0);
@@ -1175,12 +1327,31 @@ begin
     begin
       i1 := 1;
       i2 := i2start + 1;
+      if IsDefaultCPDBCS then
+      begin
+        PrevLeadByteSubStr := False;
+        PrevLeadByteS := not PrevLeadByteSStart and IsDefaultCPLeadByte(Ord(S[i2-1]));
+      end;
     end else
       Result := i2start;
   until (len2 - i2 + 1 < len1) or (Result <> 0);
 end;
 
 {-------------------------------------------------------------------------------
+  AnsiLastPosEx:
+  - IgnoreCase = False
+    The strings are compared with regard to case
+  - IgnoreCase = True
+    The strings are compared without regard to case
+  - IgnoreAccents = False: The strings are compared with accents
+    (e.g. c < e < é < d)
+  - IgnoreAccents = True: The strings are compared without regard to accents
+    (e.g. c < e = é < d)
+  - StartPos: Start position in S where we start search from right to left
+    (Length(S) by default)
+  - With DBCS, IgnoreAccents option is ignored
+  - With MBCS, IgnoreCase and IgnoreAccents options are ignored
+  Note : String comparison is done in reverse only for Single-Byte Character Sets
 -------------------------------------------------------------------------------}
 
 function AnsiLastPosEx(const SubStr, S: string; IgnoreCase: Boolean = False;
@@ -1199,6 +1370,21 @@ begin
     Exit;
   if (StartPos > len2) then
     StartPos := len2;
+
+  {With MBCS, we have to perform string comparison from left to right using AnsiPosEx}
+  if IsDefaultCPMBCS then
+  begin
+    i2 := 0;
+    i1 := AnsiPosEx(SubStr, S, IgnoreCase, IgnoreAccents);
+    while (i1 <> 0) and (i1 + len1 - 1 <= StartPos) do
+    begin
+      i2 := i1;
+      i1 := AnsiPosEx(SubStr, S, IgnoreCase, IgnoreAccents, i1 + len1);
+    end;
+    Result := i2;
+    Exit;
+  end;
+
   i1 := len1;
   i2 := StartPos;
   if IgnoreCase then
@@ -1214,7 +1400,7 @@ begin
   repeat
     i2start := i2;
     repeat
-      cmp := CmpChar^[Ord(SubStr[i1])][Ord(S[i2])] - 2;
+      cmp := CmpChar^[Ord(SubStr[i1])][Ord(S[i2])];
       i1 := i1 - 1;
       i2 := i2 - 1;
     until (cmp <> 0) or (Min(i1, i2) < 1);
@@ -1273,6 +1459,6 @@ end;
 -------------------------------------------------------------------------------}
 
 initialization
-  InitCmpCharTables;
+  InitDefaultCPInfo;
 
 end.

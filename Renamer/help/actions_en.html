@@ -48,11 +48,12 @@
 <h2 id="multstrrepl">Multiple string replacement</h2>
 <p>You can enter here multiple strings to replace. The left column contain the strings to search in names, the right column contains the text to put instead
   (which can be an empty string).</p>
-<p>At first it was added for multiple character replacement, like replacing all accentuated characters by their latin equivalent. But I added support for
-  strings instead of characters for some languages where one character may have to be translated to several latin characters, or vice versa.</p>
-<p>You can save the grid contents to retreive it later from the drop-down list. Type a name in this field and click "Save".</p>
-<p>To add a line in the grid, press "Ctrl" and "Plus" (+) keys. The new line will be added before the selected cell.</p>
-<p>In the same way, pressing "Ctrl" and "Minus" (-) keys will remove current line.</p>
+<p>It can be used for single characters replacement, like replacing all accentuated characters by their latin equivalent, or to replace whole strings, of different lengths.</p>
+<p>You can save the table contents to retreive it later from the drop-down list. Type a name in this field and click "Save".</p>
+<p>To add a line in the table, press "Ctrl" and "Plus" (+) keys. The new line will be added before the selected cell.<br />
+  In the same way, pressing "Ctrl" and "Minus" (-) keys will remove current line.</p>
+<p>The Copy and Paste buttons allow you to easily export and import the contents of the whole table as plain text to modify it in Excel or any text editor.<br />
+  Each row of the table corresponds to a line of text, and the two columns are separated by a tab character (this is what Excel uses as column separator for copy/paste).</p>
 
 <h2 id="stringinsert">String insertion</h2>
 <p>You can insert a string at any position, counting from begin or end of the name. Zero means that the string will be inserted before the first existing character
@@ -148,8 +149,8 @@
 </ul>
 <p>Since multiple files can have the same date (or time), an option can be checked to add a suffix after the duplicate files. This suffix is a long number. In a
   future version it will be possible to control this better.</p>
-<p>You can choice to use either creation date/time or last modification date/time. The first one is the date when the file was put on the disk, the second one is
-  the date when the file was modified. If you recently put an old file on a new disk, the creation date may be more recent than the modification date. Most of the
+<p>You can choose to use either creation date/time or last modification date/time. The first one is the date when the file was put on the disk, the second one is
+  the date when the file contents was modified. If you recently put an old file on a new disk, the creation date may be more recent than the modification date. Most of the
   time it is the modification date that is used.</p>
 
 <h2 id="random">Random names</h2>
@@ -192,7 +193,7 @@
   This can be, for example, very useful as replacement of the <a href="#datetime">Use date &amp; time</a> action if the dates of your photos are not kept when
   you transfer them from your digital camera.</a>
 <p>See <a href="format_en.html#folder">"Formatting"</a> page for more information. Due to the very long list of existing EXIF tags, they are listed
-  <a href="exif_tags.txt">on a separate page</a> rather than being included here.</p>
+  <a href="exif_tags.txt">on this dedicated page</a> rather than being included here.</p>
 
 </body>
 </html>

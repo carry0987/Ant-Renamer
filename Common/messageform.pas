@@ -1,6 +1,6 @@
 (************************************************************************
  *                                                                      *
- *   (C) 2002-2013 Antoine Potten, Mickaël Vanneufville                 *
+ *   (C) 2002-2017 Antoine Potten, Mickaël Vanneufville                 *
  *   http://www.antp.be/software                                        *
  *                                                                      *
  ************************************************************************
@@ -103,7 +103,7 @@ uses
   Global,
   {$ENDIF}
   {$IFDEF ANTUNICODE}
-  TntWindows, functions_gui,
+  TntWindows, TntClipbrd, functions_gui,
   {$ENDIF}
 
   StrUtils;
@@ -212,7 +212,11 @@ procedure TMessageWin.FormKeyUp(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
   if (Key in [ord('C'), VK_INSERT]) and (Shift = [ssCtrl]) then
+{$IFDEF ANTUNICODE}
+    TntClipboard.AsWideText := GetFormText;
+{$ELSE}
     Clipboard.AsText := GetFormText;
+{$ENDIF}
 end;
 
 {-------------------------------------------------------------------------------

@@ -23,7 +23,8 @@ unit ExtractID3;
 interface
 
 uses
-  SysUtils, Classes, Windows;
+  SysUtils, Classes, Windows,
+  functions_files;
 
 {-------------------------------------------------------------------------------
 -------------------------------------------------------------------------------}
@@ -48,11 +49,7 @@ type
     Genre:   Byte;
   end;
 
-{$IFDEF ANTUNICODE}
-procedure ExtractID3Info(const FileNameW: WideString; var ARec: TID3Info);
-{$ELSE}
-procedure ExtractID3Info(const FileNameA: TFileName; var ARec: TID3Info);
-{$ENDIF}
+procedure ExtractID3Info(const FileNameW: TAntFileName; var ARec: TID3Info);
 
 var
   strID3CannotOpen: string = 'unable to open file to read ID3 tag';
@@ -195,20 +192,15 @@ var
 
 implementation
 
+{$IFDEF ANTUNICODE}
 uses
-  {$IFDEF ANTUNICODE}
-  TntClasses, functions_sys,
-  {$ENDIF}
-  functions_files;
+  TntClasses, functions_sys;
+{$ENDIF}
 
 {-------------------------------------------------------------------------------
 -------------------------------------------------------------------------------}
 
-{$IFDEF ANTUNICODE}
-procedure ExtractID3Info(const FileNameW: WideString; var ARec: TID3Info);
-{$ELSE}
-procedure ExtractID3Info(const FileNameA: TFileName; var ARec: TID3Info);
-{$ENDIF}
+procedure ExtractID3Info(const FileNameW: TAntFileName; var ARec: TID3Info);
 var
   f: THandleStream;
   h: THandle;
@@ -219,13 +211,11 @@ begin
   if IsWindowsNT then
     h := CreateFileW(PWideChar(FileNameW), GENERIC_READ, FILE_SHARE_READ, nil, OPEN_ALWAYS, 0, 0)
   else
+  {$ENDIF}
   begin
     FileNameA := FileNameW;
-    {$ENDIF}
     h := CreateFile(PChar(FileNameA), GENERIC_READ, FILE_SHARE_READ, nil, OPEN_ALWAYS, 0, 0);
-  {$IFDEF ANTUNICODE}
   end;
-  {$ENDIF}
   if h = INVALID_HANDLE_VALUE then
     raise Exception.Create(strID3CannotOpen);
   try

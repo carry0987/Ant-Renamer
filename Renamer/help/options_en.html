@@ -17,7 +17,7 @@
 	<li><span class="optname">Show icons in files list, based on file extension</span> : Displays icons on the left of the items of the Files list. It may slow
 		down a little the scrolling of the list, and since each ".exe" file has its own icon it may be quite slow for files coming from a network drive for example.</li>
 	<li><span class="optname">Force the following font for controls that have to display special characters</span> : Allows to specify the font to use for the
-		fields that may contain unicode characters, including Files and Log lists. If available, the fond "Arial Unicode MS" is used by default.
+		fields that may contain unicode characters, including Files and Log lists. If available, the font "Noto Sans", "DejaVu Sans" or "Arial Unicode MS" is used by default.
 		<a href="fonts_en.html">Click here for more information</a>.</li>
 	<li><span class="optname">Number of values to keep in history</span> : The drop-down lists remember the last text strings that you used. You can specify here
 		how much strings have to be kept (0 = none).</li>
@@ -39,6 +39,8 @@
 	<li><span class="optname">Copy instead of Rename</span> : Though the program is designed for renaming file, it can sometimes be useful to copy the files to a new
 		name instead of rename them.</li>
 	<li><span class="optname">Generate log</span> : If this is disabled, the Log page of the main window will not be filled with all the files processed.</li>
+	<li><span class="optname">DST offset related to file date</span> : If enabled, the offset for daylight saving time is computed from the file date (default on
+		Windows 7 and higher), otherwise it is computed from current date (default for older Windows versions).</li>
 	<li><span class="optname">Force directories</span> : A "\" character is not valid in a file name since it is used as path delimited (e.g. c:\Program Files\Ant
 		Renamer\Renamer.exe). So when a "\" is found in a file name the part before the "\" is considered as a folder. To be able to move the file to this folder,
 	it must exist. If this option is checked, before renaming/moving each file the program will check that the folder exists, and will create it if it is not found.</li>
@@ -49,7 +51,7 @@
 	If the option is enabled, all what follows the last dot in a folder name will be considered as an extension, as it is done on files. This affects the behaviour of the 
 	options "Include extension" and "Apply to extension instead of name in several actions.</li>
 </ul>
-<h2 id="processing">Events</h2>
+<h2 id="events">Events</h2>
 <ul>
 	<li><span class="optname">When renaming starts</span> : Allows to define what to do before starting to rename files, when you click the "Go" button.</li>
 	<li><span class="optname">When renaming ends</span> : Allows to define what to do when renaming process is complete. The "Save log to file" option allows to store the

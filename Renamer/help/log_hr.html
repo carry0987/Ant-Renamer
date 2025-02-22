@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Pomoć Ant Renamer 2</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1250" />
+	<link rel="stylesheet" href="main.css" type="text/css" />
+</head>
+<body>
+<h1>Zapisnik</h1>
+<p>Ova stranica je ispunjena rezultatima procesa preimenovanja.</p>
+<p>Kao dodatak alatnoj traci datoteka koja je uvijek vidljiva, alatna traka za zapisnik je prikazana:<br />
+<img src="img/logtoolbar.png" alt="Alatna traka zapisnika" /></p>
+<p>Ovdje su naredbe:</p>
+<ul>
+  <li><img src="img/filter.png" alt="Filter" /> Tipka "Filter" pokazat će izbornik koji vam omogućuje odrediti koje vrste stavki želite vidjeti u zapisniku
+    (ovisno o njihovom statusu, vidi sljedeći odlomak).</li>
+  <li><img src="img/clear.png" alt="Očisti" /> Tipka "Očisti" će isprazniti zapisnik.</li>
+  <li><img src="img/save.png" alt="Spremi" /> Tipka "Spremi" će otvoriti standardni prozor za odabir datoteke, omogućujući vam da odaberete gdje želite spremiti sadržaj zapisnika.</li>
+  <li><img src="img/copy.png" alt="Kopiraj" /> Tipka "Kopiraj" će kopirati sadržaj zapisnika u Windows međuspremnik.</li>
+</ul>
+<p>Kada je preimenovanje bilo u redu, dodan je redak u zapisniku navodeći stari i novi naziv datoteke. To je zapisano zeleno.</p>
+<p>U slučaju da datoteka nije preimenovana, bilo jednostavna poruka (plavo) ili greška (crveno) će se prikazati.</p>
+<p>Prvi slučaj uzrokovan je identičnim odredišnim imenom (ne treba preimenovati datoteku) ili ako datoteka ne sadrži ID3 info (za preimenovanje mp3). To se također može dogoditi 
+  kada izvorna datoteka više ne postoji (npr. ručno ju premjestite).</p>
+<p>Eventualne pogreške mogu biti uzrokovane s puno stvari. Na primjer, ako novo ime već koristi druga datoteka, ako ime sadrži nedopuštene znakove ili
+  ako je datoteka zaključana programom. Poruka je obično povratna poruka Windowsa.</p>
+<p>Ako dobijete poruku "Operacija je završena uspješno" navedena kao pogreška, to znači da je stvarna poruka izgubljena ili da pogreška nije ispravno otkrivena.
+  Molimo vas da me kontaktirate ako možete reproducirati problem.</p>
+<h2 id="save">Automatsko spremanje zapisnika u datoteku</h2>
+<p>To se može učiniti s opcijom "Spremi zapisnik u datoteku" u <a href="options_hr.html#processing">Opcije</a>.</p>
+<p>Ako je opcija omogućena, nakon operacije preimenovanja sadržaj zapisnika biti će pohranjen u tekstualnu datoteku (kodirano u UTF-8).</p>
+<p>Ova datoteka ima dva stupca (omeđene tabulatorom). Prvi sadrži "v" za uspješnu operaciju, a "x" za greške. Drugi sadrži
+  poruku.</p>
+<p>Ako opcija "Dodavanje" je također omogućena, datoteke neće biti prepisane: novi unosi u zapisnik će se dodati na kraju.</p>
+</body>
+</html>

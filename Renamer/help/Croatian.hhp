@@ -1,0 +1,70 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=Croatian.chm
+Contents file=Croatian.hhc
+Default topic=index_hr.html
+Display compile progress=Yes
+Error log file=compiler.log
+Index file=Croatian.hhk
+Language=0x41a Croatian (Croatia)
+Title=Ant Renamer 2 - Help
+
+
+[FILES]
+main.css
+about_hr.html
+history_hr.html
+index_hr.html
+batch_hr.html
+options_hr.html
+fonts_hr.html
+params_hr.html
+what_hr.html
+main_hr.html
+addfiles_hr.html
+files_hr.html
+actions_hr.html
+log_hr.html
+format_hr.html
+regexp_hr.html
+img\tabs.png
+img\go.png
+img\undo.png
+img\options.png
+img\ontop.png
+img\addfiles.png
+img\addfolders.png
+img\removesel.png
+img\removeall.png
+img\removedead.png
+img\preview.png
+img\addfilesoptions.png
+img\filestoolbar.png
+img\logtoolbar.png
+img\batchtoolbar.png
+img\clear.png
+img\open.png
+img\batchdel.png
+img\batchadd.png
+img\copy.png
+img\save.png
+
+[ALIAS]
+about=about_hr.html
+history=history_hr.html
+index=index_hr.html
+batch=batch_hr.html
+options=options_hr.html
+fonts=fonts_hr.html
+params=params_hr.html
+what=what_hr.html
+main=main_hr.html
+addfiles=addfiles_hr.html
+format=format_hr.html
+regexp=regexp_hr.html
+
+[MAP]
+#include map.h
+
+[INFOTYPES]
+

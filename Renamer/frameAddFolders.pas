@@ -26,13 +26,13 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms, 
   Dialogs, StdCtrls,
 
-  Global;
+  Global, TntStdCtrls;
 
 type
   TAddFoldersFrame = class(TFrame)
-    cbxFiles: TCheckBox;
-    cbxFolders: TCheckBox;
-    cbxRecursive: TCheckBox;
+    cbxFiles: TTntCheckBox;
+    cbxFolders: TTntCheckBox;
+    cbxRecursive: TTntCheckBox;
     procedure ClickCheck(Sender: TObject);
   private
     function GetOptions: TAddFoldersOptions;

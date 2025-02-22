@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Pomoc Ant Renamer 2</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1250" />
+	<link rel="stylesheet" href="main.css" type="text/css" />
+</head>
+<body>
+
+<h1>Formatiranje nizova</h1>
+
+<p>U nekim akcijama, možete koristiti posebne oznake koje su omeđene "%" znakovima.</p>
+<p>Budući da se "%" koristi kao posebni znak, pa se za jednostruki "%" u nazivu datoteke mora unijeti "%%".</p>
+<p>U svakoj akciji koja podržava posebne oznake, dostupne oznake su navedene u "Napomene", tekstu ispod parametara te akcije.</p>
+<p>Na primjer, akcija <a href="actions_hr.html#mp3">Koristi mp3</a> podržava ID3-povezane oznake, kao %author% i %title% u dodatku kod %name% i %ext%. Dakle, 
+  tipična maska za MP3 datoteke će biti nešto poput <code>%author% - %title%%ext%</code> (%ext% uključuje točku, tako da ne moramo staviti točku u masku
+  korištenu ovdje).</p>
+
+<hr />
+
+<p>Oznaka %folderN% obično je dostupna. Ova oznaka vam omogućuje da koristite ime matičnih mapa u nazivu same datoteke. To je malo teško objasniti,
+  pa ću vam dati neke primjere.</p>
+<p>Ako imate datoteku u "c:\data\images\movies\poster.jpg" i koristite akciju <a href="actions_hr.html#stringinsert">Umetanje niza znakova</a>:</p>
+<ul>
+  <li>S maskom = <code>%folder1%&nbsp;-&nbsp;</code> datoteka će biti preimenovana u "movies - poster.jpg"</li>
+  <li>S maskom = <code>%folder2%&nbsp;-&nbsp;</code> datoteka će biti preimenovana u "images - poster.jpg"</li>
+  <li>itd.</li>
+</ul>
+<p>Takoder možete koristiti relativnu putanju, npr. ako imate nekoliko mapa, svaka sadrži puno datoteka i sve ove datoteke nisu potpuno različite između dvije mape.
+   Možete htjeti umetnuti naziv mape, a zatim premjestiti sve datoteke u zajedničku nadređenu mapu. Ovdje je primjer, imate sljedeće datoteke:
+<ul>
+  <li>c:\data\images\movies\poster1.jpg</li>
+  <li>c:\data\images\games\poster1.jpg</li>
+  <li>c:\data\images\games\poster2.jpg</li>
+</ul>
+<p>Ako ste preimenovali akcijom umetanje niza znakova, a niz je poput <code>../%folder1%&nbsp;</code> umetnut na mjesto 0 od početka, budete dobili slijedeće u
+  "images" mapi:</p>
+<ul>
+  <li>movies poster1.jpg</li>
+  <li>games poster1.jpg</li>
+  <li>games poster2.jpg</li>
+</ul>
+<p>Sada možete obrisati prazne "movies" &amp; "games" mape.</p>
+<p>Ako unesete negativni broj umjesto toga, brojanje će se obaviti iz korijenske, a ne iz trenutne mape. Dakle, još uvijek koristi "c:\data\images\movies\"
+  kao mapu:</p>
+<ul>
+  <li><code>%folder-1%</code> = "c"</li>
+  <li><code>%folder-2%</code> = "data"</li>
+  <li><code>%folder-3%</code> = "images"</li>
+  <li>itd.</li>
+</ul>
+<p>Upotrebom oznake %name%, također možete htjeti imati datoteke smještene u mapu koja uzima ime datoteke. Za to, opcija
+  <a href="options_hr.html#processing">"Prisili direktorij"</a> mora biti omogućena. Ako imate sljedeće datoteke:</p>
+<ul>
+  <li>cars.doc</li>
+  <li>cars.xls</li>
+  <li>cars.jpg</li>
+  <li>houses.doc</li>
+  <li>houses.xls</li>
+  <li>houses.jpg</li>
+</ul>
+<p>Dalje s akcijom Umetanje niza znakova, koristeći niz poput <code>%name%\</code> umetnut na mjesto 0 od početka, ćete dobiti tri "cars" datoteke u
+  "cars" mapi, i tri "houses" datoteke u "houses" mapi.</p>
+<p>Kada preimenujete naziv mape, <code>%count%</code> i nekoliko izvedenih oznake je dostupno:</p>
+<ul>
+  <li><code>%count%</code> = broji datoteke i podmape sadržane u preimenovanoj mapi</li>
+  <li><code>%countr%</code> = isto, ali također broji ono sto je u podmapama (rekurzivno)</li>
+  <li><code>%countfiles%</code> = broji samo datoteke</li>
+  <li><code>%countfilesr%</code> = isto, ali također broji ono sto je u podmapama (rekurzivno)</li>
+  <li><code>%countfolders%</code> = broji samo podmape</li>
+  <li><code>%countfoldersr%</code> = isto, ali uključuje i podmape u podmapama (rekurzivno)</li>
+</ul>
+<hr />
+
+<p>Za <a href="actions_hr.html#mp3">Koristi mp3 oznake</a> i <a href="actions_hr.html#exif">Koristi EXIF info</a> akcije, postoji i posebna oznaka: $if. To vam omogučuje da napravite uvjetno oblikovanje. Na primjer,
+  kada je polje prazno možda ćete htjeti da prethodi " - ". Ili staviti posebnu vrijednost.</p>
+<p>Sintaksa je sljedeća: $if(condition,value-if-true,value-if-false). Ako "condition" nije prazno, value-if-true će se koristiti. U suprotnom slučaju
+  će se koristiti value-if-false. Obzirom da ćete možda morati koristiti zareze i zagrade unutar $if funkcije, možete staviti vrijednosti unutar navodnika ("...") da bi
+  bi se spriječilo njihovo analiziranje. Ali budite oprezni s njima: oni također sprječavaju %tag% da se analizira.</p>
+<p>Ovdje su neki primjeri koji će bolje objasniti. U popisa datoteka postoje dvije mp3 datoteke koje imaju loše ime (1.mp3 i 2.mp3), ali koja ima sljedeće 
+  valjane ID3 podatke:</p>
+<ul>
+  <li>1.mp3: Autor = Blur, Naslov = Song 2, Album je prazno, Broj zapisa je prazno</li>
+  <li>2.mp3: Autor = Vivaldi, Naslov je prazno, Album = Le Quattro Stagioni, Broj zapisa = 1</li>
+</ul>
+<p>Ovdje je rezultat koristeći različite maske:</p>
+<p><code>%author% - %title%%ext%</code><br />
+Jednostavno uzima autora i naslov, odvojene crticom. Ovdje nismo koristi "if" funkciju, a i rezultat nije jako lijepo kada postoje prazna polja.</p>
+<ul>
+  <li>Blur - Song 2.mp3</li>
+  <li>Vivaldi - .mp3</li>
+</ul>
+<p><code>%author%$if(%title%, - %title%,)%ext%</code><br />
+Uzmi autora, a ako naslov nije prazan, dodaj crticu i naslov.</p>
+<ul>
+  <li>Blur - Song 2.mp3</li>
+  <li>Vivaldi.mp3</li>
+</ul>
+<p><code>%author%$if(%album%," ("%album%")",)$if(%title%,", "%title%,)%ext%</code><br />
+Uzmi autora, ako postoji, dodaj naziv albuma izmedu zagrada, onda, ako postoji dodaj naslov odvojen zarezom. Ovdje možete vidjeti koja zagrada i zarez
+  se moraju staviti izmedu navodnika da se ne uzmu kao završetak "if" ili vrijednosti separatora.</p>
+<ul>
+  <li>Blur, Song2.mp3</li>
+  <li>Vivaldi (Le Quattro Stagioni)</li>
+</ul>
+<p><code>%author%$if(%album%," ("%album%")",)$if(%title%,", "%title%,$if(%track%, - %track%,))%ext%</code><br />
+Isto kao prethodno, ali u "if" unutar naslova je dodano jos jedno "if" za dodati broj zapisa samo u slučaju da je naslov prazan.</p>
+<ul>
+  <li>Blur, Song2.mp3</li>
+  <li>Vivaldi (Le Quattro Stagioni) - 1</li>
+</ul>
+
+</body>
+</html>
