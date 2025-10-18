@@ -5,7 +5,7 @@
 [Setup]
 AppName=Ant Renamer
 AppVerName=Ant Renamer 2.13.0
-AppCopyright=Copyright © 2000-2024 Antoine Potten
+AppCopyright=Copyright ï¿½ 2000-2025 Antoine Potten
 AppPublisher=Ant Software
 AppPublisherURL=http://www.antp.be/software/
 AppUpdatesURL=http://www.antp.be/software/renamer/download/

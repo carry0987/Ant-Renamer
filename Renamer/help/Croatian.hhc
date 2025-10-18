@@ -13,7 +13,7 @@
 		<param name="Local" value="index_hr.html">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
-		<param name="Name" value="Što ovaj program radi">
+		<param name="Name" value="&Scaron;to ovaj program radi">
 		<param name="Local" value="what_hr.html">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
@@ -69,7 +69,7 @@
 		<param name="Local" value="params_hr.html">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
-		<param name="Name" value="Povijest ina&egrave;ica">
+		<param name="Name" value="Povijest ina&ccaron;ica">
 		<param name="Local" value="history_hr.html">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">

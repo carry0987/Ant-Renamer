@@ -14,7 +14,7 @@
 		<param name="Local" value="what_fr.html">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
-		<param name="Name" value="Fenêtre principale">
+		<param name="Name" value="Fen&ecirc;tre principale">
 		<param name="Local" value="main_fr.html">
 		</OBJECT>
 	<UL>
@@ -34,11 +34,11 @@
   		</OBJECT>
   	<UL>
     	<LI> <OBJECT type="text/sitemap">
-    		<param name="Name" value="Listes prédéfinies (jobs)">
+    		<param name="Name" value="Listes pr&eacute;d&eacute;finies (jobs)">
     		<param name="Local" value="batch_fr.html">
     		</OBJECT>
     	<LI> <OBJECT type="text/sitemap">
-    		<param name="Name" value="Formatage de chaînes">
+    		<param name="Name" value="Formatage de cha&icirc;nes">
     		<param name="Local" value="format_fr.html">
     		</OBJECT>
     	<LI> <OBJECT type="text/sitemap">
@@ -57,12 +57,12 @@
 		</OBJECT>
 	<UL>
   	<LI> <OBJECT type="text/sitemap">
-  		<param name="Name" value="Polices de caractères">
+  		<param name="Name" value="Polices de caract&egrave;res">
   		<param name="Local" value="fonts_fr.html">
   		</OBJECT>
   </UL>
 	<LI> <OBJECT type="text/sitemap">
-		<param name="Name" value="Paramètres en ligne de commande">
+		<param name="Name" value="Param&egrave;tres en ligne de commande">
 		<param name="Local" value="params_fr.html">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
@@ -70,7 +70,7 @@
 		<param name="Local" value="history_fr.html">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
-		<param name="Name" value="À propos de l'auteur, crédits &amp; liens">
+		<param name="Name" value="&Agrave; propos de l'auteur, cr&eacute;dits &amp; liens">
 		<param name="Local" value="about_fr.html">
 		</OBJECT>
 </UL>
