@@ -1,5 +1,5 @@
 Ant Renamer 2.x source code
-(c) 2002-2024 Antoine Potten
+(c) 2002-2025 Antoine Potten
 
 https://www.antp.be/software/renamer/
 
